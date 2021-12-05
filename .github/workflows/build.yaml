@@ -9,4 +9,10 @@ jobs:
       postgres:
         image: postgres:9.6
         env:
-   
+          POSTGRES_USER: nobody 
+          POSTGRES_PASSWORD: nobody 
+          POSTGRES_DB: go-active-learning-test
+        ports:
+          - 5432:5432
+        options: >-
+          --
