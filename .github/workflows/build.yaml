@@ -1,0 +1,12 @@
+name: build and test
+on: [push]
+
+jobs:
+  build:
+    name: build and test
+    runs-on: ubuntu-latest
+    services:
+      postgres:
+        image: postgres:9.6
+        env:
+   
