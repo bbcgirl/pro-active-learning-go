@@ -22,4 +22,9 @@ jobs:
           --name postgres
     steps:
       - name: checkout
-        us
+        uses: actions/checkout@v2
+      - name: format
+        run: test `gofmt -l $(git ls-files | grep -e '\.go$' | grep -v -e vendor) | wc -l` = 0
+      - name: deps
+        run: make deps
+      - na
