@@ -27,4 +27,11 @@ jobs:
         run: test `gofmt -l $(git ls-files | grep -e '\.go$' | grep -v -e vendor) | wc -l` = 0
       - name: deps
         run: make deps
-      - na
+      - name: build
+        run: make build
+      - name: test
+        run: |
+          export GOPATH=$HOME/go
+          export GOBIN=$(go env GOPATH)/bin
+          export PATH=$PATH:$GOPATH
+          export PATH
