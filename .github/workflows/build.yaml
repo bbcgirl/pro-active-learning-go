@@ -38,4 +38,9 @@ jobs:
           sql-migrate up -env=test
           make cover
           goveralls -coverprofile=${COVERAGE} -service=circle-ci -repotoken=${{ secrets.COVERALLS_TOKEN }}
-        en
+        env:
+          POSTGRES_HOST: localhost
+          POSTGRES_PORT: 5432        
+          POSTGRES_USER: nobody 
+          POSTGRES_PASSWORD: nobody
+          COVERAGE: coverage.out
