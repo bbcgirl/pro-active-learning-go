@@ -34,4 +34,8 @@ jobs:
           export GOPATH=$HOME/go
           export GOBIN=$(go env GOPATH)/bin
           export PATH=$PATH:$GOPATH
-          export PATH
+          export PATH=$PATH:$GOBIN
+          sql-migrate up -env=test
+          make cover
+          goveralls -coverprofile=${COVERAGE} -service=circle-ci -repotoken=${{ secrets.COVERALLS_TOKEN }}
+        en
