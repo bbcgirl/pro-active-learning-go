@@ -21,4 +21,15 @@ fmt:
 
 .PHONY: test
 test:
-	DB_NAM
+	DB_NAME=go-active-learning-test go test -v ./... -p 1 -count 1
+
+.PHONY: vet
+vet:
+	go tool vet --all *.go
+
+.PHONY: test-all
+test-all: vet test
+
+.PHONY: cover
+cover:
+	DB_NAME=go-active-l
