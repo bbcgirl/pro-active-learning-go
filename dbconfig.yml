@@ -1,0 +1,3 @@
+test:
+  dialect: postgres
+  datasource: host=localhost user=${POSTGRES_USER} password=${POSTGRES_PASSWORD} dbname=go-active

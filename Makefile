@@ -32,4 +32,4 @@ test-all: vet test
 
 .PHONY: cover
 cover:
-	DB_NAME=go-active-l
+	DB_NAME=go-active-learning-test goverage -parallel 1 -v -coverprofile=${COVERAGE} ./...
