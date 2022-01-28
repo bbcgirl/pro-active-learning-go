@@ -1,3 +1,8 @@
 test:
   dialect: postgres
-  datasource: host=localhost user=${POSTGRES_USER} password=${POSTGRES_PASSWORD} dbname=go-active
+  datasource: host=localhost user=${POSTGRES_USER} password=${POSTGRES_PASSWORD} dbname=go-active-learning-test sslmode=disable
+  dir: migrations
+
+local:
+  dialect: postgres
+  datasource: host=localhost user=nobody password=nobody dbname=go-active-learning sslmode=disab
