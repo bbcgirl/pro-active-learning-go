@@ -11,4 +11,8 @@ require (
 	github.com/ikawaha/kagome v1.11.2
 	github.com/jaytaylor/html2text v0.0.0-20190408195923-01ec452cbe43 // indirect
 	github.com/jdkato/prose v0.0.0-20181022194337-a179b97cfa6f
-	github.com/jmoiron/sqlx
+	github.com/jmoiron/sqlx v1.3.1
+	github.com/lib/pq v1.10.0
+	github.com/mackerelio/mackerel-client-go v0.16.0
+	github.com/mattn/go-isatty v0.0.8 // indirect
+	github.com/mattn/go-runewidth v0.0.4 //
