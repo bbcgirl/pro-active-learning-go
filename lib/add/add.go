@@ -17,4 +17,12 @@ import (
 )
 
 func doAdd(c *cli.Context) error {
-	inputFilename := c.String("inpu
+	inputFilename := c.String("input-filename")
+
+	if inputFilename == "" {
+		_ = cli.ShowCommandHelp(c, "add")
+		return cli.NewExitError("`input-filename` is a required field.", 1)
+	}
+
+	app, err := service.NewDefaultApp()
+	if err != ni
