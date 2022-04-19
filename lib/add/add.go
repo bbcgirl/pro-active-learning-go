@@ -35,4 +35,12 @@ func doAdd(c *cli.Context) error {
 		return err
 	}
 
-	if err := app.AttachMetadata(examples, 0, 0); err !=
+	if err := app.AttachMetadata(examples, 0, 0); err != nil {
+		return err
+	}
+
+	examples = util.FilterStatusCodeNotOkExamples(examples)
+	app.Fetch(examples)
+	examples = util.FilterStatusCodeOkExamples(examples)
+
+	m, err := app.FindLa
