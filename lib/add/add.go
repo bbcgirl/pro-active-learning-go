@@ -43,4 +43,11 @@ func doAdd(c *cli.Context) error {
 	app.Fetch(examples)
 	examples = util.FilterStatusCodeOkExamples(examples)
 
-	m, err := app.FindLa
+	m, err := app.FindLatestMIRAModel(classifier.EXAMPLE)
+	skipPredictScore := false
+	if err != nil {
+		log.Println(fmt.Sprintf("Error to load model %s", err.Error()))
+		skipPredictScore = true
+	}
+
+	for _, e := range
