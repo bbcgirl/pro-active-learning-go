@@ -25,4 +25,14 @@ func doAdd(c *cli.Context) error {
 	}
 
 	app, err := service.NewDefaultApp()
-	if err != ni
+	if err != nil {
+		return err
+	}
+	defer app.Close()
+
+	examples, err := file.ReadExamples(inputFilename)
+	if err != nil {
+		return err
+	}
+
+	if err := app.AttachMetadata(examples, 0, 0); err !=
