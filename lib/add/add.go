@@ -50,4 +50,10 @@ func doAdd(c *cli.Context) error {
 		skipPredictScore = true
 	}
 
-	for _, e := range
+	for _, e := range examples {
+		if !skipPredictScore {
+			e.Score = m.PredictScore(e.Fv)
+		}
+		if e.CreatedAt.Before(time.Date(2000, 01, 01, 0, 0, 0, 0, time.Local)) {
+			log.Println(fmt.Sprintf("Skipin too old example: %s", e.Url))
+			contin
