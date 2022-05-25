@@ -62,4 +62,8 @@ func doAdd(c *cli.Context) error {
 			log.Println(fmt.Sprintf("Error occured proccessing %s %s", e.Url, err.Error()))
 			continue
 		}
-		if err = app.Up
+		if err = app.UpdateFeatureVector(e); err != nil {
+			log.Println(fmt.Sprintf("Error occured proccessing %s feature vector %s", e.Url, err.Error()))
+			continue
+		}
+		if bookmark, err := hatena_bookmark.Get
