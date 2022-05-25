@@ -78,3 +78,10 @@ func doAdd(c *cli.Context) error {
 
 	return nil
 }
+
+func postNumOfExamplesToMackerel(app service.GoActiveLearningApp) error {
+	cnt, err := app.CountPositiveExamples()
+	if err != nil {
+		return err
+	}
+	if err := postNumOfExamplesByLabelToM
