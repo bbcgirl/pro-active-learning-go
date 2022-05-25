@@ -66,4 +66,15 @@ func doAdd(c *cli.Context) error {
 			log.Println(fmt.Sprintf("Error occured proccessing %s feature vector %s", e.Url, err.Error()))
 			continue
 		}
-		if bookmark, err := hatena_bookmark.Get
+		if bookmark, err := hatena_bookmark.GetHatenaBookmark(e.FinalUrl); err == nil {
+			e.HatenaBookmark = bookmark
+			app.UpdateHatenaBookmark(e)
+		}
+	}
+
+	if err := postNumOfExamplesToMackerel(app); err != nil {
+		return err
+	}
+
+	return nil
+}
