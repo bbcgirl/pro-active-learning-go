@@ -92,4 +92,12 @@ func postNumOfExamplesToMackerel(app service.GoActiveLearningApp) error {
 	if err != nil {
 		return err
 	}
-	if err := postNumOfExamplesByLabelToMackerel("count.negative", cnt
+	if err := postNumOfExamplesByLabelToMackerel("count.negative", cnt); err != nil {
+		return err
+	}
+
+	cnt, err = app.CountUnlabeledExamples()
+	if err != nil {
+		return err
+	}
+	if err := postNumOfExamplesByLabelToMackerel("count.unlabeled", cnt); err != nil 
