@@ -100,4 +100,12 @@ func postNumOfExamplesToMackerel(app service.GoActiveLearningApp) error {
 	if err != nil {
 		return err
 	}
-	if err := postNumOfExamplesByLabelToMackerel("count.unlabeled", cnt); err != nil 
+	if err := postNumOfExamplesByLabelToMackerel("count.unlabeled", cnt); err != nil {
+		return err
+	}
+	return nil
+}
+
+func postNumOfExamplesByLabelToMackerel(label string, cnt int) error {
+	apiKey := os.Getenv("MACKEREL_APIKEY")
+	serviceName := 
