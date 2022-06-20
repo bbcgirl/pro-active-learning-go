@@ -115,4 +115,17 @@ func postNumOfExamplesByLabelToMackerel(label string, cnt int) error {
 
 	client := mkr.NewClient(apiKey)
 	now := time.Now().Unix()
-	err := client.PostServiceMetricValue
+	err := client.PostServiceMetricValues(serviceName, []*mkr.MetricValue{
+		{
+			Name:  label,
+			Time:  now,
+			Value: cnt,
+		},
+	})
+	return err
+}
+
+var CommandAdd = cli.Command{
+	Name:  "add",
+	Usage: "add urls",
+	Descrip
