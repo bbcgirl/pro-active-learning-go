@@ -128,4 +128,11 @@ func postNumOfExamplesByLabelToMackerel(label string, cnt int) error {
 var CommandAdd = cli.Command{
 	Name:  "add",
 	Usage: "add urls",
-	Descrip
+	Description: `
+Add urls.
+`,
+	Action: doAdd,
+	Flags: []cli.Flag{
+		cli.StringFlag{Name: "input-filename"},
+	},
+}
