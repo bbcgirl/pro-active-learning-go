@@ -9,4 +9,16 @@ import (
 type ActionType int
 
 const (
-	LABEL_AS_POSITIVE ActionTyp
+	LABEL_AS_POSITIVE ActionType = iota
+	LABEL_AS_NEGATIVE
+	HELP
+	SKIP
+	EXIT
+)
+
+func rune2ActionType(r rune) ActionType {
+	switch r {
+	case 'p':
+		return LABEL_AS_POSITIVE
+	case 'n':
+		return LABEL_A
