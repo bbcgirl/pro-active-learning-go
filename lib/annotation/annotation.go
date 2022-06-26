@@ -21,4 +21,16 @@ func rune2ActionType(r rune) ActionType {
 	case 'p':
 		return LABEL_AS_POSITIVE
 	case 'n':
-		return LABEL_A
+		return LABEL_AS_NEGATIVE
+	case 's':
+		return SKIP
+	case 'h':
+		return HELP
+	case 'e':
+		return EXIT
+	default:
+		return HELP
+	}
+}
+
+func NextExampleToBeAnnotated(m classifier.MIRAClassifier, ex
