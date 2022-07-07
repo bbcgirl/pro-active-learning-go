@@ -42,4 +42,16 @@ func NextExampleToBeAnnotated(m classifier.MIRAClassifier, examples model.Exampl
 	if e == nil {
 		return nil
 	}
-	
+	return e
+}
+
+var ActionHelpDoc = `
+p: Label this example as positive.
+n: Label this example as negative.
+s: Skip this example.
+h: Show this help.
+e: Exit.
+`
+
+var CommandAnnotate = cli.Command{
+	Name:  "an
