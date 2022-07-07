@@ -33,4 +33,13 @@ func rune2ActionType(r rune) ActionType {
 	}
 }
 
-func NextExampleToBeAnnotated(m classifier.MIRAClassifier, ex
+func NextExampleToBeAnnotated(m classifier.MIRAClassifier, examples model.Examples) *model.Example {
+	unlabeledExamples := m.SortByScore(examples)
+	if len(unlabeledExamples) == 0 {
+		return nil
+	}
+	e := unlabeledExamples[0]
+	if e == nil {
+		return nil
+	}
+	
