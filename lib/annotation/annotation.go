@@ -54,4 +54,13 @@ e: Exit.
 `
 
 var CommandAnnotate = cli.Command{
-	Name:  "an
+	Name:  "annotate",
+	Usage: "Annotate URLs",
+	Description: `
+Annotate URLs using active learning.
+`,
+	Subcommands: []cli.Command{
+		{
+			Name:  "cli",
+			Usage: "Annotate URLs using cli",
+	
