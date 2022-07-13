@@ -63,4 +63,9 @@ Annotate URLs using active learning.
 		{
 			Name:  "cli",
 			Usage: "Annotate URLs using cli",
-	
+			Description: `
+Annotate URLs using active learning using cli.
+`,
+			Action: doAnnotate,
+			Flags: []cli.Flag{
+				cli.BoolFlag{Name: "open-url", Usage: "Open url in backgroun
