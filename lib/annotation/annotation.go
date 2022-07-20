@@ -68,4 +68,11 @@ Annotate URLs using active learning using cli.
 `,
 			Action: doAnnotate,
 			Flags: []cli.Flag{
-				cli.BoolFlag{Name: "open-url", Usage: "Open url in backgroun
+				cli.BoolFlag{Name: "open-url", Usage: "Open url in background"},
+				cli.BoolFlag{Name: "filter-status-code-ok", Usage: "Use only examples with status code = 200"},
+				cli.BoolFlag{Name: "show-active-features"},
+			},
+		},
+		{
+			Name:  "slack",
+			U
