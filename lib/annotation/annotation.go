@@ -75,4 +75,10 @@ Annotate URLs using active learning using cli.
 		},
 		{
 			Name:  "slack",
-			U
+			Usage: "Annotate URLs using slack",
+			Description: `
+Annotate URLs using active learning using slack.
+`,
+			Action: doAnnotateWithSlack,
+			Flags: []cli.Flag{
+				cli.Stri
