@@ -11,4 +11,10 @@ import (
 	"github.com/syou6162/go-active-learning/lib/model"
 	"github.com/syou6162/go-active-learning/lib/service"
 	"github.com/syou6162/go-active-learning/lib/util"
-	"github.com/syou6162/go-active-
+	"github.com/syou6162/go-active-learning/lib/util/converter"
+	"github.com/urfave/cli"
+)
+
+func doAnnotateWithSlack(c *cli.Context) error {
+	channelID := c.String("channel")
+	filterStatusCodeOk := c.Bool("filter-status
