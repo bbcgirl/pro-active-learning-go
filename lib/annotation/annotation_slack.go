@@ -17,4 +17,12 @@ import (
 
 func doAnnotateWithSlack(c *cli.Context) error {
 	channelID := c.String("channel")
-	filterStatusCodeOk := c.Bool("filter-status
+	filterStatusCodeOk := c.Bool("filter-status-code-ok")
+
+	if channelID == "" {
+		_ = cli.ShowCommandHelp(c, "slack")
+		return cli.NewExitError("`channel` is a required field.", 1)
+	}
+
+	api := slack.New(os.Getenv("SLACK_TOKEN"))
+	rt
