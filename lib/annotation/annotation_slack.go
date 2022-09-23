@@ -35,3 +35,9 @@ func doAnnotateWithSlack(c *cli.Context) error {
 	defer app.Close()
 
 	examples, err := app.SearchExamples()
+	if err != nil {
+		return err
+	}
+
+	stat := example.GetStat(examples)
+	msg := rtm.NewOutgoingMessage(fmt.Sprintf("Positive:%d, Negative:%d, Unlabeled:%d", stat["positive"], stat["nega
