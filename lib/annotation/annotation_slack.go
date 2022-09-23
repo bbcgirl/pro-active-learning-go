@@ -25,4 +25,13 @@ func doAnnotateWithSlack(c *cli.Context) error {
 	}
 
 	api := slack.New(os.Getenv("SLACK_TOKEN"))
-	rt
+	rtm := api.NewRTM()
+	go rtm.ManageConnection()
+
+	app, err := service.NewDefaultApp()
+	if err != nil {
+		return err
+	}
+	defer app.Close()
+
+	examples, err := app.SearchExamples()
