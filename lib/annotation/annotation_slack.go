@@ -40,4 +40,12 @@ func doAnnotateWithSlack(c *cli.Context) error {
 	}
 
 	stat := example.GetStat(examples)
-	msg := rtm.NewOutgoingMessage(fmt.Sprintf("Positive:%d, Negative:%d, Unlabeled:%d", stat["positive"], stat["nega
+	msg := rtm.NewOutgoingMessage(fmt.Sprintf("Positive:%d, Negative:%d, Unlabeled:%d", stat["positive"], stat["negative"], stat["unlabeled"]), channelID)
+	rtm.SendMessage(msg)
+
+	app.Fetch(examples)
+	for _, e := range examples {
+		app.UpdateFeatureVector(e)
+	}
+	if filterStatusCodeOk {
+		exampl
