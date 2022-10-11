@@ -48,4 +48,8 @@ func doAnnotateWithSlack(c *cli.Context) error {
 		app.UpdateFeatureVector(e)
 	}
 	if filterStatusCodeOk {
-		exampl
+		examples = util.FilterStatusCodeOkExamples(examples)
+	}
+
+	m, err := classifier.NewMIRAClassifierByCrossValidation(classifier.EXAMPLE, converter.ConvertExamplesToLearningInstances(examples))
+	if err != nil {
