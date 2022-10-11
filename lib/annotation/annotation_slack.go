@@ -53,3 +53,12 @@ func doAnnotateWithSlack(c *cli.Context) error {
 
 	m, err := classifier.NewMIRAClassifierByCrossValidation(classifier.EXAMPLE, converter.ConvertExamplesToLearningInstances(examples))
 	if err != nil {
+		return err
+	}
+	e := NextExampleToBeAnnotated(*m, examples)
+	if e == nil {
+		return errors.New("No e to annotate")
+	}
+
+	rtm.SendMessage(rtm.NewOutgoingMessage("Ready to annotate!", channelID))
+	s
