@@ -61,4 +61,13 @@ func doAnnotateWithSlack(c *cli.Context) error {
 	}
 
 	rtm.SendMessage(rtm.NewOutgoingMessage("Ready to annotate!", channelID))
-	s
+	showExample(rtm, *m, e, channelID)
+	prevTimestamp := ""
+
+annotationLoop:
+	for {
+		select {
+		case msg := <-rtm.IncomingEvents:
+			switch ev := msg.Data.(type) {
+			case *slack.AckMessage:
+		
