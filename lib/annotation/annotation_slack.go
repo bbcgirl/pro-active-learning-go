@@ -70,4 +70,10 @@ annotationLoop:
 		case msg := <-rtm.IncomingEvents:
 			switch ev := msg.Data.(type) {
 			case *slack.AckMessage:
-		
+				prevTimestamp = ev.Timestamp
+			case *slack.MessageEvent:
+				if ev.Channel != channelID {
+					break
+				}
+				text := ev.Text
+				if len(text) > 1 || len(text
