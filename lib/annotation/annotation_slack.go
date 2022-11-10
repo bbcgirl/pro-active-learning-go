@@ -76,4 +76,13 @@ annotationLoop:
 					break
 				}
 				text := ev.Text
-				if len(text) > 1 || len(text
+				if len(text) > 1 || len(text) == 0 {
+					break
+				}
+				r := []rune(text)[0]
+				act := rune2ActionType(r)
+
+				switch act {
+				case LABEL_AS_POSITIVE:
+					e.Annotate(model.POSITIVE)
+					m, err = classifier.NewMIRA
