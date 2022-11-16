@@ -85,4 +85,8 @@ annotationLoop:
 				switch act {
 				case LABEL_AS_POSITIVE:
 					e.Annotate(model.POSITIVE)
-					m, err = classifier.NewMIRA
+					m, err = classifier.NewMIRAClassifierByCrossValidation(classifier.EXAMPLE, converter.ConvertExamplesToLearningInstances(examples))
+					if err != nil {
+						return err
+					}
+					rtm.AddReaction("heavy_plus_sign", slack.Ne
