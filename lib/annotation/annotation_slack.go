@@ -92,4 +92,8 @@ annotationLoop:
 					rtm.AddReaction("heavy_plus_sign", slack.NewRefToMessage(channelID, prevTimestamp))
 				case LABEL_AS_NEGATIVE:
 					e.Annotate(model.NEGATIVE)
-					m, err = classifier.NewMIRAClassifierByCrossValidation(classifier.EXAMPLE,
+					m, err = classifier.NewMIRAClassifierByCrossValidation(classifier.EXAMPLE, converter.ConvertExamplesToLearningInstances(examples))
+					if err != nil {
+						return err
+					}
+					rtm.AddReaction("heavy_minus_sign", slack.NewRefToMessage(channelID, prevTimest
