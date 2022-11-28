@@ -96,4 +96,10 @@ annotationLoop:
 					if err != nil {
 						return err
 					}
-					rtm.AddReaction("heavy_minus_sign", slack.NewRefToMessage(channelID, prevTimest
+					rtm.AddReaction("heavy_minus_sign", slack.NewRefToMessage(channelID, prevTimestamp))
+				case SKIP:
+					rtm.SendMessage(rtm.NewOutgoingMessage("Skiped this e", channelID))
+					examples = util.RemoveExample(examples, *e)
+					break
+				case HELP:
+					r
