@@ -114,4 +114,13 @@ annotationLoop:
 					return errors.New("No e to annotate")
 				}
 				showExample(rtm, *m, e, channelID)
-			case *slack.Invalid
+			case *slack.InvalidAuthEvent:
+				return errors.New("Invalid credentials")
+			default:
+			}
+		}
+	}
+	return nil
+}
+
+func showExample(rtm *slack.RTM, model classifier.MIRAClassifier, example *model.Example, channelID string
