@@ -107,4 +107,11 @@ annotationLoop:
 					rtm.SendMessage(rtm.NewOutgoingMessage("EXIT", channelID))
 					break annotationLoop
 				default:
-					bre
+					break annotationLoop
+				}
+				e = NextExampleToBeAnnotated(*m, examples)
+				if e == nil {
+					return errors.New("No e to annotate")
+				}
+				showExample(rtm, *m, e, channelID)
+			case *slack.Invalid
