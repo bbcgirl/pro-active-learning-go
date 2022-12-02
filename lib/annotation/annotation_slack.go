@@ -102,4 +102,9 @@ annotationLoop:
 					examples = util.RemoveExample(examples, *e)
 					break
 				case HELP:
-					r
+					rtm.SendMessage(rtm.NewOutgoingMessage(ActionHelpDoc, channelID))
+				case EXIT:
+					rtm.SendMessage(rtm.NewOutgoingMessage("EXIT", channelID))
+					break annotationLoop
+				default:
+					bre
