@@ -123,4 +123,9 @@ annotationLoop:
 	return nil
 }
 
-func showExample(rtm *slack.RTM, model classifier.MIRAClassifier, example *model.Example, channelID string
+func showExample(rtm *slack.RTM, model classifier.MIRAClassifier, example *model.Example, channelID string) {
+	activeFeaturesStr := "Active Features: "
+	for _, pair := range SortedActiveFeatures(model, *example, 5) {
+		activeFeaturesStr += fmt.Sprintf("%s(%+0.1f) ", pair.Feature, pair.Weight)
+	}
+	rtm
