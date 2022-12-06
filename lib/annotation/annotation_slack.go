@@ -128,4 +128,5 @@ func showExample(rtm *slack.RTM, model classifier.MIRAClassifier, example *model
 	for _, pair := range SortedActiveFeatures(model, *example, 5) {
 		activeFeaturesStr += fmt.Sprintf("%s(%+0.1f) ", pair.Feature, pair.Weight)
 	}
-	rtm
+	rtm.SendMessage(rtm.NewOutgoingMessage(fmt.Sprintf("%s\nScore: %+0.2f\n%s", example.Url, example.Score, activeFeaturesStr), channelID))
+}
