@@ -24,4 +24,8 @@ const (
 )
 
 type MIRAClassifier struct {
-	ModelType Mode
+	ModelType ModelType          `json:"ModelType"`
+	Weight    map[string]float64 `json:"Weight"`
+	C         float64            `json:"C"`
+	Accuracy  float64            `json:"Accuracy"`
+	Precision float64            `jso
