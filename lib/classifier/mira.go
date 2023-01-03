@@ -28,4 +28,10 @@ type MIRAClassifier struct {
 	Weight    map[string]float64 `json:"Weight"`
 	C         float64            `json:"C"`
 	Accuracy  float64            `json:"Accuracy"`
-	Precision float64            `jso
+	Precision float64            `json:"Precision"`
+	Recall    float64            `json:"Recall"`
+	Fvalue    float64            `json:"Fvalue"`
+}
+
+type LearningInstance interface {
+	GetFeatureVector() feature.FeatureVec
