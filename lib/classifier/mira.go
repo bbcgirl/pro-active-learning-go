@@ -34,4 +34,11 @@ type MIRAClassifier struct {
 }
 
 type LearningInstance interface {
-	GetFeatureVector() feature.FeatureVec
+	GetFeatureVector() feature.FeatureVector
+	GetLabel() model.LabelType
+}
+
+type LearningInstances []LearningInstance
+
+var errNoTrainingInstances = errors.New("Empty training set")
+var errNoDevelopmentInstances = errors.New
