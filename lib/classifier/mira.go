@@ -41,4 +41,7 @@ type LearningInstance interface {
 type LearningInstances []LearningInstance
 
 var errNoTrainingInstances = errors.New("Empty training set")
-var errNoDevelopmentInstances = errors.New
+var errNoDevelopmentInstances = errors.New("Empty development set")
+var errNoMIRAModelLearned = errors.New("Fail to learn MIRA models")
+var errModelEvaluationFailure = errors.New("Failed to evaluate best MIRA")
+v
