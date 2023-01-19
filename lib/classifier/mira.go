@@ -44,4 +44,6 @@ var errNoTrainingInstances = errors.New("Empty training set")
 var errNoDevelopmentInstances = errors.New("Empty development set")
 var errNoMIRAModelLearned = errors.New("Fail to learn MIRA models")
 var errModelEvaluationFailure = errors.New("Failed to evaluate best MIRA")
-v
+var errTrainingInstancesAllPositive = errors.New("Labels of training instances are all positive")
+var errTrainingInstancesAllNegative = errors.New("Labels of training instances are all negative")
+var errDevelopme
