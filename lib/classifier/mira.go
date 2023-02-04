@@ -46,4 +46,7 @@ var errNoMIRAModelLearned = errors.New("Fail to learn MIRA models")
 var errModelEvaluationFailure = errors.New("Failed to evaluate best MIRA")
 var errTrainingInstancesAllPositive = errors.New("Labels of training instances are all positive")
 var errTrainingInstancesAllNegative = errors.New("Labels of training instances are all negative")
-var errDevelopme
+var errDevelopmentInstancesAllPositive = errors.New("Labels of development instances are all positive")
+var errDevelopmentInstancesAllNegative = errors.New("Labels of development instances are all negative")
+
+func newMI
