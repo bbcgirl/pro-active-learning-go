@@ -49,4 +49,10 @@ var errTrainingInstancesAllNegative = errors.New("Labels of training instances a
 var errDevelopmentInstancesAllPositive = errors.New("Labels of development instances are all positive")
 var errDevelopmentInstancesAllNegative = errors.New("Labels of development instances are all negative")
 
-func newMI
+func newMIRAClassifier(modelType ModelType, c float64) *MIRAClassifier {
+	return &MIRAClassifier{
+		ModelType: modelType,
+		Weight:    make(map[string]float64),
+		C:         c,
+		Accuracy:  0.0,
+		Precision
