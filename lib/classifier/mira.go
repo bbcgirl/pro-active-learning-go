@@ -55,4 +55,12 @@ func newMIRAClassifier(modelType ModelType, c float64) *MIRAClassifier {
 		Weight:    make(map[string]float64),
 		C:         c,
 		Accuracy:  0.0,
-		Precision
+		Precision: 0.0,
+		Recall:    0.0,
+		Fvalue:    0.0,
+	}
+}
+
+func filterLabeledInstances(instances LearningInstances) LearningInstances {
+	var result LearningInstances
+	for _, i := range i
