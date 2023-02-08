@@ -79,4 +79,10 @@ func shuffle(instances LearningInstances) {
 	}
 }
 
-func splitTrainAndDev(instances LearningInstances) (train LearningInstances, dev LearningInstan
+func splitTrainAndDev(instances LearningInstances) (train LearningInstances, dev LearningInstances) {
+	shuffle(instances)
+	n := int(0.8 * float64(len(instances)))
+	return instances[0:n], instances[n:]
+}
+
+func NewMIRAClassifier(modelType ModelType, instances LearningInstances, 
