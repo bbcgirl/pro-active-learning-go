@@ -63,4 +63,15 @@ func newMIRAClassifier(modelType ModelType, c float64) *MIRAClassifier {
 
 func filterLabeledInstances(instances LearningInstances) LearningInstances {
 	var result LearningInstances
-	for _, i := range i
+	for _, i := range instances {
+		if i.GetLabel() != 0 {
+			result = append(result, i)
+		}
+	}
+	return result
+}
+
+func shuffle(instances LearningInstances) {
+	n := len(instances)
+	for i := n - 1; i >= 0; i-- {
+		j := rand.Int
