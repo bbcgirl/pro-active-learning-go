@@ -74,4 +74,9 @@ func filterLabeledInstances(instances LearningInstances) LearningInstances {
 func shuffle(instances LearningInstances) {
 	n := len(instances)
 	for i := n - 1; i >= 0; i-- {
-		j := rand.Int
+		j := rand.Intn(i + 1)
+		instances[i], instances[j] = instances[j], instances[i]
+	}
+}
+
+func splitTrainAndDev(instances LearningInstances) (train LearningInstances, dev LearningInstan
