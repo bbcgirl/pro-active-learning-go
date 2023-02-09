@@ -85,4 +85,9 @@ func splitTrainAndDev(instances LearningInstances) (train LearningInstances, dev
 	return instances[0:n], instances[n:]
 }
 
-func NewMIRAClassifier(modelType ModelType, instances LearningInstances, 
+func NewMIRAClassifier(modelType ModelType, instances LearningInstances, c float64) *MIRAClassifier {
+	train := filterLabeledInstances(instances)
+	model := newMIRAClassifier(modelType, c)
+	for iter := 0; iter < 30; iter++ {
+		shuffle(train)
+		for _, example := range tr
