@@ -98,4 +98,13 @@ func NewMIRAClassifier(modelType ModelType, instances LearningInstances, c float
 }
 
 func overSamplingPositiveExamples(instances LearningInstances) LearningInstances {
-	overSampled := LearningInst
+	overSampled := LearningInstances{}
+	posInstances := LearningInstances{}
+	negInstances := LearningInstances{}
+
+	numNeg := 0
+
+	for _, i := range instances {
+		if i.GetLabel() == model.NEGATIVE {
+			numNeg += 1
+			negInst
