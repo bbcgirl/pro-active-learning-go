@@ -90,4 +90,12 @@ func NewMIRAClassifier(modelType ModelType, instances LearningInstances, c float
 	model := newMIRAClassifier(modelType, c)
 	for iter := 0; iter < 30; iter++ {
 		shuffle(train)
-		for _, example := range tr
+		for _, example := range train {
+			model.learn(example)
+		}
+	}
+	return model
+}
+
+func overSamplingPositiveExamples(instances LearningInstances) LearningInstances {
+	overSampled := LearningInst
