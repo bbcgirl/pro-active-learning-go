@@ -107,4 +107,12 @@ func overSamplingPositiveExamples(instances LearningInstances) LearningInstances
 	for _, i := range instances {
 		if i.GetLabel() == model.NEGATIVE {
 			numNeg += 1
-			negInst
+			negInstances = append(negInstances, i)
+		} else if i.GetLabel() == model.POSITIVE {
+			posInstances = append(posInstances, i)
+		}
+	}
+
+	for len(overSampled) <= numNeg {
+		shuffle(posInstances)
+		overSam
