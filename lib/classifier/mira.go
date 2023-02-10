@@ -133,4 +133,6 @@ func extractGoldLabels(instances LearningInstances) []model.LabelType {
 
 type MIRAClassifierList []MIRAClassifier
 
-fun
+func (l MIRAClassifierList) Len() int           { return len(l) }
+func (l MIRAClassifierList) Less(i, j int) bool { return l[i].Fvalue < l[j].Fvalue }
+func (l MIRAClassifierList) Swap(i, j int)
