@@ -123,4 +123,14 @@ func overSamplingPositiveExamples(instances LearningInstances) LearningInstances
 	return overSampled
 }
 
-func extractGoldLabels(instances LearningI
+func extractGoldLabels(instances LearningInstances) []model.LabelType {
+	golds := make([]model.LabelType, 0, 0)
+	for _, i := range instances {
+		golds = append(golds, i.GetLabel())
+	}
+	return golds
+}
+
+type MIRAClassifierList []MIRAClassifier
+
+fun
