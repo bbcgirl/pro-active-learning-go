@@ -115,4 +115,12 @@ func overSamplingPositiveExamples(instances LearningInstances) LearningInstances
 
 	for len(overSampled) <= numNeg {
 		shuffle(posInstances)
-		overSam
+		overSampled = append(overSampled, posInstances[0])
+	}
+	overSampled = append(overSampled, negInstances...)
+	shuffle(overSampled)
+
+	return overSampled
+}
+
+func extractGoldLabels(instances LearningI
