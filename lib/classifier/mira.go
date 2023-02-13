@@ -135,4 +135,9 @@ type MIRAClassifierList []MIRAClassifier
 
 func (l MIRAClassifierList) Len() int           { return len(l) }
 func (l MIRAClassifierList) Less(i, j int) bool { return l[i].Fvalue < l[j].Fvalue }
-func (l MIRAClassifierList) Swap(i, j int)
+func (l MIRAClassifierList) Swap(i, j int)      { l[i], l[j] = l[j], l[i] }
+
+func allSameLabel(instances LearningInstances, label model.LabelType) bool {
+	for _, instance := range instances {
+		if instance.GetLabel() != label {
+		
