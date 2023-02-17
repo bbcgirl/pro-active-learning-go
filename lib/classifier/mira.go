@@ -163,4 +163,11 @@ func isValidTrainAndDevelopmentInstances(train LearningInstances, dev LearningIn
 	if allSameLabel(dev, model.POSITIVE) {
 		return false, errDevelopmentInstancesAllPositive
 	}
-	if allSameLab
+	if allSameLabel(dev, model.NEGATIVE) {
+		return false, errDevelopmentInstancesAllNegative
+	}
+
+	return true, nil
+}
+
+func NewMIRAClassifierByCrossValidation(modelType ModelType, inst
