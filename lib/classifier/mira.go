@@ -148,4 +148,11 @@ func allSameLabel(instances LearningInstances, label model.LabelType) bool {
 
 func isValidTrainAndDevelopmentInstances(train LearningInstances, dev LearningInstances) (bool, error) {
 	if len(train) == 0 {
-		return fal
+		return false, errNoTrainingInstances
+	}
+	if len(dev) == 0 {
+		return false, errNoDevelopmentInstances
+	}
+
+	if allSameLabel(train, model.POSITIVE) {
+		return false, errTrainingInstancesA
