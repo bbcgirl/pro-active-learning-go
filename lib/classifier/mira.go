@@ -155,4 +155,12 @@ func isValidTrainAndDevelopmentInstances(train LearningInstances, dev LearningIn
 	}
 
 	if allSameLabel(train, model.POSITIVE) {
-		return false, errTrainingInstancesA
+		return false, errTrainingInstancesAllPositive
+	}
+	if allSameLabel(train, model.NEGATIVE) {
+		return false, errTrainingInstancesAllNegative
+	}
+	if allSameLabel(dev, model.POSITIVE) {
+		return false, errDevelopmentInstancesAllPositive
+	}
+	if allSameLab
