@@ -140,4 +140,12 @@ func (l MIRAClassifierList) Swap(i, j int)      { l[i], l[j] = l[j], l[i] }
 func allSameLabel(instances LearningInstances, label model.LabelType) bool {
 	for _, instance := range instances {
 		if instance.GetLabel() != label {
-		
+			return false
+		}
+	}
+	return true
+}
+
+func isValidTrainAndDevelopmentInstances(train LearningInstances, dev LearningInstances) (bool, error) {
+	if len(train) == 0 {
+		return fal
