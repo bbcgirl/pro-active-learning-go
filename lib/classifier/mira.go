@@ -170,4 +170,7 @@ func isValidTrainAndDevelopmentInstances(train LearningInstances, dev LearningIn
 	return true, nil
 }
 
-func NewMIRAClassifierByCrossValidation(modelType ModelType, inst
+func NewMIRAClassifierByCrossValidation(modelType ModelType, instances LearningInstances) (*MIRAClassifier, error) {
+	shuffle(instances)
+	train, dev := splitTrainAndDev(filterLabeledInstances(instances))
+	if valid, err := isValidTrainAndDevelopmentInstances(train, dev); !va
