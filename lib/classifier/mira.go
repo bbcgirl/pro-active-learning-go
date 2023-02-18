@@ -173,4 +173,11 @@ func isValidTrainAndDevelopmentInstances(train LearningInstances, dev LearningIn
 func NewMIRAClassifierByCrossValidation(modelType ModelType, instances LearningInstances) (*MIRAClassifier, error) {
 	shuffle(instances)
 	train, dev := splitTrainAndDev(filterLabeledInstances(instances))
-	if valid, err := isValidTrainAndDevelopmentInstances(train, dev); !va
+	if valid, err := isValidTrainAndDevelopmentInstances(train, dev); !valid {
+		return nil, err
+	}
+
+	train = overSamplingPositiveExamples(train)
+
+	params := []float64{1000, 500, 100, 50, 10.0, 5.0, 1.0, 0.5, 0.1, 0.05, 0.01, 0.005, 0.001}
+	miraResults := MIRAC
