@@ -180,4 +180,13 @@ func NewMIRAClassifierByCrossValidation(modelType ModelType, instances LearningI
 	train = overSamplingPositiveExamples(train)
 
 	params := []float64{1000, 500, 100, 50, 10.0, 5.0, 1.0, 0.5, 0.1, 0.05, 0.01, 0.005, 0.001}
-	miraResults := MIRAC
+	miraResults := MIRAClassifierList{}
+
+	wg := &sync.WaitGroup{}
+	cpus := runtime.NumCPU()
+	runtime.GOMAXPROCS(cpus)
+
+	models := make([]*MIRAClassifier, len(params))
+	for idx, c := range params {
+		wg.Add(1)
+		go
