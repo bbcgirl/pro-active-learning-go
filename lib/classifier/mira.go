@@ -189,4 +189,13 @@ func NewMIRAClassifierByCrossValidation(modelType ModelType, instances LearningI
 	models := make([]*MIRAClassifier, len(params))
 	for idx, c := range params {
 		wg.Add(1)
-		go
+		go func(idx int, c float64) {
+			defer wg.Done()
+			model := NewMIRAClassifier(modelType, train, c)
+			models[idx] = model
+		}(idx, c)
+	}
+	wg.Wait()
+
+	if len(models) == 0 {
+		return ni
