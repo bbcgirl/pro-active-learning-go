@@ -198,4 +198,11 @@ func NewMIRAClassifierByCrossValidation(modelType ModelType, instances LearningI
 	wg.Wait()
 
 	if len(models) == 0 {
-		return ni
+		return nil, errNoMIRAModelLearned
+	}
+
+	maxFvalue := math.Inf(-1)
+	for _, m := range models {
+		devPredicts := make([]model.LabelType, len(dev))
+		for i, instance := range dev {
+			devPredicts[i] = m.Predict(i
