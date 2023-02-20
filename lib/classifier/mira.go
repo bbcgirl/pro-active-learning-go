@@ -205,4 +205,7 @@ func NewMIRAClassifierByCrossValidation(modelType ModelType, instances LearningI
 	for _, m := range models {
 		devPredicts := make([]model.LabelType, len(dev))
 		for i, instance := range dev {
-			devPredicts[i] = m.Predict(i
+			devPredicts[i] = m.Predict(instance.GetFeatureVector())
+		}
+		m.Accuracy = evaluation.GetAccuracy(extractGoldLabels(dev), devPredicts)
+		m.Precision = evaluation.GetPrecision(extractGoldLabels(dev), devPredic
