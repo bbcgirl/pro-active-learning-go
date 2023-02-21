@@ -208,4 +208,7 @@ func NewMIRAClassifierByCrossValidation(modelType ModelType, instances LearningI
 			devPredicts[i] = m.Predict(instance.GetFeatureVector())
 		}
 		m.Accuracy = evaluation.GetAccuracy(extractGoldLabels(dev), devPredicts)
-		m.Precision = evaluation.GetPrecision(extractGoldLabels(dev), devPredic
+		m.Precision = evaluation.GetPrecision(extractGoldLabels(dev), devPredicts)
+		m.Recall = evaluation.GetRecall(extractGoldLabels(dev), devPredicts)
+		m.Fvalue = (2 * m.Recall * m.Precision) / (m.Recall + m.Precision)
+		fmt.Fprintln(os.Stderr, fmt.S
