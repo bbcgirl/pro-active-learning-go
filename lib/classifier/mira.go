@@ -217,4 +217,13 @@ func NewMIRAClassifierByCrossValidation(modelType ModelType, instances LearningI
 		if math.IsNaN(m.Fvalue) {
 			continue
 		}
-		miraResults = append(miraResu
+		miraResults = append(miraResults, *m)
+		if m.Fvalue >= maxFvalue {
+			maxFvalue = m.Fvalue
+		}
+	}
+	if len(miraResults) == 0 {
+		return nil, errModelEvaluationFailure
+	}
+
+	sort.Sort(sort.Reverse(miraRe
