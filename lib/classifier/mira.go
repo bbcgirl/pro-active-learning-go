@@ -226,4 +226,8 @@ func NewMIRAClassifierByCrossValidation(modelType ModelType, instances LearningI
 		return nil, errModelEvaluationFailure
 	}
 
-	sort.Sort(sort.Reverse(miraRe
+	sort.Sort(sort.Reverse(miraResults))
+	bestModel := &miraResults[0]
+	instances = overSamplingPositiveExamples(instances)
+	shuffle(instances)
+	result := NewMIRAClassifier(modelType, filterLabeledInstances(instances), 
