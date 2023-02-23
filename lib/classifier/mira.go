@@ -235,4 +235,11 @@ func NewMIRAClassifierByCrossValidation(modelType ModelType, instances LearningI
 	result.Precision = bestModel.Precision
 	result.Recall = bestModel.Recall
 	result.Fvalue = bestModel.Fvalue
-	return re
+	return result, nil
+}
+
+func (m *MIRAClassifier) learn(instance LearningInstance) {
+	tmp := float64(instance.GetLabel()) * m.PredictScore(instance.GetFeatureVector()) // y w^T x
+	loss := 0.0
+	if tmp < 1.0 {
+		
