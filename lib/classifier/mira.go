@@ -242,4 +242,9 @@ func (m *MIRAClassifier) learn(instance LearningInstance) {
 	tmp := float64(instance.GetLabel()) * m.PredictScore(instance.GetFeatureVector()) // y w^T x
 	loss := 0.0
 	if tmp < 1.0 {
-		
+		loss = 1 - tmp
+	}
+
+	norm := float64(len(instance.GetFeatureVector()) * len(instance.GetFeatureVector()))
+	// tau := math.Min(m.C, loss/norm) // update by PA-I
+	tau := loss / (norm + 1
