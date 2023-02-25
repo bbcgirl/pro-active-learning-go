@@ -247,4 +247,14 @@ func (m *MIRAClassifier) learn(instance LearningInstance) {
 
 	norm := float64(len(instance.GetFeatureVector()) * len(instance.GetFeatureVector()))
 	// tau := math.Min(m.C, loss/norm) // update by PA-I
-	tau := loss / (norm + 1
+	tau := loss / (norm + 1.0/m.C) // update by PA-II
+
+	if tau != 0.0 {
+		for _, f := range instance.GetFeatureVector() {
+			w, _ := m.Weight[f]
+			m.Weight[f] = w + tau*float64(instance.GetLabel())
+		}
+	}
+}
+
+func (m MIRAClassifi
