@@ -257,4 +257,12 @@ func (m *MIRAClassifier) learn(instance LearningInstance) {
 	}
 }
 
-func (m MIRAClassifi
+func (m MIRAClassifier) PredictScore(features feature.FeatureVector) float64 {
+	result := 0.0
+	for _, f := range features {
+		w, ok := m.Weight[f]
+		if ok {
+			result = result + w*1.0
+		}
+	}
+	re
