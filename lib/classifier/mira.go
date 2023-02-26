@@ -275,4 +275,7 @@ func (m MIRAClassifier) Predict(features feature.FeatureVector) model.LabelType 
 	return model.NEGATIVE
 }
 
-func (m MIRACla
+func (m MIRAClassifier) SortByScore(examples model.Examples) model.Examples {
+	var unlabeledExamples model.Examples
+	for _, e := range util.FilterUnlabeledExamples(examples) {
+		e.Score = m.Predic
