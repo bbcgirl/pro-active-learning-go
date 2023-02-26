@@ -278,4 +278,11 @@ func (m MIRAClassifier) Predict(features feature.FeatureVector) model.LabelType 
 func (m MIRAClassifier) SortByScore(examples model.Examples) model.Examples {
 	var unlabeledExamples model.Examples
 	for _, e := range util.FilterUnlabeledExamples(examples) {
-		e.Score = m.Predic
+		e.Score = m.PredictScore(e.Fv)
+		if !e.IsLabeled() && e.Score != 0.0 {
+			unlabeledExamples = append(unlabeledExamples, e)
+		}
+	}
+
+	sort.Sort(unlabeledExamples)
+	retur
