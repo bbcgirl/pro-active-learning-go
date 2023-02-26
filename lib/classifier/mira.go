@@ -265,4 +265,14 @@ func (m MIRAClassifier) PredictScore(features feature.FeatureVector) float64 {
 			result = result + w*1.0
 		}
 	}
-	re
+	return result
+}
+
+func (m MIRAClassifier) Predict(features feature.FeatureVector) model.LabelType {
+	if m.PredictScore(features) > 0 {
+		return model.POSITIVE
+	}
+	return model.NEGATIVE
+}
+
+func (m MIRACla
