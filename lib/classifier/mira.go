@@ -297,4 +297,9 @@ func (m MIRAClassifier) GetWeight(f string) float64 {
 }
 
 func (m MIRAClassifier) GetActiveFeatures() []string {
-	result
+	result := make([]string, 0)
+	for f := range m.Weight {
+		result = append(result, f)
+	}
+	return result
+}
