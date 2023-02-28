@@ -285,4 +285,16 @@ func (m MIRAClassifier) SortByScore(examples model.Examples) model.Examples {
 	}
 
 	sort.Sort(unlabeledExamples)
-	retur
+	return unlabeledExamples
+}
+
+func (m MIRAClassifier) GetWeight(f string) float64 {
+	w, ok := m.Weight[f]
+	if ok {
+		return w
+	}
+	return 0.0
+}
+
+func (m MIRAClassifier) GetActiveFeatures() []string {
+	result
