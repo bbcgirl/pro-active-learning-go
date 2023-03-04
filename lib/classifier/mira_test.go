@@ -24,4 +24,10 @@ func TestPredictScore(t *testing.T) {
 	examples := LearningInstances{e1, e2, e3, e4}
 	c := NewMIRAClassifier(EXAMPLE, examples, 1.0)
 
-	if c.PredictS
+	if c.PredictScore(e4.Fv) < 0.0 {
+		t.Errorf("c.PredictScore(e4.Fv) == %f, want >= 0", c.PredictScore(e4.Fv))
+	}
+}
+
+func TestSplitTrainAndDev(t *testing.T) {
+	e1 := example.NewExample("http://a.hatena.ne.j
