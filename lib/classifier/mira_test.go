@@ -51,4 +51,8 @@ func TestSplitTrainAndDev(t *testing.T) {
 }
 
 func TestGetWeight(t *testing.T) {
-	e1 :=
+	e1 := example.NewExample("https://b.hatena.ne.jp", model.POSITIVE)
+	e1.Title = "bookmark"
+	e1.Fv = []string{"hoge", "fuga"}
+	e2 := example.NewExample("http://google.com", model.NEGATIVE)
+	e2.Title = 
