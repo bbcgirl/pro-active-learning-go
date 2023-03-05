@@ -38,4 +38,8 @@ func TestSplitTrainAndDev(t *testing.T) {
 	e6 := example.NewExample("https://a.hatena.ne.jp", model.POSITIVE)
 	e7 := example.NewExample("https://www.yasuhisay.info", model.NEGATIVE)
 	e8 := example.NewExample("http://google.com", model.UNLABELED)
-	e9 := example.NewExample("https://a.hatena.
+	e9 := example.NewExample("https://a.hatena.ne.jp", model.POSITIVE)
+	e10 := example.NewExample("https://www.yasuhisay.info", model.NEGATIVE)
+
+	train, dev := splitTrainAndDev(LearningInstances{e1, e2, e3, e4, e5, e6, e7, e8, e9, e10})
+	
