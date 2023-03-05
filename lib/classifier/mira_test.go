@@ -42,4 +42,13 @@ func TestSplitTrainAndDev(t *testing.T) {
 	e10 := example.NewExample("https://www.yasuhisay.info", model.NEGATIVE)
 
 	train, dev := splitTrainAndDev(LearningInstances{e1, e2, e3, e4, e5, e6, e7, e8, e9, e10})
-	
+	if len(train) != 8 {
+		t.Error("Number of training examples should be 8")
+	}
+	if len(dev) != 2 {
+		t.Error("Number of dev examples should be 2")
+	}
+}
+
+func TestGetWeight(t *testing.T) {
+	e1 :=
