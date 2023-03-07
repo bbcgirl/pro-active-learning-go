@@ -65,4 +65,12 @@ func TestGetWeight(t *testing.T) {
 	e4.Fv = []string{"piyo", "hoge"}
 
 	examples := LearningInstances{e1, e2, e3, e4}
-	c := NewMIRAClassifie
+	c := NewMIRAClassifier(EXAMPLE, examples, 1.0)
+
+	if c.GetWeight("hoge") <= 0.0 {
+		t.Errorf("c.GetWeight('hoge') == %f, want > 0", c.GetWeight("hoge"))
+	}
+}
+
+func TestGetActiveFeatures(t *testing.T) {
+	e1 := exampl
