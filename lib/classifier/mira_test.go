@@ -82,4 +82,9 @@ func TestGetActiveFeatures(t *testing.T) {
 	e3 := example.NewExample("https://www.hatena.ne.jp", model.POSITIVE)
 	e3.Title = "hatena"
 	e3.Fv = []string{"hoge", "fuga"}
-	e4 := example.NewExamp
+	e4 := example.NewExample("http://hogehoge.com", model.UNLABELED)
+	e4.Title = "hogehoge"
+	e4.Fv = []string{"piyo", "hoge"}
+
+	examples := LearningInstances{e1, e2, e3, e4}
+	c := NewMIRAClassifier(EX
