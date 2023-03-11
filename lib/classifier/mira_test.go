@@ -76,4 +76,10 @@ func TestGetActiveFeatures(t *testing.T) {
 	e1 := example.NewExample("https://b.hatena.ne.jp", model.POSITIVE)
 	e1.Title = "bookmark"
 	e1.Fv = []string{"hoge", "fuga"}
-	e2 := example.NewExample("http://google.com", model.NEGAT
+	e2 := example.NewExample("http://google.com", model.NEGATIVE)
+	e2.Title = "google"
+	e2.Fv = []string{"piyo", "aaa"}
+	e3 := example.NewExample("https://www.hatena.ne.jp", model.POSITIVE)
+	e3.Title = "hatena"
+	e3.Fv = []string{"hoge", "fuga"}
+	e4 := example.NewExamp
