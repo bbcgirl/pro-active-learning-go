@@ -87,4 +87,9 @@ func TestGetActiveFeatures(t *testing.T) {
 	e4.Fv = []string{"piyo", "hoge"}
 
 	examples := LearningInstances{e1, e2, e3, e4}
-	c := NewMIRAClassifier(EX
+	c := NewMIRAClassifier(EXAMPLE, examples, 1.0)
+
+	if len(c.GetActiveFeatures()) <= 0 {
+		t.Errorf("len(c.GetActiveFeatures()) <= %d, want > 0", len(c.GetActiveFeatures()))
+	}
+}
