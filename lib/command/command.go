@@ -11,4 +11,8 @@ import (
 
 var Commands = []cli.Command{
 	add.CommandAdd,
-	related_example.Comma
+	related_example.CommandAddRelatedExamples,
+	annotation.CommandAnnotate,
+	top_accessed_example.CommandAddTopAccessedExamples,
+	diagnosis.CommandDiagnose,
+}
