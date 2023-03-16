@@ -6,4 +6,8 @@ import (
 	"github.com/urfave/cli"
 )
 
-v
+var CommandDiagnose = cli.Command{
+	Name:  "diagnose",
+	Usage: "Diagnose training data or learned model",
+	Description: `
+Diagnose training data or learned model. This mode has two subcommand: label-c
