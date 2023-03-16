@@ -10,4 +10,12 @@ var CommandDiagnose = cli.Command{
 	Name:  "diagnose",
 	Usage: "Diagnose training data or learned model",
 	Description: `
-Diagnose training data or learned model. This mode has two subcommand: label-c
+Diagnose training data or learned model. This mode has two subcommand: label-conflict and feature-weight.
+`,
+
+	Subcommands: []cli.Command{
+		{
+			Name:  "label-conflict",
+			Usage: "Diagnose label conflicts in training data",
+			Description: `
+Diagnose l
