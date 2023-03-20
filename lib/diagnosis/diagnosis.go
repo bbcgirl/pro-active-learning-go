@@ -21,4 +21,10 @@ Diagnose training data or learned model. This mode has two subcommand: label-con
 Diagnose label conflicts in training data. 'conflict' means that an annotated label is '-1/1', but a predicted label by model is '1/-1'.
 `,
 			Action: labelconflict.DoLabelConflict,
-			
+			Flags: []cli.Flag{
+				cli.BoolFlag{Name: "filter-status-code-ok", Usage: "Use only examples with status code = 200"},
+			},
+		},
+		{
+			Name:  "feature-weight",
+			Usage: "Li
