@@ -27,4 +27,10 @@ Diagnose label conflicts in training data. 'conflict' means that an annotated la
 		},
 		{
 			Name:  "feature-weight",
-			Usage: "Li
+			Usage: "List feature weight",
+			Description: `
+List feature weight.
+`,
+			Action: featureweight.DoListFeatureWeight,
+			Flags: []cli.Flag{
+				cli.BoolFlag{Name: "filter-status-code-ok", Usage: "
