@@ -33,4 +33,8 @@ List feature weight.
 `,
 			Action: featureweight.DoListFeatureWeight,
 			Flags: []cli.Flag{
-				cli.BoolFlag{Name: "filter-status-code-ok", Usage: "
+				cli.BoolFlag{Name: "filter-status-code-ok", Usage: "Use only examples with status code = 200"},
+			},
+		},
+	},
+}
