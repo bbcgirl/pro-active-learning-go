@@ -13,4 +13,11 @@ import (
 
 type Feature struct {
 	Key    string
-	
+	Weight float64
+}
+
+type FeatureList []Feature
+
+func (p FeatureList) Len() int           { return len(p) }
+func (p FeatureList) Less(i, j int) bool { return p[i].Weight < p[j].Weight }
+func (p Fe
