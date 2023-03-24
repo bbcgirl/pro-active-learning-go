@@ -20,4 +20,9 @@ type FeatureList []Feature
 
 func (p FeatureList) Len() int           { return len(p) }
 func (p FeatureList) Less(i, j int) bool { return p[i].Weight < p[j].Weight }
-func (p Fe
+func (p FeatureList) Swap(i, j int)      { p[i], p[j] = p[j], p[i] }
+
+func DoListFeatureWeight(c *cli.Context) error {
+	filterStatusCodeOk := c.Bool("filter-status-code-ok")
+
+	app, err := service.NewDefaultApp(
