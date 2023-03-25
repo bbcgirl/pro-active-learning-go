@@ -25,4 +25,16 @@ func (p FeatureList) Swap(i, j int)      { p[i], p[j] = p[j], p[i] }
 func DoListFeatureWeight(c *cli.Context) error {
 	filterStatusCodeOk := c.Bool("filter-status-code-ok")
 
-	app, err := service.NewDefaultApp(
+	app, err := service.NewDefaultApp()
+	if err != nil {
+		return err
+	}
+	defer app.Close()
+
+	examples, err := app.SearchExamples()
+	if err != nil {
+		return err
+	}
+	app.Fetch(examples)
+	for _, e := range examples {
+		app.UpdateFeat
