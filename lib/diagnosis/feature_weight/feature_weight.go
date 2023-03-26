@@ -37,4 +37,12 @@ func DoListFeatureWeight(c *cli.Context) error {
 	}
 	app.Fetch(examples)
 	for _, e := range examples {
-		app.UpdateFeat
+		app.UpdateFeatureVector(e)
+	}
+	training := util.FilterLabeledExamples(examples)
+
+	if filterStatusCodeOk {
+		training = util.FilterStatusCodeOkExamples(training)
+	}
+
+	model, err := classifi
