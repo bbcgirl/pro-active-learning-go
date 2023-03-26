@@ -57,4 +57,8 @@ func DoListFeatureWeight(c *cli.Context) error {
 	sort.Sort(sort.Reverse(tmp))
 
 	for _, p := range tmp {
-		fmt.Print
+		fmt.Println(fmt.Sprintf("%+0.2f\t%s", p.Weight, p.Key))
+	}
+
+	return nil
+}
