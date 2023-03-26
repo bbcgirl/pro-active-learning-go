@@ -50,4 +50,11 @@ func DoListFeatureWeight(c *cli.Context) error {
 		return err
 	}
 
-	tmp := make(FeatureList,
+	tmp := make(FeatureList, 0)
+	for _, k := range model.GetActiveFeatures() {
+		tmp = append(tmp, Feature{k, model.GetWeight(k)})
+	}
+	sort.Sort(sort.Reverse(tmp))
+
+	for _, p := range tmp {
+		fmt.Print
