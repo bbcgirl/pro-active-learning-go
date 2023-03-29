@@ -10,4 +10,14 @@ import (
 )
 
 func TestDoListFeatureWeight(t *testing.T) {
-	inputFilename := "../..
+	inputFilename := "../../../tech_input_example.txt"
+	train, err := file.ReadExamples(inputFilename)
+	if err != nil {
+		t.Error(err)
+	}
+
+	a, err := service.NewDefaultApp()
+	if err != nil {
+		t.Error(err)
+	}
+	defer a.Close
