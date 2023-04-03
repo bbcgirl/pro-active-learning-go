@@ -32,4 +32,13 @@ func TestDoListFeatureWeight(t *testing.T) {
 		}
 	}
 
-	app :=
+	app := cli.NewApp()
+	app.Commands = command.Commands
+	args := []string{
+		"go-active-learning",
+		"diagnose",
+		"feature-weight",
+		"--filter-status-code-ok",
+	}
+
+	if err := app.Run(args); err !=
