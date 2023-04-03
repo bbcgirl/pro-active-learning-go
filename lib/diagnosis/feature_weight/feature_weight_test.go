@@ -41,4 +41,7 @@ func TestDoListFeatureWeight(t *testing.T) {
 		"--filter-status-code-ok",
 	}
 
-	if err := app.Run(args); err !=
+	if err := app.Run(args); err != nil {
+		t.Error(err)
+	}
+}
