@@ -31,4 +31,12 @@ func DoLabelConflict(c *cli.Context) error {
 	}
 	app.Fetch(examples)
 	for _, e := range examples {
-		app.UpdateFeatureVect
+		app.UpdateFeatureVector(e)
+	}
+	training := util.FilterLabeledExamples(examples)
+
+	if filterStatusCodeOk {
+		training = util.FilterStatusCodeOkExamples(training)
+	}
+
+	m, err := classifier.NewMIRAClassifierByCrossVa
