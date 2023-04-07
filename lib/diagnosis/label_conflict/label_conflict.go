@@ -20,4 +20,15 @@ func DoLabelConflict(c *cli.Context) error {
 	filterStatusCodeOk := c.Bool("filter-status-code-ok")
 
 	app, err := service.NewDefaultApp()
-	if 
+	if err != nil {
+		return err
+	}
+	defer app.Close()
+
+	examples, err := app.SearchExamples()
+	if err != nil {
+		return err
+	}
+	app.Fetch(examples)
+	for _, e := range examples {
+		app.UpdateFeatureVect
