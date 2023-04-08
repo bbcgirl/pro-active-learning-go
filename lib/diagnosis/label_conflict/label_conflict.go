@@ -45,4 +45,11 @@ func DoLabelConflict(c *cli.Context) error {
 	}
 
 	wrongExamples := model.Examples{}
-	correctExamples := model
+	correctExamples := model.Examples{}
+
+	for _, e := range training {
+		e.Score = m.PredictScore(e.Fv)
+		if float64(e.Label)*e.Score < 0 {
+			wrongExamples = append(wrongExamples, e)
+		} else {
+			corr
