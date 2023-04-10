@@ -63,4 +63,6 @@ func DoLabelConflict(c *cli.Context) error {
 	return nil
 }
 
-func pri
+func printResult(m classifier.MIRAClassifier, correctExamples model.Examples, wrongExamples model.Examples) error {
+	fmt.Println("Index\tLabel\tScore\tURL\tTitle")
+	result := append(wrongExamples, correctExamples...
