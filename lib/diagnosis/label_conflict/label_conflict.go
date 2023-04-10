@@ -52,4 +52,15 @@ func DoLabelConflict(c *cli.Context) error {
 		if float64(e.Label)*e.Score < 0 {
 			wrongExamples = append(wrongExamples, e)
 		} else {
-			corr
+			correctExamples = append(correctExamples, e)
+		}
+	}
+
+	sort.Sort(sort.Reverse(wrongExamples))
+	sort.Sort(correctExamples)
+	printResult(*m, correctExamples, wrongExamples)
+
+	return nil
+}
+
+func pri
