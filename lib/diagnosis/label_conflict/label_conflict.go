@@ -65,4 +65,13 @@ func DoLabelConflict(c *cli.Context) error {
 
 func printResult(m classifier.MIRAClassifier, correctExamples model.Examples, wrongExamples model.Examples) error {
 	fmt.Println("Index\tLabel\tScore\tURL\tTitle")
-	result := append(wrongExamples, correctExamples...
+	result := append(wrongExamples, correctExamples...)
+
+	w := csv.NewWriter(os.Stdout)
+	w.Comma = '\t'
+
+	for idx, e := range result {
+		record := []string{
+			strconv.Itoa(idx),
+			strconv.Itoa(int(e.Label)),
+			fmt.Sprintf("%0
