@@ -88,4 +88,5 @@ func printResult(m classifier.MIRAClassifier, correctExamples model.Examples, wr
 		return err
 	}
 
-	re
+	return nil
+}
