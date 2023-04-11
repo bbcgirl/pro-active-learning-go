@@ -74,4 +74,18 @@ func printResult(m classifier.MIRAClassifier, correctExamples model.Examples, wr
 		record := []string{
 			strconv.Itoa(idx),
 			strconv.Itoa(int(e.Label)),
-			fmt.Sprintf("%0
+			fmt.Sprintf("%0.03f", m.PredictScore(e.Fv)),
+			e.Url,
+			e.Title,
+		}
+		if err := w.Write(record); err != nil {
+			return err
+		}
+	}
+
+	w.Flush()
+	if err := w.Error(); err != nil {
+		return err
+	}
+
+	re
