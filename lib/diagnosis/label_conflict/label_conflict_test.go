@@ -11,4 +11,16 @@ import (
 
 func TestDoLabelConflict(t *testing.T) {
 	inputFilename := "../../../tech_input_example.txt"
-	train, err := file.ReadExamples
+	train, err := file.ReadExamples(inputFilename)
+	if err != nil {
+		t.Error(err)
+	}
+
+	a, err := service.NewDefaultApp()
+	if err != nil {
+		t.Error(err)
+	}
+	defer a.Close()
+
+	if err = a.DeleteAllExamples(); err != nil {
+		t.
