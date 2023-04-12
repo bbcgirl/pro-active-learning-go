@@ -23,4 +23,14 @@ func TestDoLabelConflict(t *testing.T) {
 	defer a.Close()
 
 	if err = a.DeleteAllExamples(); err != nil {
-		t.
+		t.Error(err)
+	}
+
+	for _, example := range train {
+		if err = a.UpdateOrCreateExample(example); err != nil {
+			t.Error(err)
+		}
+	}
+
+	app := cli.NewApp()
+	app.Command
