@@ -33,4 +33,14 @@ func TestDoLabelConflict(t *testing.T) {
 	}
 
 	app := cli.NewApp()
-	app.Command
+	app.Commands = command.Commands
+	args := []string{
+		"go-active-learning",
+		"diagnose",
+		"label-conflict",
+	}
+
+	if err := app.Run(args); err != nil {
+		t.Error(err)
+	}
+}
