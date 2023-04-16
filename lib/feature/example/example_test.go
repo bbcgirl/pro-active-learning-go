@@ -12,4 +12,12 @@ func TestIsJapanese(t *testing.T) {
 	}
 	text = "文献紹介 / Youtube"
 	if !isJapanese(text) {
-		t.Err
+		t.Error(fmt.Printf("%s should be Japanese", text))
+	}
+	text = "This is a pen."
+	if isJapanese(text) {
+		t.Error(fmt.Printf("%s should be not Japanese", text))
+	}
+}
+
+func T
