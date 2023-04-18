@@ -20,4 +20,8 @@ func TestIsJapanese(t *testing.T) {
 	}
 }
 
-func T
+func TestJapaneseNounFeatures(t *testing.T) {
+	text := "日本語のテストです"
+	fv := ExtractJpnNounFeaturesWithoutPrefix(text)
+	if len(fv) != 2 {
+		t.Error(fmt.Printf("Size of feature vector for %s 
