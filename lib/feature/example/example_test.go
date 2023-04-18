@@ -24,4 +24,9 @@ func TestJapaneseNounFeatures(t *testing.T) {
 	text := "日本語のテストです"
 	fv := ExtractJpnNounFeaturesWithoutPrefix(text)
 	if len(fv) != 2 {
-		t.Error(fmt.Printf("Size of feature vector for %s 
+		t.Error(fmt.Printf("Size of feature vector for %s should be 2, but %d", text, len(fv)))
+	}
+	text = "文献紹介 / Youtube"
+	fv = ExtractJpnNounFeaturesWithoutPrefix(text)
+	if len(fv) != 3 {
+		t.Error(fmt.Printf("Size of feature vector for %s should be 
