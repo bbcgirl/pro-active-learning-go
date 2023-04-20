@@ -37,4 +37,11 @@ func TestEngNounFeatures(t *testing.T) {
 	text := "Hello World!"
 	fv := extractEngNounFeatures(text, "")
 	if len(fv) != 2 {
-		t.Error(fmt.Printf("Size of feat
+		t.Error(fmt.Printf("Size of feature vector for %s should be 2", text))
+	}
+}
+
+func TestExtractPath(t *testing.T) {
+	url := "https://b.hatena.ne.jp/search/text?safe=on&q=nlp&users=50"
+	path := "/search/text"
+	if ExtractPath(
