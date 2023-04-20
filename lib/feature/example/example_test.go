@@ -44,4 +44,10 @@ func TestEngNounFeatures(t *testing.T) {
 func TestExtractPath(t *testing.T) {
 	url := "https://b.hatena.ne.jp/search/text?safe=on&q=nlp&users=50"
 	path := "/search/text"
-	if ExtractPath(
+	if ExtractPath(url) != path {
+		t.Error(fmt.Printf("path should be %s", path))
+	}
+}
+
+func TestExtractHostFeature(t *testing.T) {
+	url := "https://b.hatena.ne.jp/search/text?s
