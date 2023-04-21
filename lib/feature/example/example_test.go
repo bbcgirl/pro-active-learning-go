@@ -50,4 +50,9 @@ func TestExtractPath(t *testing.T) {
 }
 
 func TestExtractHostFeature(t *testing.T) {
-	url := "https://b.hatena.ne.jp/search/text?s
+	url := "https://b.hatena.ne.jp/search/text?safe=on&q=nlp&users=50"
+	hostFeature := "HOST:b.hatena.ne.jp"
+	if ExtractHostFeature(url) != hostFeature {
+		t.Error(fmt.Printf("Host feature should be %s", hostFeature))
+	}
+}
