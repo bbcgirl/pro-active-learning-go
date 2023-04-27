@@ -185,3 +185,105 @@ func AtMarksCountFeature(et ExampleAndTweet) string {
 	case cnt == 1:
 		return fmt.Sprintf("%s:1", prefix)
 	case cnt <= 3:
+		return fmt.Sprintf("%s:3", prefix)
+	case cnt <= 5:
+		return fmt.Sprintf("%s:5", prefix)
+	case cnt <= 10:
+		return fmt.Sprintf("%s:10", prefix)
+	default:
+		return fmt.Sprintf("%s:INF", prefix)
+	}
+}
+
+func HashTagsCountFeature(et ExampleAndTweet) string {
+	prefix := "HashTagsCountFeature"
+	cnt := et.atMarksCnt
+	switch {
+	case cnt == 0:
+		return fmt.Sprintf("%s:0", prefix)
+	case cnt == 1:
+		return fmt.Sprintf("%s:1", prefix)
+	case cnt <= 3:
+		return fmt.Sprintf("%s:3", prefix)
+	case cnt <= 5:
+		return fmt.Sprintf("%s:5", prefix)
+	case cnt <= 10:
+		return fmt.Sprintf("%s:10", prefix)
+	default:
+		return fmt.Sprintf("%s:INF", prefix)
+	}
+}
+
+func TextLengthFeature(et ExampleAndTweet) string {
+	prefix := "TextLengthFeature"
+	cnt := len(et.tweet.FullText)
+	switch {
+	case cnt == 0:
+		return fmt.Sprintf("%s:0", prefix)
+	case cnt == 1:
+		return fmt.Sprintf("%s:1", prefix)
+	case cnt == 3:
+		return fmt.Sprintf("%s:3", prefix)
+	case cnt < 5:
+		return fmt.Sprintf("%s:5", prefix)
+	case cnt < 10:
+		return fmt.Sprintf("%s:10", prefix)
+	case cnt < 25:
+		return fmt.Sprintf("%s:25", prefix)
+	case cnt < 50:
+		return fmt.Sprintf("%s:50", prefix)
+	case cnt < 100:
+		return fmt.Sprintf("%s:100", prefix)
+	default:
+		return fmt.Sprintf("%s:INF", prefix)
+	}
+}
+
+func CleanedTextLengthFeature(et ExampleAndTweet) string {
+	prefix := "CleanedTextLengthFeature"
+	cnt := len(et.cleanedText)
+	switch {
+	case cnt == 0:
+		return fmt.Sprintf("%s:0", prefix)
+	case cnt == 1:
+		return fmt.Sprintf("%s:1", prefix)
+	case cnt == 3:
+		return fmt.Sprintf("%s:3", prefix)
+	case cnt < 5:
+		return fmt.Sprintf("%s:5", prefix)
+	case cnt < 10:
+		return fmt.Sprintf("%s:10", prefix)
+	case cnt < 25:
+		return fmt.Sprintf("%s:25", prefix)
+	case cnt < 50:
+		return fmt.Sprintf("%s:50", prefix)
+	case cnt < 100:
+		return fmt.Sprintf("%s:100", prefix)
+	default:
+		return fmt.Sprintf("%s:INF", prefix)
+	}
+}
+
+func ScreenNameFeature(et ExampleAndTweet) string {
+	prefix := "ScreenNameFeature"
+	return fmt.Sprintf("%s:%s", prefix, et.tweet.ScreenName)
+}
+
+func (et *ExampleAndTweet) GetFeatureVector() feature.FeatureVector {
+	var fv feature.FeatureVector
+
+	fv = append(fv, "BIAS")
+	fv = append(fv, LCSLenFeature(*et))
+	fv = append(fv, CleanedLCSLenFeature(*et))
+	fv = append(fv, LCSRatioFeature(*et))
+	fv = append(fv, CleanedLCSRatioFeature(*et))
+	fv = append(fv, TextLengthFeature(*et))
+	fv = append(fv, CleanedTextLengthFeature(*et))
+
+	fv = append(fv, ScreenNameFeature(*et))
+	fv = append(fv, FavoriteCountFeature(*et))
+	fv = append(fv, RetweetCountFeature(*et))
+	fv = append(fv, AtMarksCountFeature(*et))
+	fv = append(fv, HashTagsCountFeature(*et))
+	return fv
+}
