@@ -23,4 +23,10 @@ func TestExtractHostFeature(t *testing.T) {
 		"BIAS",
 		"LCSLenFeature:25",
 		"CleanedLCSLenFeature:25",
-		"LCSRatioFeature:
+		"LCSRatioFeature:0.25",
+		"CleanedLCSRatioFeature:0.25",
+		"TextLengthFeature:100",
+		"CleanedTextLengthFeature:25",
+		"ScreenNameFeature:syou6162",
+		"FavoriteCountFeature:10",
+		
