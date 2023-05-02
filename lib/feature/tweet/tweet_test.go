@@ -29,4 +29,11 @@ func TestExtractHostFeature(t *testing.T) {
 		"CleanedTextLengthFeature:25",
 		"ScreenNameFeature:syou6162",
 		"FavoriteCountFeature:10",
-		
+		"RetweetCountFeature:10",
+		"AtMarksCountFeature:3",
+		"HashTagsCountFeature:3",
+	}
+	if !reflect.DeepEqual(expect, fv) {
+		t.Error("feature must be wrong")
+	}
+}
