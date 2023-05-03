@@ -27,4 +27,9 @@ func TestGetArticle(t *testing.T) {
 
 func TestGetArticleARXIV(t *testing.T) {
 	a, err := GetArticle("https://arxiv.org/abs/2012.07805")
-	i
+	if err != nil {
+		t.Error(err.Error())
+	}
+
+	if a.Title != "[2012.07805] Extracting Training Data from Large Language Models" {
+		t.Error("Title must not
