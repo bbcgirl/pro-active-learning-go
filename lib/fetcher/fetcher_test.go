@@ -11,4 +11,11 @@ func TestGetArticle(t *testing.T) {
 		t.Error(err.Error())
 	}
 
-	if a.Title =
+	if a.Title == "" {
+		t.Error("Title must not be empty")
+	}
+	if a.Description == "" {
+		t.Error("Description must not be empty")
+	}
+	if a.OgType != "article" {
+		t.Error("OgType must be
