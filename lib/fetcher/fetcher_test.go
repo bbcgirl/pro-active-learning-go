@@ -42,4 +42,11 @@ func TestGetArticleARXIV(t *testing.T) {
 	}
 }
 
-func TestGetArticleNotFound(t *tes
+func TestGetArticleNotFound(t *testing.T) {
+	_, err := GetArticle("https://www.yasuhisay.info/entry/NOT_FOUND")
+	if err == nil {
+		t.Error("Error should occur")
+	}
+}
+
+func TestGetArticleWithInvalidEncodi
