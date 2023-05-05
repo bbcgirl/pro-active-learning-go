@@ -53,4 +53,11 @@ func TestGetArticleWithInvalidEncoding(t *testing.T) {
 	url := "http://www.atmarkit.co.jp/ait/articles/1702/20/news021.html"
 	_, err := GetArticle(url)
 	if err == nil {
-		t.Error(fmt.Sprintf("Error mus
+		t.Error(fmt.Sprintf("Error must occur for this url: %s", url))
+	}
+}
+
+func TestRemoveUtmParams(t *testing.T) {
+	before := "https://techplay.jp/event/698349?utm_source=event_698349"
+	after, err := removeUtmParams(before)
+	if err != n
