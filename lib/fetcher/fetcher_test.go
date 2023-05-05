@@ -32,4 +32,14 @@ func TestGetArticleARXIV(t *testing.T) {
 	}
 
 	if a.Title != "[2012.07805] Extracting Training Data from Large Language Models" {
-		t.Error("Title must not
+		t.Error("Title must not be empty")
+	}
+	if a.Description == "" {
+		t.Error("Description must not be empty")
+	}
+	if a.StatusCode != 200 {
+		t.Error("StatusCode must be 200")
+	}
+}
+
+func TestGetArticleNotFound(t *tes
