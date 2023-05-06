@@ -60,4 +60,9 @@ func TestGetArticleWithInvalidEncoding(t *testing.T) {
 func TestRemoveUtmParams(t *testing.T) {
 	before := "https://techplay.jp/event/698349?utm_source=event_698349"
 	after, err := removeUtmParams(before)
-	if err != n
+	if err != nil {
+		t.Error(fmt.Sprintf("Error must occur for this url: %s", before))
+	}
+	expected := "https://techplay.jp/event/698349"
+	if expected != after {
+		t.Errorf("url should 
