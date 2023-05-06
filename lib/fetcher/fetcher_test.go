@@ -65,4 +65,13 @@ func TestRemoveUtmParams(t *testing.T) {
 	}
 	expected := "https://techplay.jp/event/698349"
 	if expected != after {
-		t.Errorf("url should 
+		t.Errorf("url should be %s, but %s", expected, after)
+	}
+	a, err := GetArticle(before)
+	if expected != a.Url {
+		t.Errorf("url should be %s, but %s", expected, a.Url)
+	}
+}
+
+func TestFavicon(t *testing.T) {
+	url := "https://ww
