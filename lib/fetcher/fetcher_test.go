@@ -74,4 +74,9 @@ func TestRemoveUtmParams(t *testing.T) {
 }
 
 func TestFavicon(t *testing.T) {
-	url := "https://ww
+	url := "https://www.yasuhisay.info/entry/2020/11/22/190000"
+	a, err := GetArticle(url)
+	if err != nil {
+		t.Error(fmt.Sprintf("Error must not occur for this url: %s", url))
+	}
+	expectedFaviconPath := "https://www.yasuhisay
