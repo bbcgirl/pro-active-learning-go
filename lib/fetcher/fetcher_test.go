@@ -79,4 +79,9 @@ func TestFavicon(t *testing.T) {
 	if err != nil {
 		t.Error(fmt.Sprintf("Error must not occur for this url: %s", url))
 	}
-	expectedFaviconPath := "https://www.yasuhisay
+	expectedFaviconPath := "https://www.yasuhisay.info/icon/favicon"
+	if expectedFaviconPath != a.Favicon {
+		t.Errorf("Favicon: %s should be %s", a.Favicon, expectedFaviconPath)
+	}
+
+	url = "https://www.lifehacker.
