@@ -84,4 +84,9 @@ func TestFavicon(t *testing.T) {
 		t.Errorf("Favicon: %s should be %s", a.Favicon, expectedFaviconPath)
 	}
 
-	url = "https://www.lifehacker.
+	url = "https://www.lifehacker.jp/2018/11/amazon-impact-absorption-case.html"
+	a, err = GetArticle(url)
+	if err != nil {
+		t.Error(fmt.Sprintf("Error must not occur for this url: %s", url))
+	}
+	expectedFaviconPath = "https://www.lifehacker.jp/assets/common/
