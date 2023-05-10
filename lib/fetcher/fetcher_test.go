@@ -100,4 +100,8 @@ func TestFavicon(t *testing.T) {
 		t.Error(fmt.Sprintf("Error must not occur for this url: %s", url))
 	}
 	expectedFaviconPath = "https://peterroelants.github.io/images/favicon/apple-icon-57x57.png"
-	if expect
+	if expectedFaviconPath != a.Favicon {
+		t.Errorf("Favicon: %s should be %s", a.Favicon, expectedFaviconPath)
+	}
+
+	url = "https://www.getrevue.co/profile/icoxfog417/issues/we
