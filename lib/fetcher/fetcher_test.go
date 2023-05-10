@@ -104,4 +104,9 @@ func TestFavicon(t *testing.T) {
 		t.Errorf("Favicon: %s should be %s", a.Favicon, expectedFaviconPath)
 	}
 
-	url = "https://www.getrevue.co/profile/icoxfog417/issues/we
+	url = "https://www.getrevue.co/profile/icoxfog417/issues/weekly-machine-learning-79-121292"
+	a, err = GetArticle(url)
+	if err != nil {
+		t.Error(fmt.Sprintf("Error must not occur for this url: %s", url))
+	}
+	expectedFaviconPath = "https://d3jbm9h03wxzi9.cloudfront.net/assets/favicon-8
