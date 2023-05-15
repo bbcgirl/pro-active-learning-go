@@ -125,4 +125,10 @@ func TestFavicon(t *testing.T) {
 	}
 }
 
-func 
+func TestGetPublishDate(t *testing.T) {
+	a, err := GetArticle("https://www.yasuhisay.info/entry/2019/11/18/153000")
+	if err != nil {
+		t.Error("Error should not occur")
+	}
+	if a.PublishDate == nil {
+		t.Er
