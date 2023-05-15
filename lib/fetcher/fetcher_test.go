@@ -117,4 +117,12 @@ func TestFavicon(t *testing.T) {
 	url = "https://ai.googleblog.com/2018/11/open-sourcing-bert-state-of-art-pre.html"
 	a, err = GetArticle(url)
 	if err != nil {
-		t.Error(fmt.Sprintf("Error must not occur for this url: %s", ur
+		t.Error(fmt.Sprintf("Error must not occur for this url: %s", url))
+	}
+	expectedFaviconPath = "https://ai.googleblog.com/favicon.ico"
+	if expectedFaviconPath != a.Favicon {
+		t.Errorf("Favicon: %s should be %s", a.Favicon, expectedFaviconPath)
+	}
+}
+
+func 
