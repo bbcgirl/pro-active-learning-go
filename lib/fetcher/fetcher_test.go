@@ -131,4 +131,6 @@ func TestGetPublishDate(t *testing.T) {
 		t.Error("Error should not occur")
 	}
 	if a.PublishDate == nil {
-		t.Er
+		t.Error("PublishDate must not be nil")
+	}
+}
