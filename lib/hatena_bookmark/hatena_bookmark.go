@@ -27,4 +27,8 @@ func GetHatenaBookmark(url string) (*model.HatenaBookmark, error) {
 
 	bookmarks := model.HatenaBookmark{}
 	err = json.Unmarshal(body, &bookmarks)
-	if error != 
+	if error != nil {
+		return nil, err
+	}
+	return &bookmarks, nil
+}
