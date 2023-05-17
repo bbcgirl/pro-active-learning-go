@@ -9,4 +9,6 @@ import (
 	"github.com/syou6162/go-active-learning/lib/model"
 )
 
-func GetH
+func GetHatenaBookmark(url string) (*model.HatenaBookmark, error) {
+	// ref: http://developer.hatena.ne.jp/ja/documents/bookmark/apis/getinfo
+	res, err := http.Get(fmt.Sprintf("htt
