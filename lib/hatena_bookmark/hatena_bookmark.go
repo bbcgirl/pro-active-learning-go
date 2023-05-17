@@ -19,4 +19,12 @@ func GetHatenaBookmark(url string) (*model.HatenaBookmark, error) {
 		return nil, fmt.Errorf("error: %d", res.StatusCode)
 	}
 
-	defe
+	defer res.Body.Close()
+	body, error := ioutil.ReadAll(res.Body)
+	if error != nil {
+		return nil, err
+	}
+
+	bookmarks := model.HatenaBookmark{}
+	err = json.Unmarshal(body, &bookmarks)
+	if error != 
