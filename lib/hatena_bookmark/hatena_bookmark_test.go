@@ -5,4 +5,14 @@ import (
 )
 
 func TestGetHatenaBookmark(t *testing.T) {
-	bookmarks, err := GetHatenaBookmark(
+	bookmarks, err := GetHatenaBookmark("https://www.yasuhisay.info")
+	if err != nil {
+		t.Error(err.Error())
+	}
+
+	if bookmarks.Title == "" {
+		t.Error("Title must not be empty")
+	}
+	if bookmarks.Count == 0 {
+		t.Error("Count must not be 0")
+	}
