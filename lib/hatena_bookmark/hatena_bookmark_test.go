@@ -16,3 +16,7 @@ func TestGetHatenaBookmark(t *testing.T) {
 	if bookmarks.Count == 0 {
 		t.Error("Count must not be 0")
 	}
+	if len(bookmarks.Bookmarks) == 0 {
+		t.Error("Count must not be 0")
+	}
+}
