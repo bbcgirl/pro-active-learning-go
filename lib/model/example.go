@@ -45,3 +45,29 @@ func (example *Example) GetFeatureVector() feature.FeatureVector {
 func (example *Example) Annotate(label LabelType) {
 	example.Label = label
 }
+
+func (example *Example) IsLabeled() bool {
+	return example.Label != UNLABELED
+}
+
+func (example *Example) IsTwitterUrl() bool {
+	twitterUrl := "https://twitter.com"
+	return strings.Contains(example.Url, twitterUrl) || strings.Contains(example.FinalUrl, twitterUrl)
+}
+
+func (example *Example) IsArticle() bool {
+	// twitterはarticleと返ってくるが除外
+	return example.OgType == "article" && !example.IsTwitterUrl()
+}
+
+func (slice Examples) Len() int {
+	return len(slice)
+}
+
+func (slice Examples) Less(i, j int) bool {
+	return math.Abs(slice[i].Score) < math.Abs(slice[j].Score)
+}
+
+func (slice Examples) Swap(i, j int) {
+	slice[i], slice[j] = slice[j], slice[i]
+}
