@@ -31,4 +31,11 @@ func (hbt *HatenaBookmarkTime) Scan(value interface{}) error {
 	return nil
 }
 
-func (hbt Hate
+func (hbt HatenaBookmarkTime) Value() (driver.Value, error) {
+	return *hbt.Time, nil
+}
+
+func (tags *Tags) Scan(value interface{}) error {
+	s := value.(string)
+	if s == "" {
+		*tags
