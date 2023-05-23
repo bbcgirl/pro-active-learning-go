@@ -47,4 +47,10 @@ func (tags *Tags) Scan(value interface{}) error {
 }
 
 func (tags Tags) Value() (driver.Value, error) {
-	return strings.Join(tags, "\t"), ni
+	return strings.Join(tags, "\t"), nil
+}
+
+type Bookmark struct {
+	HatenaBookmarkId int                `db:"hatena_bookmark_id"`
+	Timestamp        HatenaBookmarkTime `json:"timestamp" db:"timestamp"`
+	User             string             `jso
