@@ -63,4 +63,7 @@ type HatenaBookmark struct {
 	ExampleId  int         `db:"example_id"`
 	Title      string      `json:"title" db:"title"`
 	Bookmarks  []*Bookmark `json:"bookmarks"`
-	Screenshot string      `json:"screensh
+	Screenshot string      `json:"screenshot" db:"screenshot"`
+	EntryUrl   string      `json:"entry_url" db:"entry_url"`
+	Count      int         `json:"count" db:"count"`
+	Url        string      `json:"url" db:"url"`
