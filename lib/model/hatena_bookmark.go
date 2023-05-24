@@ -59,4 +59,8 @@ type Bookmark struct {
 }
 
 type HatenaBookmark struct {
-	Id         
+	Id         int         `db:"id"`
+	ExampleId  int         `db:"example_id"`
+	Title      string      `json:"title" db:"title"`
+	Bookmarks  []*Bookmark `json:"bookmarks"`
+	Screenshot string      `json:"screensh
