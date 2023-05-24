@@ -53,4 +53,10 @@ func (tags Tags) Value() (driver.Value, error) {
 type Bookmark struct {
 	HatenaBookmarkId int                `db:"hatena_bookmark_id"`
 	Timestamp        HatenaBookmarkTime `json:"timestamp" db:"timestamp"`
-	User             string             `jso
+	User             string             `json:"user" db:"user"`
+	Tags             Tags               `json:"tags" db:"tags"`
+	Comment          string             `json:"comment" db:"comment"`
+}
+
+type HatenaBookmark struct {
+	Id         
