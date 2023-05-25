@@ -67,3 +67,9 @@ type HatenaBookmark struct {
 	EntryUrl   string      `json:"entry_url" db:"entry_url"`
 	Count      int         `json:"count" db:"count"`
 	Url        string      `json:"url" db:"url"`
+	EId        string      `json:"eid" db:"eid"`
+}
+
+func (bookmarks *HatenaBookmark) MarshalBinary() ([]byte, error) {
+	json, err := json.Marshal(bookmarks)
+	if err != nil
