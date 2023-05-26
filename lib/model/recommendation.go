@@ -11,4 +11,12 @@ const (
 	SLIDE   RecommendationListType = 3
 	ARXIV   RecommendationListType = 4
 	VIDEO   RecommendationListType = 5
-	EVENT   Recommendati
+	EVENT   RecommendationListType = 6
+)
+
+func GetRecommendationListType(listname string) (RecommendationListType, error) {
+	switch listname {
+	case "general":
+		return GENERAL, nil
+	case "article":
+		return ARTICLE,
