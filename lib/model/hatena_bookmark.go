@@ -81,4 +81,7 @@ func (bookmarks *HatenaBookmark) MarshalBinary() ([]byte, error) {
 func (bookmarks *HatenaBookmark) UnmarshalBinary(data []byte) error {
 	err := json.Unmarshal(data, bookmarks)
 	if err != nil {
-		re
+		return err
+	}
+	return nil
+}
