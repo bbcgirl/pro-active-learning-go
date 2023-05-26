@@ -72,4 +72,13 @@ type HatenaBookmark struct {
 
 func (bookmarks *HatenaBookmark) MarshalBinary() ([]byte, error) {
 	json, err := json.Marshal(bookmarks)
-	if err != nil
+	if err != nil {
+		return nil, err
+	}
+	return []byte(json), nil
+}
+
+func (bookmarks *HatenaBookmark) UnmarshalBinary(data []byte) error {
+	err := json.Unmarshal(data, bookmarks)
+	if err != nil {
+		re
