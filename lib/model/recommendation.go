@@ -19,4 +19,16 @@ func GetRecommendationListType(listname string) (RecommendationListType, error) 
 	case "general":
 		return GENERAL, nil
 	case "article":
-		return ARTICLE,
+		return ARTICLE, nil
+	case "github":
+		return GITHUB, nil
+	case "slide":
+		return SLIDE, nil
+	case "arxiv":
+		return ARXIV, nil
+	case "video":
+		return VIDEO, nil
+	case "event":
+		return EVENT, nil
+	default:
+		return -1, f
