@@ -31,4 +31,11 @@ func GetRecommendationListType(listname string) (RecommendationListType, error) 
 	case "event":
 		return EVENT, nil
 	default:
-		return -1, f
+		return -1, fmt.Errorf("no such RecommendationListType for '%s'", listname)
+	}
+}
+
+type Recommendation struct {
+	RecommendationListType RecommendationListType
+	ExampleIds             []int
+}
