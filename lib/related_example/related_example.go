@@ -23,4 +23,13 @@ func parseLine(line string) (int, int, error) {
 	return 0, 0, fmt.Errorf("Invalid line: %s", line)
 }
 
-func readRelatedExamples(filename string) ([]*model.RelatedExamples, erro
+func readRelatedExamples(filename string) ([]*model.RelatedExamples, error) {
+	fp, err := os.Open(filename)
+	defer fp.Close()
+	if err != nil {
+		return nil, err
+	}
+
+	exampleId2RelatedExampleIds := make(map[int][]int)
+	scanner := bufio.NewScanner(fp)
+	for scanner.Sca
