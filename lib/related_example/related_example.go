@@ -32,4 +32,10 @@ func readRelatedExamples(filename string) ([]*model.RelatedExamples, error) {
 
 	exampleId2RelatedExampleIds := make(map[int][]int)
 	scanner := bufio.NewScanner(fp)
-	for scanner.Sca
+	for scanner.Scan() {
+		line := scanner.Text()
+		exampleId, relatedExampleId, err := parseLine(line)
+		if err != nil {
+			return nil, err
+		}
+		if _, ok := exampleId2RelatedEx
