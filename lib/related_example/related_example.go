@@ -38,4 +38,7 @@ func readRelatedExamples(filename string) ([]*model.RelatedExamples, error) {
 		if err != nil {
 			return nil, err
 		}
-		if _, ok := exampleId2RelatedEx
+		if _, ok := exampleId2RelatedExampleIds[exampleId]; ok {
+			exampleId2RelatedExampleIds[exampleId] = append(exampleId2RelatedExampleIds[exampleId], relatedExampleId)
+		} else {
+			exampleId2RelatedExampleIds[exampleId] = []int
