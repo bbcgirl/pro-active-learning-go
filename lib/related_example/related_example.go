@@ -41,4 +41,11 @@ func readRelatedExamples(filename string) ([]*model.RelatedExamples, error) {
 		if _, ok := exampleId2RelatedExampleIds[exampleId]; ok {
 			exampleId2RelatedExampleIds[exampleId] = append(exampleId2RelatedExampleIds[exampleId], relatedExampleId)
 		} else {
-			exampleId2RelatedExampleIds[exampleId] = []int
+			exampleId2RelatedExampleIds[exampleId] = []int{relatedExampleId}
+		}
+	}
+	if err := scanner.Err(); err != nil {
+		return nil, err
+	}
+	result := make([]*model.RelatedExamples, 0)
+	for exampleId, relatedExampleIds := range exampleId2RelatedExampleId
