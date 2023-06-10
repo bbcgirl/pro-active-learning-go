@@ -48,4 +48,10 @@ func readRelatedExamples(filename string) ([]*model.RelatedExamples, error) {
 		return nil, err
 	}
 	result := make([]*model.RelatedExamples, 0)
-	for exampleId, relatedExampleIds := range exampleId2RelatedExampleId
+	for exampleId, relatedExampleIds := range exampleId2RelatedExampleIds {
+		result = append(result, &model.RelatedExamples{ExampleId: exampleId, RelatedExampleIds: relatedExampleIds})
+	}
+	return result, nil
+}
+
+func doAddRelatedExamples(c *cli.Con
