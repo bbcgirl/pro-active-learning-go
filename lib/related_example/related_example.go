@@ -54,4 +54,9 @@ func readRelatedExamples(filename string) ([]*model.RelatedExamples, error) {
 	return result, nil
 }
 
-func doAddRelatedExamples(c *cli.Con
+func doAddRelatedExamples(c *cli.Context) error {
+	inputFilename := c.String("input-filename")
+
+	if inputFilename == "" {
+		_ = cli.ShowCommandHelp(c, "add-related-examples")
+		return cli.NewExitError("`input-filename` is a required fiel
