@@ -59,4 +59,15 @@ func doAddRelatedExamples(c *cli.Context) error {
 
 	if inputFilename == "" {
 		_ = cli.ShowCommandHelp(c, "add-related-examples")
-		return cli.NewExitError("`input-filename` is a required fiel
+		return cli.NewExitError("`input-filename` is a required field.", 1)
+	}
+
+	app, err := service.NewDefaultApp()
+	if err != nil {
+		return err
+	}
+	defer app.Close()
+
+	relatedExamplesList, err := readRelatedExamples(inputFilename)
+	if err != nil {
+		return
