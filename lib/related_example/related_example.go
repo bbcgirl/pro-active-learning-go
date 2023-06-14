@@ -70,4 +70,9 @@ func doAddRelatedExamples(c *cli.Context) error {
 
 	relatedExamplesList, err := readRelatedExamples(inputFilename)
 	if err != nil {
-		return
+		return err
+	}
+	for _, relatedExamples := range relatedExamplesList {
+		for _, related := range relatedExamples.RelatedExampleIds {
+			fmt.Print(relatedExamples.ExampleId)
+			fmt.Pri
