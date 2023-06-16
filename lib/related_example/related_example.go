@@ -75,4 +75,15 @@ func doAddRelatedExamples(c *cli.Context) error {
 	for _, relatedExamples := range relatedExamplesList {
 		for _, related := range relatedExamples.RelatedExampleIds {
 			fmt.Print(relatedExamples.ExampleId)
-			fmt.Pri
+			fmt.Print("\t")
+			fmt.Println(related)
+		}
+		err := app.UpdateRelatedExamples(*relatedExamples)
+		if err != nil {
+			return err
+		}
+	}
+	return nil
+}
+
+var CommandAddRelatedExamples = cli.Command
