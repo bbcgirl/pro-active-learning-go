@@ -86,4 +86,11 @@ func doAddRelatedExamples(c *cli.Context) error {
 	return nil
 }
 
-var CommandAddRelatedExamples = cli.Command
+var CommandAddRelatedExamples = cli.Command{
+	Name:  "add-related-examples",
+	Usage: "add related examples",
+	Description: `
+Add related examples.
+`,
+	Action: doAddRelatedExamples,
+	Flags: []cli.Flag
