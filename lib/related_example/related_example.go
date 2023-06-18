@@ -93,4 +93,7 @@ var CommandAddRelatedExamples = cli.Command{
 Add related examples.
 `,
 	Action: doAddRelatedExamples,
-	Flags: []cli.Flag
+	Flags: []cli.Flag{
+		cli.StringFlag{Name: "input-filename"},
+	},
+}
