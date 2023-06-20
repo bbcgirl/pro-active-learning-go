@@ -15,4 +15,9 @@ import (
 
 var exampleNotFoundError = model.NotFoundError("example")
 
-// デー
+// データが存在しなければ追加
+// データが存在する場合は、以下の場合にのみ更新する
+// - ラベルが正例か負例に変更された
+// - クロール対象のサイトが一時的に200以外のステータスで前回データが取得できなかった
+func (r *repository) UpdateOrCreateExample(e *model.Example) error {
+	now := time.
