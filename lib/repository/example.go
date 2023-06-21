@@ -29,4 +29,6 @@ VALUES
 (:url, :final_url, :title, :description, :og_description, :og_type, :og_image, :body, :score, :is_new, :status_code, :favicon, :label, :created_at, :updated_at)
 ON CONFLICT (url)
 DO UPDATE SET
-url = :url, final_url = :final_url, title = :tit
+url = :url, final_url = :final_url, title = :title,
+description = :description, og_description = :og_description, og_type = :og_type, og_image = :og_image,
+body = :body, score = :score, is_new = :is_new, status_code = :status_code
