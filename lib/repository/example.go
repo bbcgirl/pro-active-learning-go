@@ -31,4 +31,8 @@ ON CONFLICT (url)
 DO UPDATE SET
 url = :url, final_url = :final_url, title = :title,
 description = :description, og_description = :og_description, og_type = :og_type, og_image = :og_image,
-body = :body, score = :score, is_new = :is_new, status_code = :status_code
+body = :body, score = :score, is_new = :is_new, status_code = :status_code, favicon = :favicon,
+label = :label, created_at = :created_at, updated_at = :updated_at
+WHERE
+((EXCLUDED.label != 0) AND (example.label != EXCLUDED.label)) OR
+((example.status_code != 200) AND (EXCLUDED.status_c
