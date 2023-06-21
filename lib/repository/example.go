@@ -24,4 +24,6 @@ func (r *repository) UpdateOrCreateExample(e *model.Example) error {
 	e.UpdatedAt = now
 	_, err := r.db.NamedExec(`
 INSERT INTO example
-( url,  final_url,  title,  description,  og_description,  og_type,  og_image,  body,  sco
+( url,  final_url,  title,  description,  og_description,  og_type,  og_image,  body,  score,  is_new,  status_code,  favicon,  label,  created_at,  updated_at)
+VALUES
+(:url, :final_url, :title, :description, :og_description, :og_type, :og_image, :body, :score,
