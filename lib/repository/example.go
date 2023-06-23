@@ -35,4 +35,17 @@ body = :body, score = :score, is_new = :is_new, status_code = :status_code, favi
 label = :label, created_at = :created_at, updated_at = :updated_at
 WHERE
 ((EXCLUDED.label != 0) AND (example.label != EXCLUDED.label)) OR
-((example.status_code != 200) AND (EXCLUDED.status_c
+((example.status_code != 200) AND (EXCLUDED.status_code = 200))
+;`, e)
+	if err != nil {
+		return err
+	}
+	tmp, err := r.FindExampleByUlr(e.Url)
+	if err != nil {
+		return err
+	}
+	e.Id = tmp.Id
+	return nil
+}
+
+func (r *rep
