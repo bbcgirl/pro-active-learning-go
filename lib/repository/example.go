@@ -60,4 +60,10 @@ func (r *repository) UpdateScore(e *model.Example) error {
 
 func (r *repository) IncErrorCount(e *model.Example) error {
 	errorCount, err := r.GetErrorCount(e)
-	if err !
+	if err != nil {
+		return err
+	}
+	if _, err := r.db.Exec(`UPDATE example SET error_count = $1, updated_at = $2 WHERE url = $3;`, errorCount+1, time.Now(), e.Url); err != nil {
+		return err
+	}
+	return 
