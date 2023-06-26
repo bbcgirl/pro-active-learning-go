@@ -66,4 +66,11 @@ func (r *repository) IncErrorCount(e *model.Example) error {
 	if _, err := r.db.Exec(`UPDATE example SET error_count = $1, updated_at = $2 WHERE url = $3;`, errorCount+1, time.Now(), e.Url); err != nil {
 		return err
 	}
-	return 
+	return nil
+}
+
+func (r *repository) GetErrorCount(e *model.Example) (int, error) {
+	example, err := r.FindExampleByUlr(e.Url)
+	if err != nil {
+		if err == exampleNotFoundError {
+			re
