@@ -81,4 +81,12 @@ func (r *repository) GetErrorCount(e *model.Example) (int, error) {
 }
 
 func (r *repository) UpdateFeatureVector(e *model.Example) error {
-	tmp, err := r.FindExampleByUlr(e.Url
+	tmp, err := r.FindExampleByUlr(e.Url)
+	if err != nil {
+		return err
+	}
+	id := tmp.Id
+	if _, err = r.db.Exec(`DELETE FROM feature WHERE example_id = $1;`, id); err != nil {
+		return err
+	}
+	_, err = r.db.Exec(`INSERT INTO feature (exam
