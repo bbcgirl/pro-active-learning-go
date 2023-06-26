@@ -73,4 +73,12 @@ func (r *repository) GetErrorCount(e *model.Example) (int, error) {
 	example, err := r.FindExampleByUlr(e.Url)
 	if err != nil {
 		if err == exampleNotFoundError {
-			re
+			return 0, nil
+		}
+		return 0, err
+	}
+	return example.ErrorCount, nil
+}
+
+func (r *repository) UpdateFeatureVector(e *model.Example) error {
+	tmp, err := r.FindExampleByUlr(e.Url
