@@ -95,4 +95,15 @@ func (r *repository) UpdateFeatureVector(e *model.Example) error {
 
 func (r *repository) InsertExampleFromScanner(scanner *bufio.Scanner) (*model.Example, error) {
 	line := scanner.Text()
-	e, err := file.Parse
+	e, err := file.ParseLine(line)
+	if err != nil {
+		return nil, err
+	}
+	err = r.UpdateOrCreateExample(e)
+	if err != nil {
+		return nil, err
+	}
+	return e, nil
+}
+
+func (r *repository) InsertExamplesFromRe
