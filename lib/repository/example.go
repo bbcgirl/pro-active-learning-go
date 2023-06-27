@@ -89,4 +89,10 @@ func (r *repository) UpdateFeatureVector(e *model.Example) error {
 	if _, err = r.db.Exec(`DELETE FROM feature WHERE example_id = $1;`, id); err != nil {
 		return err
 	}
-	_, err = r.db.Exec(`INSERT INTO feature (exam
+	_, err = r.db.Exec(`INSERT INTO feature (example_id, feature) VALUES ($1, unnest(cast($2 AS TEXT[])));`, id, pq.Array(e.Fv))
+	return err
+}
+
+func (r *repository) InsertExampleFromScanner(scanner *bufio.Scanner) (*model.Example, error) {
+	line := scanner.Text()
+	e, err := file.Parse
