@@ -106,4 +106,13 @@ func (r *repository) InsertExampleFromScanner(scanner *bufio.Scanner) (*model.Ex
 	return e, nil
 }
 
-func (r *repository) InsertExamplesFromRe
+func (r *repository) InsertExamplesFromReader(reader io.Reader) error {
+	scanner := bufio.NewScanner(reader)
+
+	for scanner.Scan() {
+		_, err := r.InsertExampleFromScanner(scanner)
+		if err != nil {
+			return err
+		}
+	}
+	if err 
