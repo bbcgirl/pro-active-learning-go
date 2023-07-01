@@ -122,4 +122,12 @@ func (r *repository) InsertExamplesFromReader(reader io.Reader) error {
 }
 
 func (r *repository) searchExamples(query string, args ...interface{}) (model.Examples, error) {
-	examples := model.Ex
+	examples := model.Examples{}
+	err := r.db.Select(&examples, query, args...)
+	if err != nil {
+		return nil, err
+	}
+	return examples, nil
+}
+
+func (r *repository) findExample(query string, args ...interface{}) (*model.Example, er
