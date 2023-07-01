@@ -115,4 +115,11 @@ func (r *repository) InsertExamplesFromReader(reader io.Reader) error {
 			return err
 		}
 	}
-	if err 
+	if err := scanner.Err(); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (r *repository) searchExamples(query string, args ...interface{}) (model.Examples, error) {
+	examples := model.Ex
