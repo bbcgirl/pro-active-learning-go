@@ -130,4 +130,17 @@ func (r *repository) searchExamples(query string, args ...interface{}) (model.Ex
 	return examples, nil
 }
 
-func (r *repository) findExample(query string, args ...interface{}) (*model.Example, er
+func (r *repository) findExample(query string, args ...interface{}) (*model.Example, error) {
+	e := model.Example{}
+
+	err := r.db.Get(&e, query, args...)
+	if err != nil {
+		if err == sql.ErrNoRows {
+			return nil, exampleNotFoundError
+		}
+		return nil, err
+	}
+	return &e, nil
+}
+
+func (r *
