@@ -143,4 +143,9 @@ func (r *repository) findExample(query string, args ...interface{}) (*model.Exam
 	return &e, nil
 }
 
-func (r *
+func (r *repository) SearchExamples() (model.Examples, error) {
+	query := `SELECT * FROM example;`
+	return r.searchExamples(query)
+}
+
+func (r *repository) SearchRecentExamples(from time.Time, limit int) (model.Exampl
