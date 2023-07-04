@@ -148,4 +148,9 @@ func (r *repository) SearchExamples() (model.Examples, error) {
 	return r.searchExamples(query)
 }
 
-func (r *repository) SearchRecentExamples(from time.Time, limit int) (model.Exampl
+func (r *repository) SearchRecentExamples(from time.Time, limit int) (model.Examples, error) {
+	query := `SELECT * FROM example WHERE created_at > $1 ORDER BY updated_at DESC LIMIT $2;`
+	return r.searchExamples(query, from, limit)
+}
+
+func (r *repository) SearchRece
