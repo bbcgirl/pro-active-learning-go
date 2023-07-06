@@ -159,4 +159,9 @@ func (r *repository) SearchRecentExamplesByHost(host string, from time.Time, lim
 }
 
 func (r *repository) SearchExamplesByLabel(label model.LabelType, limit int) (model.Examples, error) {
-	query := `SELECT * FROM example WHERE label = $1 ORD
+	query := `SELECT * FROM example WHERE label = $1 ORDER BY updated_at DESC LIMIT $2;`
+	return r.searchExamples(query, label, limit)
+}
+
+func (r *repository) SearchLabeledExamples(limit int) (model.Examples, error) {
+	query := `SELECT * FROM example WHERE label 
