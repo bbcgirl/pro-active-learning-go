@@ -155,4 +155,8 @@ func (r *repository) SearchRecentExamples(from time.Time, limit int) (model.Exam
 
 func (r *repository) SearchRecentExamplesByHost(host string, from time.Time, limit int) (model.Examples, error) {
 	query := `SELECT * FROM example WHERE final_url like $1 || '%' AND created_at > $2 ORDER BY updated_at DESC LIMIT $3;`
-	ret
+	return r.searchExamples(query, host, from, limit)
+}
+
+func (r *repository) SearchExamplesByLabel(label model.LabelType, limit int) (model.Examples, error) {
+	query := `SELECT * FROM example WHERE label = $1 ORD
