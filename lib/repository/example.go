@@ -169,4 +169,11 @@ func (r *repository) SearchLabeledExamples(limit int) (model.Examples, error) {
 }
 
 func (r *repository) SearchPositiveExamples(limit int) (model.Examples, error) {
-	return r.SearchExamplesByLab
+	return r.SearchExamplesByLabel(model.POSITIVE, limit)
+}
+
+func (r *repository) SearchNegativeExamples(limit int) (model.Examples, error) {
+	return r.SearchExamplesByLabel(model.NEGATIVE, limit)
+}
+
+func (r *repository
