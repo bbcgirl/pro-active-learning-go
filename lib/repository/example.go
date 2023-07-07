@@ -164,4 +164,9 @@ func (r *repository) SearchExamplesByLabel(label model.LabelType, limit int) (mo
 }
 
 func (r *repository) SearchLabeledExamples(limit int) (model.Examples, error) {
-	query := `SELECT * FROM example WHERE label 
+	query := `SELECT * FROM example WHERE label != 0 ORDER BY updated_at DESC LIMIT $1;`
+	return r.searchExamples(query, limit)
+}
+
+func (r *repository) SearchPositiveExamples(limit int) (model.Examples, error) {
+	return r.SearchExamplesByLab
