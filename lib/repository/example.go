@@ -185,4 +185,10 @@ func (r *repository) SearchPositiveScoredExamples(limit int) (model.Examples, er
 	return r.searchExamples(query, limit)
 }
 
-func (r *repository) FindExampleByUlr(url str
+func (r *repository) FindExampleByUlr(url string) (*model.Example, error) {
+	query := `SELECT * FROM example WHERE url = $1;`
+	return r.findExample(query, url)
+}
+
+// bodyなどは極めて長くなりえるので、DB側で絞って返すことができるようにする
+func buildSelectQuery(useTruncatedFiel
