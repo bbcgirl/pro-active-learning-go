@@ -180,4 +180,9 @@ func (r *repository) SearchUnlabeledExamples(limit int) (model.Examples, error) 
 	return r.SearchExamplesByLabel(model.UNLABELED, limit)
 }
 
-func (r *repository) SearchPositiveScoredExamples
+func (r *repository) SearchPositiveScoredExamples(limit int) (model.Examples, error) {
+	query := `SELECT * FROM example WHERE score > 0 ORDER BY updated_at DESC LIMIT $1;`
+	return r.searchExamples(query, limit)
+}
+
+func (r *repository) FindExampleByUlr(url str
