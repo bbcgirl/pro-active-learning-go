@@ -176,4 +176,8 @@ func (r *repository) SearchNegativeExamples(limit int) (model.Examples, error) {
 	return r.SearchExamplesByLabel(model.NEGATIVE, limit)
 }
 
-func (r *repository
+func (r *repository) SearchUnlabeledExamples(limit int) (model.Examples, error) {
+	return r.SearchExamplesByLabel(model.UNLABELED, limit)
+}
+
+func (r *repository) SearchPositiveScoredExamples
