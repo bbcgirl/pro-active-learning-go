@@ -191,4 +191,12 @@ func (r *repository) FindExampleByUlr(url string) (*model.Example, error) {
 }
 
 // bodyなどは極めて長くなりえるので、DB側で絞って返すことができるようにする
-func buildSelectQuery(useTruncatedFiel
+func buildSelectQuery(useTruncatedField bool) string {
+	title := "title"
+	description := "description"
+	ogDescription := "og_description"
+	body := "body"
+
+	if useTruncatedField {
+		title = "LEFT(title, 200) AS title"
+		descript
