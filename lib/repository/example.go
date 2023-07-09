@@ -203,4 +203,6 @@ func buildSelectQuery(useTruncatedField bool) string {
 		ogDescription = "LEFT(og_description, 1000) AS og_description"
 		body = "LEFT(body, 1000) AS body"
 	}
-	return fmt.Spr
+	return fmt.Sprintf("SELECT id, label, url, final_url, %s, %s, %s, og_type, og_image, %s, score, is_new, status_code, favicon, error_count, created_at, updated_at", title, description, ogDescription, body)
+}
+
