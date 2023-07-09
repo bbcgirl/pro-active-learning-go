@@ -199,4 +199,8 @@ func buildSelectQuery(useTruncatedField bool) string {
 
 	if useTruncatedField {
 		title = "LEFT(title, 200) AS title"
-		descript
+		description = "LEFT(description, 1000) AS description"
+		ogDescription = "LEFT(og_description, 1000) AS og_description"
+		body = "LEFT(body, 1000) AS body"
+	}
+	return fmt.Spr
