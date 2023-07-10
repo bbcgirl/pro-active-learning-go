@@ -206,3 +206,9 @@ func buildSelectQuery(useTruncatedField bool) string {
 	return fmt.Sprintf("SELECT id, label, url, final_url, %s, %s, %s, og_type, og_image, %s, score, is_new, status_code, favicon, error_count, created_at, updated_at", title, description, ogDescription, body)
 }
 
+func (r *repository) FindExampleById(id int) (*model.Example, error) {
+	query := fmt.Sprintf(`%s FROM example WHERE id = $1;`, buildSelectQuery(true))
+	return r.findExample(query, id)
+}
+
+func (r *repo
