@@ -214,4 +214,11 @@ func (r *repository) FindExampleById(id int) (*model.Example, error) {
 func (r *repository) SearchExamplesByUlrs(urls []string) (model.Examples, error) {
 	// ref: https://godoc.org/github.com/lib/pq#Array
 	query := `SELECT * FROM example WHERE url = ANY($1);`
-	return r.searchExa
+	return r.searchExamples(query, pq.Array(urls))
+}
+
+func (r *repository) SearchExamplesByIds(ids []int) (model.Examples, error) {
+	if len(ids) == 0 {
+		return model.Examples{}, nil
+	}
+	query := fmt.Sprintf(`%s FROM example
