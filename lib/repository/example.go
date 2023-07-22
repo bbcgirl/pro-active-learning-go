@@ -234,4 +234,9 @@ func (r *repository) SearchExamplesByKeywords(keywords []string, aggregator stri
 		regexList = append(regexList, fmt.Sprintf(`.*%s.*`, w))
 	}
 	query := fmt.Sprintf(`%s FROM example WHERE title ~* %s($1) AND label != -1 ORDER BY (label, score) DESC LIMIT $2;`, buildSelectQuery(true), aggregator)
-	return r.searchExampl
+	return r.searchExamples(query, pq.Array(regexList), limit)
+}
+
+func (r *repository) countExamplesByLabel(label model.LabelType) (int, error) {
+	cnt := 0
+	err := r.db.Get(&cnt, `SELECT COU
