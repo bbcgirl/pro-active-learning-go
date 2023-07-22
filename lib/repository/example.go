@@ -254,4 +254,9 @@ func (r *repository) CountNegativeExamples() (int, error) {
 	return r.countExamplesByLabel(model.NEGATIVE)
 }
 
-func (r *repository) CountUnlabeledExamples()
+func (r *repository) CountUnlabeledExamples() (int, error) {
+	return r.countExamplesByLabel(model.UNLABELED)
+}
+
+func (r *repository) FindFeatureVector(e *model.Example) (feature.FeatureVector, error) {
+	fv := feature.Fea
