@@ -239,4 +239,12 @@ func (r *repository) SearchExamplesByKeywords(keywords []string, aggregator stri
 
 func (r *repository) countExamplesByLabel(label model.LabelType) (int, error) {
 	cnt := 0
-	err := r.db.Get(&cnt, `SELECT COU
+	err := r.db.Get(&cnt, `SELECT COUNT(*) FROM example WHERE label = $1`, label)
+	if err != nil {
+		return 0, err
+	}
+	return cnt, nil
+}
+
+func (r *repository) CountPositiveExamples() (int, error) {
+	return r.cou
