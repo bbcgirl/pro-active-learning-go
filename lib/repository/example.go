@@ -247,4 +247,11 @@ func (r *repository) countExamplesByLabel(label model.LabelType) (int, error) {
 }
 
 func (r *repository) CountPositiveExamples() (int, error) {
-	return r.cou
+	return r.countExamplesByLabel(model.POSITIVE)
+}
+
+func (r *repository) CountNegativeExamples() (int, error) {
+	return r.countExamplesByLabel(model.NEGATIVE)
+}
+
+func (r *repository) CountUnlabeledExamples()
