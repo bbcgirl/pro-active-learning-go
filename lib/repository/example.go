@@ -266,4 +266,12 @@ func (r *repository) FindFeatureVector(e *model.Example) (feature.FeatureVector,
 	}
 	id := tmp.Id
 	query := `SELECT feature FROM feature WHERE example_id = $1;`
-	err = r.db.Select(&fv,
+	err = r.db.Select(&fv, query, id)
+	if err != nil {
+		return fv, err
+	}
+	return fv, nil
+}
+
+func (r *repository) SearchFeatureVector(examples model.Examples) (map[int]feature.FeatureVector, error) {
+	type Pair s
