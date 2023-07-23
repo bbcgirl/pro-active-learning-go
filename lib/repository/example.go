@@ -274,4 +274,11 @@ func (r *repository) FindFeatureVector(e *model.Example) (feature.FeatureVector,
 }
 
 func (r *repository) SearchFeatureVector(examples model.Examples) (map[int]feature.FeatureVector, error) {
-	type Pair s
+	type Pair struct {
+		ExampleId int    `db:"example_id"`
+		Feature   string `db:"feature"`
+	}
+
+	fvById := make(map[int]feature.FeatureVector)
+	urls := make([]string, 0)
+	for _, e := range ex
