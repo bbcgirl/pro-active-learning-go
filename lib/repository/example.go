@@ -259,4 +259,11 @@ func (r *repository) CountUnlabeledExamples() (int, error) {
 }
 
 func (r *repository) FindFeatureVector(e *model.Example) (feature.FeatureVector, error) {
-	fv := feature.Fea
+	fv := feature.FeatureVector{}
+	tmp, err := r.FindExampleByUlr(e.Url)
+	if err != nil {
+		return fv, err
+	}
+	id := tmp.Id
+	query := `SELECT feature FROM feature WHERE example_id = $1;`
+	err = r.db.Select(&fv,
