@@ -281,4 +281,15 @@ func (r *repository) SearchFeatureVector(examples model.Examples) (map[int]featu
 
 	fvById := make(map[int]feature.FeatureVector)
 	urls := make([]string, 0)
-	for _, e := range ex
+	for _, e := range examples {
+		urls = append(urls, e.Url)
+	}
+
+	tmp, err := r.SearchExamplesByUlrs(urls)
+	if err != nil {
+		return fvById, err
+	}
+	ids := make([]int, 0)
+	for _, e := range tmp {
+		ids = append(ids, e.Id)
+	}
