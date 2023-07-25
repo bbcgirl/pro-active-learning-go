@@ -293,3 +293,9 @@ func (r *repository) SearchFeatureVector(examples model.Examples) (map[int]featu
 	for _, e := range tmp {
 		ids = append(ids, e.Id)
 	}
+
+	query := `SELECT example_id, feature FROM feature WHERE example_id = ANY($1);`
+	pairs := make([]Pair, 0)
+	err = r.db.Select(&pairs, query, pq.Array(ids))
+	if err != nil {
+		return fvById, e
