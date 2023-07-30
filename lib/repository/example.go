@@ -298,4 +298,13 @@ func (r *repository) SearchFeatureVector(examples model.Examples) (map[int]featu
 	pairs := make([]Pair, 0)
 	err = r.db.Select(&pairs, query, pq.Array(ids))
 	if err != nil {
-		return fvById, e
+		return fvById, err
+	}
+
+	for _, pair := range pairs {
+		fvById[pair.ExampleId] = append(fvById[pair.ExampleId], pair.Feature)
+	}
+	return fvById, nil
+}
+
+func (r *repository) DeleteAllExamples() e
