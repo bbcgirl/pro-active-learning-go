@@ -307,4 +307,7 @@ func (r *repository) SearchFeatureVector(examples model.Examples) (map[int]featu
 	return fvById, nil
 }
 
-func (r *repository) DeleteAllExamples() e
+func (r *repository) DeleteAllExamples() error {
+	_, err := r.db.Exec(`DELETE FROM example;`)
+	return err
+}
