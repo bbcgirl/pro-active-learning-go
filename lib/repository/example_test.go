@@ -35,4 +35,12 @@ func TestPing(t *testing.T) {
 	}
 }
 
-func TestInsertExampl
+func TestInsertExamplesFromReader(t *testing.T) {
+	repo, err := repository.New()
+	if err != nil {
+		t.Errorf(err.Error())
+	}
+	defer repo.Close()
+
+	if err = repo.DeleteAllExamples(); err != nil {
+		t.
