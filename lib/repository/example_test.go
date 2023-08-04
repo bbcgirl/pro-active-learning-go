@@ -23,4 +23,16 @@ func TestMain(m *testing.M) {
 	os.Exit(ret)
 }
 
-func TestPing(t *testing.
+func TestPing(t *testing.T) {
+	repo, err := repository.New()
+	if err != nil {
+		t.Errorf(err.Error())
+	}
+	defer repo.Close()
+
+	if err := repo.Ping(); err != nil {
+		t.Errorf(err.Error())
+	}
+}
+
+func TestInsertExampl
