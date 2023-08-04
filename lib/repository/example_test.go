@@ -12,4 +12,15 @@ import (
 	"github.com/syou6162/go-active-learning/lib/repository"
 )
 
-func TestMai
+func TestMain(m *testing.M) {
+	repo, err := repository.New()
+	if err != nil {
+		log.Fatal(err.Error())
+	}
+	defer repo.Close()
+
+	ret := m.Run()
+	os.Exit(ret)
+}
+
+func TestPing(t *testing.
