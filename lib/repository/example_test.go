@@ -43,4 +43,14 @@ func TestInsertExamplesFromReader(t *testing.T) {
 	defer repo.Close()
 
 	if err = repo.DeleteAllExamples(); err != nil {
-		t.
+		t.Error(err)
+	}
+
+	fp, err := os.Open("../../tech_input_example.txt")
+	defer fp.Close()
+	if err != nil {
+		t.Error(err)
+	}
+	repo.InsertExamplesFromReader(fp)
+
+	examples, err := repo.Searc
