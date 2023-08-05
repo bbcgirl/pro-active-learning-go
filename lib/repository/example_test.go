@@ -79,4 +79,11 @@ func TestInsertOrUpdateExample(t *testing.T) {
 	}
 
 	examples, err := repo.SearchExamples()
-	if err 
+	if err != nil {
+		t.Error(err)
+	}
+	if len(examples) != 1 {
+		t.Errorf("len(examples) == %d, want 1", len(examples))
+	}
+	if examples[0].Label != model.UNLABELED {
+		t.Errorf("label == %d, want 0",
