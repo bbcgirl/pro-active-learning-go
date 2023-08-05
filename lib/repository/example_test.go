@@ -72,3 +72,11 @@ func TestInsertOrUpdateExample(t *testing.T) {
 	if err = repo.DeleteAllExamples(); err != nil {
 		t.Error(err)
 	}
+
+	err = repo.UpdateOrCreateExample(example.NewExample("http://hoge.com", model.UNLABELED))
+	if err != nil {
+		t.Error(err)
+	}
+
+	examples, err := repo.SearchExamples()
+	if err 
