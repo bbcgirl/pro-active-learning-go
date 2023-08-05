@@ -53,4 +53,13 @@ func TestInsertExamplesFromReader(t *testing.T) {
 	}
 	repo.InsertExamplesFromReader(fp)
 
-	examples, err := repo.Searc
+	examples, err := repo.SearchExamples()
+	if err != nil {
+		t.Error(err)
+	}
+	if len(examples) == 0 {
+		t.Errorf("len(examples) > 0, but %d", len(examples))
+	}
+}
+
+func TestInsertOrUpdateExample(t *testing.T) {
