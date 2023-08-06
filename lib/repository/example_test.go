@@ -86,4 +86,12 @@ func TestInsertOrUpdateExample(t *testing.T) {
 		t.Errorf("len(examples) == %d, want 1", len(examples))
 	}
 	if examples[0].Label != model.UNLABELED {
-		t.Errorf("label == %d, want 0",
+		t.Errorf("label == %d, want 0", examples[0].Label)
+	}
+	if examples[0].Id == 0 {
+		t.Error("id must not be 0")
+	}
+
+	// same url
+	err = repo.UpdateOrCreateExample(example.NewExample("http://hoge.com", model.NEGATIVE))
+	if err != nil 
