@@ -127,4 +127,13 @@ func TestInsertOrUpdateExample(t *testing.T) {
 	}
 
 	// cannot update to unlabeled
-	err = repo.UpdateOrCreateExample(examp
+	err = repo.UpdateOrCreateExample(example.NewExample("http://hoge.com", model.UNLABELED))
+	if err != nil {
+		t.Error(err)
+	}
+
+	examples, err = repo.SearchExamples()
+	if err != nil {
+		t.Error(err)
+	}
+	i
