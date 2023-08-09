@@ -110,4 +110,14 @@ func TestInsertOrUpdateExample(t *testing.T) {
 	}
 
 	// same url but different label
-	err = repo.UpdateOrCreateExample(example.NewExample("http://hoge.
+	err = repo.UpdateOrCreateExample(example.NewExample("http://hoge.com", model.POSITIVE))
+	if err != nil {
+		t.Error(err)
+	}
+
+	examples, err = repo.SearchExamples()
+	if err != nil {
+		t.Error(err)
+	}
+	if len(examples) != 1 {
+		t.Errorf("len(examples) == %d, wan
