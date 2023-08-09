@@ -105,4 +105,9 @@ func TestInsertOrUpdateExample(t *testing.T) {
 	if len(examples) != 1 {
 		t.Errorf("len(examples) == %d, want 1", len(examples))
 	}
-	if e
+	if examples[0].Label != model.NEGATIVE {
+		t.Errorf("label == %d, want -1", examples[0].Label)
+	}
+
+	// same url but different label
+	err = repo.UpdateOrCreateExample(example.NewExample("http://hoge.
