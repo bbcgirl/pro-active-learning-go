@@ -149,4 +149,14 @@ func TestInsertOrUpdateExample(t *testing.T) {
 		t.Error(err)
 	}
 
-	examples, err = 
+	examples, err = repo.SearchExamples()
+	if err != nil {
+		t.Error(err)
+	}
+	if len(examples) != 2 {
+		t.Errorf("len(examples) == %d, want 2", len(examples))
+	}
+}
+
+func TestUpdateScore(t *testing.T) {
+	re
