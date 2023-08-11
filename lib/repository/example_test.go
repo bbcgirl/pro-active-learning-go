@@ -159,4 +159,14 @@ func TestInsertOrUpdateExample(t *testing.T) {
 }
 
 func TestUpdateScore(t *testing.T) {
-	re
+	repo, err := repository.New()
+	if err != nil {
+		t.Errorf(err.Error())
+	}
+	defer repo.Close()
+
+	if err = repo.DeleteAllExamples(); err != nil {
+		t.Error(err)
+	}
+
+	url := "http://hoge.c
