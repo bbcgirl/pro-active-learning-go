@@ -136,4 +136,9 @@ func TestInsertOrUpdateExample(t *testing.T) {
 	if err != nil {
 		t.Error(err)
 	}
-	i
+	if len(examples) != 1 {
+		t.Errorf("len(examples) == %d, want 1", len(examples))
+	}
+	if examples[0].Label != model.POSITIVE {
+		t.Errorf("label == %d, want 1", examples[0].Label)
+	}
