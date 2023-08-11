@@ -142,3 +142,11 @@ func TestInsertOrUpdateExample(t *testing.T) {
 	if examples[0].Label != model.POSITIVE {
 		t.Errorf("label == %d, want 1", examples[0].Label)
 	}
+
+	// different url
+	err = repo.UpdateOrCreateExample(example.NewExample("http://another.com", model.NEGATIVE))
+	if err != nil {
+		t.Error(err)
+	}
+
+	examples, err = 
