@@ -191,4 +191,14 @@ func TestUpdateScore(t *testing.T) {
 		t.Error(err)
 	}
 
-	e, err =
+	e, err = repo.FindExampleByUlr(url)
+	if err != nil {
+		t.Error(err)
+	}
+	if e.Score != 100.0 {
+		t.Errorf("e.Score == %f, want 100.0", e.Score)
+	}
+}
+
+func TestErrorCount(t *testing.T) {
+	repo, err
