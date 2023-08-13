@@ -201,4 +201,14 @@ func TestUpdateScore(t *testing.T) {
 }
 
 func TestErrorCount(t *testing.T) {
-	repo, err
+	repo, err := repository.New()
+	if err != nil {
+		t.Errorf(err.Error())
+	}
+	defer repo.Close()
+
+	if err = repo.DeleteAllExamples(); err != nil {
+		t.Error(err)
+	}
+
+	existingUrl := example.NewE
