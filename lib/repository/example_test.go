@@ -169,4 +169,13 @@ func TestUpdateScore(t *testing.T) {
 		t.Error(err)
 	}
 
-	url := "http://hoge.c
+	url := "http://hoge.com"
+	e := example.NewExample(url, model.UNLABELED)
+	e.Score = 1.0
+	err = repo.UpdateOrCreateExample(e)
+	if err != nil {
+		t.Error(err)
+	}
+
+	e, err = repo.FindExampleByUlr(url)
+	if err != n
