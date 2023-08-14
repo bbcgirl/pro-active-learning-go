@@ -211,4 +211,8 @@ func TestErrorCount(t *testing.T) {
 		t.Error(err)
 	}
 
-	existingUrl := example.NewE
+	existingUrl := example.NewExample("https://github.com", model.POSITIVE)
+	nonExistingUrl := example.NewExample("http://hoge.fuga", model.NEGATIVE)
+	examples := model.Examples{existingUrl, nonExistingUrl}
+
+	for _, e := range examples 
