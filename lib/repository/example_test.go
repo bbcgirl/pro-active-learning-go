@@ -223,3 +223,13 @@ func TestErrorCount(t *testing.T) {
 		cnt, err := repo.GetErrorCount(e)
 		if err != nil {
 			t.Errorf("Cannot get error count: %s", err.Error())
+		}
+		if cnt != 0 {
+			t.Errorf("Error count must be 0 for %s", e.Url)
+		}
+	}
+
+	for _, e := range examples {
+		err := repo.IncErrorCount(e)
+		if err != nil {
+			t.Errorf("
