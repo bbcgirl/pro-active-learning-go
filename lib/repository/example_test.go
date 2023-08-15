@@ -215,4 +215,11 @@ func TestErrorCount(t *testing.T) {
 	nonExistingUrl := example.NewExample("http://hoge.fuga", model.NEGATIVE)
 	examples := model.Examples{existingUrl, nonExistingUrl}
 
-	for _, e := range examples 
+	for _, e := range examples {
+		if err := repo.UpdateOrCreateExample(e); err != nil {
+			t.Error(err)
+		}
+
+		cnt, err := repo.GetErrorCount(e)
+		if err != nil {
+			t.Errorf("Cannot get error count: %s", err.Error())
