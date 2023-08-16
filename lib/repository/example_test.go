@@ -241,4 +241,15 @@ func TestErrorCount(t *testing.T) {
 		if err != nil {
 			t.Errorf("Cannot get error count: %s", err.Error())
 		}
-		if 
+		if cnt != 1 {
+			t.Errorf("Error count must be 1 for %s", e.Url)
+		}
+	}
+}
+
+func TestReadLabeledExamples(t *testing.T) {
+	repo, err := repository.New()
+	if err != nil {
+		t.Errorf(err.Error())
+	}
+	de
