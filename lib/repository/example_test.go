@@ -266,4 +266,14 @@ func TestReadLabeledExamples(t *testing.T) {
 	if err != nil {
 		t.Error(err)
 	}
-	err = repo.UpdateOrCreateExample(example.NewExampl
+	err = repo.UpdateOrCreateExample(example.NewExample("http://hoge3.com", model.UNLABELED))
+	if err != nil {
+		t.Error(err)
+	}
+
+	examples, err := repo.SearchLabeledExamples(10)
+	if err != nil {
+		t.Error(err)
+	}
+	if len(examples) != 2 {
+		t.Errorf("len(e
