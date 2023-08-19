@@ -276,4 +276,15 @@ func TestReadLabeledExamples(t *testing.T) {
 		t.Error(err)
 	}
 	if len(examples) != 2 {
-		t.Errorf("len(e
+		t.Errorf("len(examples) == %d, want 2", len(examples))
+	}
+}
+
+func TestReadRecentExamples(t *testing.T) {
+	repo, err := repository.New()
+	if err != nil {
+		t.Errorf(err.Error())
+	}
+	defer repo.Close()
+
+	if err = rep
