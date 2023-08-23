@@ -287,4 +287,12 @@ func TestReadRecentExamples(t *testing.T) {
 	}
 	defer repo.Close()
 
-	if err = rep
+	if err = repo.DeleteAllExamples(); err != nil {
+		t.Error(err)
+	}
+
+	err = repo.UpdateOrCreateExample(example.NewExample("http://hoge1.com", model.POSITIVE))
+	if err != nil {
+		t.Error(err)
+	}
+	err = repo.UpdateOrCreateExample(exa
