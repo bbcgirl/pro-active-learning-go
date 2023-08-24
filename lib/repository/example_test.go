@@ -300,4 +300,13 @@ func TestReadRecentExamples(t *testing.T) {
 		t.Error(err)
 	}
 	err = repo.UpdateOrCreateExample(example.NewExample("http://hoge3.com", model.UNLABELED))
-	if 
+	if err != nil {
+		t.Error(err)
+	}
+
+	examples, err := repo.SearchRecentExamples(time.Now().Add(time.Duration(-10)*time.Minute), 10)
+	if err != nil {
+		t.Error(err)
+	}
+	if len(examples) != 3 {
+		t.Errorf("len(examples) =
