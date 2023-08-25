@@ -309,4 +309,15 @@ func TestReadRecentExamples(t *testing.T) {
 		t.Error(err)
 	}
 	if len(examples) != 3 {
-		t.Errorf("len(examples) =
+		t.Errorf("len(examples) == %d, want 3", len(examples))
+	}
+}
+
+func TestReadRecentExamplesByHost(t *testing.T) {
+	repo, err := repository.New()
+	if err != nil {
+		t.Errorf(err.Error())
+	}
+	defer repo.Close()
+
+	if err =
