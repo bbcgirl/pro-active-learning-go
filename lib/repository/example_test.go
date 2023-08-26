@@ -332,4 +332,9 @@ func TestReadRecentExamplesByHost(t *testing.T) {
 	if err != nil {
 		t.Error(err)
 	}
-	err = repo.UpdateOrCreateExample(example.NewExampl
+	err = repo.UpdateOrCreateExample(example.NewExample("http://hoge3.com", model.UNLABELED))
+	if err != nil {
+		t.Error(err)
+	}
+
+	examples, err := repo.SearchRecentExamplesByHost("http://hoge1.com", time.Now().Add(time.Duration(-10)*time.
