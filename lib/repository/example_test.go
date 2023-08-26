@@ -328,3 +328,8 @@ func TestReadRecentExamplesByHost(t *testing.T) {
 	if err != nil {
 		t.Error(err)
 	}
+	err = repo.UpdateOrCreateExample(example.NewExample("http://hoge2.com", model.NEGATIVE))
+	if err != nil {
+		t.Error(err)
+	}
+	err = repo.UpdateOrCreateExample(example.NewExampl
