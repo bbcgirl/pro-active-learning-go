@@ -337,4 +337,13 @@ func TestReadRecentExamplesByHost(t *testing.T) {
 		t.Error(err)
 	}
 
-	examples, err := repo.SearchRecentExamplesByHost("http://hoge1.com", time.Now().Add(time.Duration(-10)*time.
+	examples, err := repo.SearchRecentExamplesByHost("http://hoge1.com", time.Now().Add(time.Duration(-10)*time.Minute), 10)
+	if err != nil {
+		t.Error(err)
+	}
+	if len(examples) != 1 {
+		t.Errorf("len(examples) == %d, want 1", len(examples))
+	}
+}
+
+func TestSearchExamplesByUlr(t *testing.T) {
