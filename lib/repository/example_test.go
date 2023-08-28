@@ -347,3 +347,14 @@ func TestReadRecentExamplesByHost(t *testing.T) {
 }
 
 func TestSearchExamplesByUlr(t *testing.T) {
+	repo, err := repository.New()
+	if err != nil {
+		t.Errorf(err.Error())
+	}
+	defer repo.Close()
+
+	if err = repo.DeleteAllExamples(); err != nil {
+		t.Error(err)
+	}
+
+	err = re
