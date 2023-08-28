@@ -357,4 +357,8 @@ func TestSearchExamplesByUlr(t *testing.T) {
 		t.Error(err)
 	}
 
-	err = re
+	err = repo.UpdateOrCreateExample(example.NewExample("http://hoge1.com", model.NEGATIVE))
+	if err != nil {
+		t.Error(err)
+	}
+	err = repo.UpdateOrCreateExample(example.NewExample("http://hoge2.com", model.NEGATIVE)
