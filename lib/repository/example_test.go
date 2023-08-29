@@ -370,4 +370,9 @@ func TestSearchExamplesByUlr(t *testing.T) {
 		t.Error(err)
 	}
 
-	e
+	example, err := repo.FindExampleByUlr("http://hoge1.com")
+	if err != nil {
+		t.Error(err)
+	}
+	if example.Url == "" {
+		t.Errorf("example.Url
