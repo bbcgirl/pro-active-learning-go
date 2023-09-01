@@ -384,4 +384,12 @@ func TestSearchExamplesByUlr(t *testing.T) {
 	}
 }
 
-func TestSearchExamplesByUlrs(t *te
+func TestSearchExamplesByUlrs(t *testing.T) {
+	repo, err := repository.New()
+	if err != nil {
+		t.Errorf(err.Error())
+	}
+	defer repo.Close()
+
+	if err = repo.DeleteAllExamples(); err != nil {
+		t.
