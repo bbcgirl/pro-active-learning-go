@@ -413,4 +413,12 @@ func TestSearchExamplesByUlrs(t *testing.T) {
 		t.Error(err)
 	}
 	if len(examples) != 2 {
-		t.Errorf("le
+		t.Errorf("len(examples) == %d, want 2", len(examples))
+	}
+}
+
+func TestSearchExamplesByLabels(t *testing.T) {
+	repo, err := repository.New()
+	if err != nil {
+		t.Errorf(err.Error())
+	}
