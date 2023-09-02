@@ -430,3 +430,10 @@ func TestSearchExamplesByLabels(t *testing.T) {
 
 	err = repo.UpdateOrCreateExample(example.NewExample("http://hoge1.com", model.POSITIVE))
 	if err != nil {
+		t.Error(err)
+	}
+	err = repo.UpdateOrCreateExample(example.NewExample("http://hoge2.com", model.NEGATIVE))
+	if err != nil {
+		t.Error(err)
+	}
+	err = repo.UpdateOrCreateExample(example.
