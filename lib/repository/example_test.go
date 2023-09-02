@@ -406,3 +406,11 @@ func TestSearchExamplesByUlrs(t *testing.T) {
 	err = repo.UpdateOrCreateExample(example.NewExample("http://hoge3.com", model.UNLABELED))
 	if err != nil {
 		t.Error(err)
+	}
+
+	examples, err := repo.SearchExamplesByUlrs([]string{"http://hoge1.com", "http://hoge2.com"})
+	if err != nil {
+		t.Error(err)
+	}
+	if len(examples) != 2 {
+		t.Errorf("le
