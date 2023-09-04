@@ -436,4 +436,13 @@ func TestSearchExamplesByLabels(t *testing.T) {
 	if err != nil {
 		t.Error(err)
 	}
-	err = repo.UpdateOrCreateExample(example.
+	err = repo.UpdateOrCreateExample(example.NewExample("http://hoge3.com", model.UNLABELED))
+	if err != nil {
+		t.Error(err)
+	}
+
+	examples, err := repo.SearchPositiveExamples(10)
+	if err != nil {
+		t.Error(err)
+	}
+	if len(examples) != 1 {
