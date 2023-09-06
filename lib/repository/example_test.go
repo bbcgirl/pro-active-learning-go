@@ -462,4 +462,13 @@ func TestSearchExamplesByLabels(t *testing.T) {
 		t.Error(err)
 	}
 	if len(examples) != 1 {
-		t.Errorf("len(e
+		t.Errorf("len(examples) == %d, want 1", len(examples))
+	}
+}
+
+func TestCountExamplesByLabels(t *testing.T) {
+	repo, err := repository.New()
+	if err != nil {
+		t.Errorf(err.Error())
+	}
+	defer repo.Cl
