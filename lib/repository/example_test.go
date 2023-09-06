@@ -446,3 +446,12 @@ func TestSearchExamplesByLabels(t *testing.T) {
 		t.Error(err)
 	}
 	if len(examples) != 1 {
+		t.Errorf("len(examples) == %d, want 1", len(examples))
+	}
+
+	examples, err = repo.SearchNegativeExamples(10)
+	if err != nil {
+		t.Error(err)
+	}
+	if len(examples) != 1 {
+		t.E
