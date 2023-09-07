@@ -471,4 +471,12 @@ func TestCountExamplesByLabels(t *testing.T) {
 	if err != nil {
 		t.Errorf(err.Error())
 	}
-	defer repo.Cl
+	defer repo.Close()
+
+	if err = repo.DeleteAllExamples(); err != nil {
+		t.Error(err)
+	}
+
+	err = repo.UpdateOrCreateExample(example.NewExample("http://hoge1.com", model.POSITIVE))
+	if err != nil {
+		t
