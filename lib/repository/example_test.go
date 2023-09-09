@@ -485,4 +485,14 @@ func TestCountExamplesByLabels(t *testing.T) {
 	if err != nil {
 		t.Error(err)
 	}
-	err = repo.UpdateOrCreateExample(example.NewExample("http://hoge3
+	err = repo.UpdateOrCreateExample(example.NewExample("http://hoge3.com", model.UNLABELED))
+	if err != nil {
+		t.Error(err)
+	}
+
+	cnt, err := repo.CountPositiveExamples()
+	if err != nil {
+		t.Error(err)
+	}
+	if cnt != 1 {
+		t.Errorf("len(posExamples) == %d, want 1", cnt)
