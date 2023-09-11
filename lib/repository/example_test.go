@@ -496,3 +496,15 @@ func TestCountExamplesByLabels(t *testing.T) {
 	}
 	if cnt != 1 {
 		t.Errorf("len(posExamples) == %d, want 1", cnt)
+	}
+
+	cnt, err = repo.CountNegativeExamples()
+	if err != nil {
+		t.Error(err)
+	}
+	if cnt != 1 {
+		t.Errorf("len(negExamples) == %d, want 1", cnt)
+	}
+
+	cnt, err = repo.CountUnlabeledExamples()
+	if err 
