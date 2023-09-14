@@ -507,4 +507,14 @@ func TestCountExamplesByLabels(t *testing.T) {
 	}
 
 	cnt, err = repo.CountUnlabeledExamples()
-	if err 
+	if err != nil {
+		t.Error(err)
+	}
+	if cnt != 1 {
+		t.Errorf("len(unlabeledExamples) == %d, want 1", cnt)
+	}
+}
+
+func TestFeatureVectorReadWrite(t *testing.T) {
+	repo, err := repository.New()
+	if er
