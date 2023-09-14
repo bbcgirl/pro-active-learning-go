@@ -526,4 +526,15 @@ func TestFeatureVectorReadWrite(t *testing.T) {
 		t.Error(err)
 	}
 
-	e1 := example.NewExample("http://hoge.com", model.UNLABEL
+	e1 := example.NewExample("http://hoge.com", model.UNLABELED)
+	err = repo.UpdateOrCreateExample(e1)
+	if err != nil {
+		t.Error(err)
+	}
+	e1.Fv = feature.FeatureVector{"BIAS"}
+
+	if err = repo.UpdateFeatureVector(e1); err != nil {
+		t.Error(err)
+	}
+
+	fv, err := repo.FindFea
