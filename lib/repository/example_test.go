@@ -517,4 +517,13 @@ func TestCountExamplesByLabels(t *testing.T) {
 
 func TestFeatureVectorReadWrite(t *testing.T) {
 	repo, err := repository.New()
-	if er
+	if err != nil {
+		t.Errorf(err.Error())
+	}
+	defer repo.Close()
+
+	if err = repo.DeleteAllExamples(); err != nil {
+		t.Error(err)
+	}
+
+	e1 := example.NewExample("http://hoge.com", model.UNLABEL
