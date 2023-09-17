@@ -546,4 +546,12 @@ func TestFeatureVectorReadWrite(t *testing.T) {
 	}
 
 	e2 := example.NewExample("http://fuga.com", model.UNLABELED)
-	err = repo.UpdateOrCre
+	err = repo.UpdateOrCreateExample(e2)
+	if err != nil {
+		t.Error(err)
+	}
+	e2.Fv = feature.FeatureVector{"hoge"}
+	if err = repo.UpdateFeatureVector(e2); err != nil {
+		t.Error(err)
+	}
+	fvList, err := repo.SearchFeat
