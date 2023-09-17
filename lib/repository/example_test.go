@@ -554,4 +554,12 @@ func TestFeatureVectorReadWrite(t *testing.T) {
 	if err = repo.UpdateFeatureVector(e2); err != nil {
 		t.Error(err)
 	}
-	fvList, err := repo.SearchFeat
+	fvList, err := repo.SearchFeatureVector(model.Examples{e1, e2})
+	if err != nil {
+		t.Error(err)
+	}
+	if len(fvList) != 2 {
+		t.Errorf("len(fvList) == %d, want 2", len(fvList))
+	}
+	if fvList[e2.Id][0] != "hoge" {
+		t.Errorf
