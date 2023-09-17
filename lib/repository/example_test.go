@@ -562,4 +562,11 @@ func TestFeatureVectorReadWrite(t *testing.T) {
 		t.Errorf("len(fvList) == %d, want 2", len(fvList))
 	}
 	if fvList[e2.Id][0] != "hoge" {
-		t.Errorf
+		t.Errorf("fvList[e2.Id][0] == %s, want hoge", fvList[e2.Id][0])
+	}
+}
+
+func TestSearchExamplesByWords(t *testing.T) {
+	repo, err := repository.New()
+	if err != nil {
+		t.Errorf(err.Error
