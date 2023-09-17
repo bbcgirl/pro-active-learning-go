@@ -537,4 +537,13 @@ func TestFeatureVectorReadWrite(t *testing.T) {
 		t.Error(err)
 	}
 
-	fv, err := repo.FindFea
+	fv, err := repo.FindFeatureVector(e1)
+	if err != nil {
+		t.Error(err)
+	}
+	if len(fv) != 1 {
+		t.Errorf("len(fv) == %d, want 1", len(fv))
+	}
+
+	e2 := example.NewExample("http://fuga.com", model.UNLABELED)
+	err = repo.UpdateOrCre
