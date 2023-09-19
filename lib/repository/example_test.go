@@ -588,4 +588,9 @@ func TestSearchExamplesByWords(t *testing.T) {
 	e2.Title = "英語"
 	err = repo.UpdateOrCreateExample(e2)
 	if err != nil {
-		
+		t.Error(err)
+	}
+
+	examples, err := repo.SearchExamplesByKeywords([]string{"日本語"}, "ALL", 100)
+	if len(examples) != 1 {
+		t.Errorf("len(examples) == %d, want 1"
