@@ -579,4 +579,13 @@ func TestSearchExamplesByWords(t *testing.T) {
 
 	e1 := example.NewExample("http://hoge.com", model.UNLABELED)
 	e1.Title = "日本語"
-	err = repo.UpdateOrCreateExample(e
+	err = repo.UpdateOrCreateExample(e1)
+	if err != nil {
+		t.Error(err)
+	}
+
+	e2 := example.NewExample("http://fuga.com", model.UNLABELED)
+	e2.Title = "英語"
+	err = repo.UpdateOrCreateExample(e2)
+	if err != nil {
+		
