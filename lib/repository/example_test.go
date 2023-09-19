@@ -569,4 +569,14 @@ func TestFeatureVectorReadWrite(t *testing.T) {
 func TestSearchExamplesByWords(t *testing.T) {
 	repo, err := repository.New()
 	if err != nil {
-		t.Errorf(err.Error
+		t.Errorf(err.Error())
+	}
+	defer repo.Close()
+
+	if err = repo.DeleteAllExamples(); err != nil {
+		t.Error(err)
+	}
+
+	e1 := example.NewExample("http://hoge.com", model.UNLABELED)
+	e1.Title = "日本語"
+	err = repo.UpdateOrCreateExample(e
