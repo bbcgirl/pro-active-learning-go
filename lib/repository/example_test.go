@@ -603,4 +603,8 @@ func TestSearchExamplesByWords(t *testing.T) {
 	if len(examples) != 0 {
 		t.Errorf("len(examples) == %d, want 0", len(examples))
 	}
-	examples, err = repo.Searc
+	examples, err = repo.SearchExamplesByKeywords([]string{"日本語", "英語"}, "ANY", 100)
+	if len(examples) != 2 {
+		t.Errorf("len(examples) == %d, want 2", len(examples))
+	}
+}
