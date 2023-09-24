@@ -9,4 +9,15 @@ import (
 	"github.com/syou6162/go-active-learning/lib/repository"
 )
 
-func TestUpdateHatenaBookmark(t *testing.T
+func TestUpdateHatenaBookmark(t *testing.T) {
+	repo, err := repository.New()
+	if err != nil {
+		t.Errorf(err.Error())
+	}
+	defer repo.Close()
+
+	if err = repo.DeleteAllExamples(); err != nil {
+		t.Error(err)
+	}
+
+	e := example.NewExample("http://hog
