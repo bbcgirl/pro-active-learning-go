@@ -20,4 +20,13 @@ func TestUpdateHatenaBookmark(t *testing.T) {
 		t.Error(err)
 	}
 
-	e := example.NewExample("http://hog
+	e := example.NewExample("http://hoge.com", model.UNLABELED)
+	err = repo.UpdateOrCreateExample(e)
+	if err != nil {
+		t.Error(err)
+	}
+	now := time.Now()
+	b1 := model.Bookmark{
+		User:      "syou6162",
+		Comment:   "面白いサイトですね",
+		Timestamp: model.Hatena
