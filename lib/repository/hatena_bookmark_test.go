@@ -38,4 +38,11 @@ func TestUpdateHatenaBookmark(t *testing.T) {
 		Count:     10,
 		Bookmarks: []*model.Bookmark{&b1},
 	}
-	e.
+	e.HatenaBookmark = &hb
+	if err = repo.UpdateHatenaBookmark(e); err != nil {
+		t.Error(err)
+	}
+
+	{
+		result, err := repo.SearchHatenaBookmarks(model.Examples{e}, 10)
+		if err
