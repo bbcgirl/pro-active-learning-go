@@ -45,4 +45,13 @@ func TestUpdateHatenaBookmark(t *testing.T) {
 
 	{
 		result, err := repo.SearchHatenaBookmarks(model.Examples{e}, 10)
-		if err
+		if err != nil {
+			t.Error(err)
+		}
+
+		for _, tmp := range result {
+			if tmp.Title == "" {
+				t.Error("Title must not be empty")
+			}
+			for _, b := range tmp.Bookmarks {
+		
