@@ -29,4 +29,13 @@ func TestUpdateHatenaBookmark(t *testing.T) {
 	b1 := model.Bookmark{
 		User:      "syou6162",
 		Comment:   "面白いサイトですね",
-		Timestamp: model.Hatena
+		Timestamp: model.HatenaBookmarkTime{Time: &now},
+		Tags:      model.Tags{"hack"},
+	}
+	hb := model.HatenaBookmark{
+		ExampleId: e.Id,
+		Title:     "hoge",
+		Count:     10,
+		Bookmarks: []*model.Bookmark{&b1},
+	}
+	e.
