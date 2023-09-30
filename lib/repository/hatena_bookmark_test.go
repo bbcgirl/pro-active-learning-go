@@ -65,4 +65,14 @@ func TestUpdateHatenaBookmark(t *testing.T) {
 	}
 
 	{
-		result, err := repo.FindHatenaBookm
+		result, err := repo.FindHatenaBookmark(e, 10)
+		if err != nil {
+			t.Error(err)
+		}
+
+		if result.Title == "" {
+			t.Error("Title must not be empty")
+		}
+		for _, b := range result.Bookmarks {
+			if b.User == "" {
+				
