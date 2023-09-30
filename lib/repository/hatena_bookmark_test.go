@@ -54,4 +54,15 @@ func TestUpdateHatenaBookmark(t *testing.T) {
 				t.Error("Title must not be empty")
 			}
 			for _, b := range tmp.Bookmarks {
-		
+				if b.User == "" {
+					t.Error("User must not be empty")
+				}
+				if len(b.Tags) == 0 {
+					t.Error("Tags must not be empty")
+				}
+			}
+		}
+	}
+
+	{
+		result, err := repo.FindHatenaBookm
