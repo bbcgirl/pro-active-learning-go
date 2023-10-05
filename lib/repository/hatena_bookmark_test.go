@@ -75,4 +75,11 @@ func TestUpdateHatenaBookmark(t *testing.T) {
 		}
 		for _, b := range result.Bookmarks {
 			if b.User == "" {
-				
+				t.Error("User must not be empty")
+			}
+			if len(b.Tags) == 0 {
+				t.Error("Tags must not be empty")
+			}
+		}
+	}
+}
