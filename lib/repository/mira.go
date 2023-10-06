@@ -12,4 +12,10 @@ func (r *repository) InsertMIRAModel(m classifier.MIRAClassifier) error {
 		return err
 	}
 	query := `INSERT INTO model (model_type, model, c, accuracy, precision, recall, fvalue) VALUES ($1, $2, $3, $4, $5, $6, $7);`
-	if _, err := r.db.Exec(query, m.ModelType, string(byt
+	if _, err := r.db.Exec(query, m.ModelType, string(bytes), m.C, m.Accuracy, m.Precision, m.Recall, m.Fvalue); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (r *repository) FindLatestMIRAModel(modelType classifier.ModelType) (*classifi
