@@ -11,4 +11,5 @@ func (r *repository) InsertMIRAModel(m classifier.MIRAClassifier) error {
 	if err != nil {
 		return err
 	}
-	q
+	query := `INSERT INTO model (model_type, model, c, accuracy, precision, recall, fvalue) VALUES ($1, $2, $3, $4, $5, $6, $7);`
+	if _, err := r.db.Exec(query, m.ModelType, string(byt
