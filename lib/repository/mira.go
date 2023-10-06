@@ -18,4 +18,10 @@ func (r *repository) InsertMIRAModel(m classifier.MIRAClassifier) error {
 	return nil
 }
 
-func (r *repository) FindLatestMIRAModel(modelType classifier.ModelType) (*classifi
+func (r *repository) FindLatestMIRAModel(modelType classifier.ModelType) (*classifier.MIRAClassifier, error) {
+	type Classifier struct {
+		Model string
+	}
+	tmp := Classifier{}
+
+	query := `SELECT model FROM model WHERE model_type = $1 ORDER BY created_at DE
