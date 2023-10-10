@@ -24,4 +24,11 @@ func (r *repository) FindLatestMIRAModel(modelType classifier.ModelType) (*class
 	}
 	tmp := Classifier{}
 
-	query := `SELECT model FROM model WHERE model_type = $1 ORDER BY created_at DE
+	query := `SELECT model FROM model WHERE model_type = $1 ORDER BY created_at DESC LIMIT 1;`
+	err := r.db.Get(&tmp, query, modelType)
+	if err != nil {
+		return nil, err
+	}
+
+	clf := classifier.MIRAClassifier{}
+	if err := json.Unmarshal(([]byte)(tmp.Model), &clf); err != nil
