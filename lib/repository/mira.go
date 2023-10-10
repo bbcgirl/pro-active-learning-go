@@ -31,4 +31,8 @@ func (r *repository) FindLatestMIRAModel(modelType classifier.ModelType) (*class
 	}
 
 	clf := classifier.MIRAClassifier{}
-	if err := json.Unmarshal(([]byte)(tmp.Model), &clf); err != nil
+	if err := json.Unmarshal(([]byte)(tmp.Model), &clf); err != nil {
+		return nil, err
+	}
+	return &clf, nil
+}
