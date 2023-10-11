@@ -21,3 +21,14 @@ func TestInsertMIRAModel(t *testing.T) {
 	err = repo.InsertMIRAModel(clf)
 	if err != nil {
 		t.Error(err)
+	}
+
+	{
+		clf, err := repo.FindLatestMIRAModel(classifier.EXAMPLE)
+		if err != nil {
+			t.Error(err)
+		}
+		if len(clf.Weight) == 0 {
+			t.Error("weight must not be empty")
+		}
+		if
