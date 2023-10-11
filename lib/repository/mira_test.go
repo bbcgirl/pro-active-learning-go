@@ -31,4 +31,8 @@ func TestInsertMIRAModel(t *testing.T) {
 		if len(clf.Weight) == 0 {
 			t.Error("weight must not be empty")
 		}
-		if
+		if clf.C != 10.0 {
+			t.Error("C must be 10.0")
+		}
+	}
+}
