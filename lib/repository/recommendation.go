@@ -7,4 +7,6 @@ import (
 
 func (r *repository) UpdateRecommendation(rec model.Recommendation) error {
 	if _, err := r.db.Exec(`DELETE FROM recommendation WHERE list_type = $1;`, rec.RecommendationListType); err != nil {
-		ret
+		return err
+	}
+	if _, err := r.db.Exec(`INSERT INTO recommendation (list_type, example_id) VALUES ($1, unnest(cast($2 AS INT[])));`, rec.RecommendationListType, pq.Array(rec.ExampleIds)); er
