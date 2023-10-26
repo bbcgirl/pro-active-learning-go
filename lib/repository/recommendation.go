@@ -23,4 +23,6 @@ func (r *repository) FindRecommendation(t model.RecommendationListType) (*model.
 	if err != nil {
 		return nil, err
 	}
-	rec.Exampl
+	rec.ExampleIds = items
+	return rec, nil
+}
