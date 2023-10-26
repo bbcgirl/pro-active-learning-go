@@ -16,4 +16,11 @@ func (r *repository) UpdateRecommendation(rec model.Recommendation) error {
 }
 
 func (r *repository) FindRecommendation(t model.RecommendationListType) (*model.Recommendation, error) {
-	rec := &model.Recommen
+	rec := &model.Recommendation{RecommendationListType: t}
+	items := make([]int, 0)
+	query := `SELECT example_id FROM recommendation WHERE list_type = $1;`
+	err := r.db.Select(&items, query, t)
+	if err != nil {
+		return nil, err
+	}
+	rec.Exampl
