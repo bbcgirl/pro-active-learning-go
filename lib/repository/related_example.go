@@ -6,4 +6,7 @@ import (
 )
 
 func (r *repository) UpdateRelatedExamples(related model.RelatedExamples) error {
-	if _, err := r.db.Exec(`DELETE FROM related_example WHERE example_id = $1;`, related.E
+	if _, err := r.db.Exec(`DELETE FROM related_example WHERE example_id = $1;`, related.ExampleId); err != nil {
+		return err
+	}
+	if _, err := r.db.Exec(`INSERT INTO related_example (example_id, related_example_id) VALUES ($1, unnest(cast($2 AS INT[])));`, related.ExampleId, pq.Array(
