@@ -21,3 +21,8 @@ func (r *repository) FindRelatedExamples(e *model.Example) (*model.RelatedExampl
 	query := `SELECT related_example_id FROM related_example WHERE example_id = $1;`
 	err := r.db.Select(&items, query, e.Id)
 	if err != nil {
+		return nil, err
+	}
+	related.RelatedExampleIds = items
+	return related, nil
+}
