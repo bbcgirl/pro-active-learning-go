@@ -17,4 +17,8 @@ import (
 )
 
 type Repository interface {
-	UpdateOrCreateExample(e *model.Example)
+	UpdateOrCreateExample(e *model.Example) error
+	UpdateScore(e *model.Example) error
+	InsertExampleFromScanner(scanner *bufio.Scanner) (*model.Example, error)
+	InsertExamplesFromReader(reader io.Reader) error
+	SearchExamples()
