@@ -11,4 +11,10 @@ import (
 
 	_ "github.com/lib/pq"
 	"github.com/syou6162/go-active-learning/lib/classifier"
-	"github.com/syou6162/go
+	"github.com/syou6162/go-active-learning/lib/feature"
+	"github.com/syou6162/go-active-learning/lib/model"
+	"github.com/syou6162/go-active-learning/lib/util"
+)
+
+type Repository interface {
+	UpdateOrCreateExample(e *model.Example)
