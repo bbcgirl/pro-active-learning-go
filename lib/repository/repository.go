@@ -21,4 +21,6 @@ type Repository interface {
 	UpdateScore(e *model.Example) error
 	InsertExampleFromScanner(scanner *bufio.Scanner) (*model.Example, error)
 	InsertExamplesFromReader(reader io.Reader) error
-	SearchExamples()
+	SearchExamples() (model.Examples, error)
+	SearchRecentExamples(from time.Time, limit int) (model.Examples, error)
+	SearchRecentExamplesByHost(host string, from time.Time, limit int) (model.Examples, erro
