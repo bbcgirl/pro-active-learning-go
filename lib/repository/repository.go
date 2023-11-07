@@ -26,4 +26,7 @@ type Repository interface {
 	SearchRecentExamplesByHost(host string, from time.Time, limit int) (model.Examples, error)
 	SearchExamplesByLabel(label model.LabelType, limit int) (model.Examples, error)
 	SearchLabeledExamples(limit int) (model.Examples, error)
-	SearchPositiveExamples(limit int) (model.Examples
+	SearchPositiveExamples(limit int) (model.Examples, error)
+	SearchNegativeExamples(limit int) (model.Examples, error)
+	SearchUnlabeledExamples(limit int) (model.Examples, error)
+	SearchPositiveScoredExamples(limit int) (model
