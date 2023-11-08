@@ -33,4 +33,8 @@ type Repository interface {
 	FindExampleByUlr(url string) (*model.Example, error)
 	FindExampleById(id int) (*model.Example, error)
 	SearchExamplesByUlrs(urls []string) (model.Examples, error)
-	SearchExam
+	SearchExamplesByIds(ids []int) (model.Examples, error)
+	SearchExamplesByKeywords(keywords []string, aggregator string, limit int) (model.Examples, error)
+	DeleteAllExamples() error
+
+	Cou
