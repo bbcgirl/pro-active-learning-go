@@ -37,4 +37,9 @@ type Repository interface {
 	SearchExamplesByKeywords(keywords []string, aggregator string, limit int) (model.Examples, error)
 	DeleteAllExamples() error
 
-	Cou
+	CountPositiveExamples() (int, error)
+	CountNegativeExamples() (int, error)
+	CountUnlabeledExamples() (int, error)
+
+	IncErrorCount(e *model.Example) error
+	GetErrorCount(e *model.Exa
