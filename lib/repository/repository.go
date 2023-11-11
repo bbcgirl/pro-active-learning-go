@@ -42,4 +42,8 @@ type Repository interface {
 	CountUnlabeledExamples() (int, error)
 
 	IncErrorCount(e *model.Example) error
-	GetErrorCount(e *model.Exa
+	GetErrorCount(e *model.Example) (int, error)
+
+	UpdateFeatureVector(e *model.Example) error
+	FindFeatureVector(e *model.Example) (feature.FeatureVector, error)
+	SearchFeatureVector(examples model.Examples) (map[int]feature.FeatureVector, err
