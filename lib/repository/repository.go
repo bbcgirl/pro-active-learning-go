@@ -57,4 +57,5 @@ type Repository interface {
 	SearchReferringTweetsList(examples model.Examples, limit int) (map[int]model.ReferringTweets, error)
 	SearchReferringTweets(limit int) (model.ReferringTweets, error)
 	SearchPositiveReferringTweets(scoreThreshold float64, tweetsLimitInSameExample int, limit int) (model.ReferringTweets, error)
-	SearchNegativeReferringTweets(scoreThreshold float64, tweetsLimitInSameExample int, l
+	SearchNegativeReferringTweets(scoreThreshold float64, tweetsLimitInSameExample int, limit int) (model.ReferringTweets, error)
+	SearchUnlabeledReferringTweets(scoreThreshold float64, tweetsLimitInSameExample int, limit int) (model.ReferringTweets, error)
