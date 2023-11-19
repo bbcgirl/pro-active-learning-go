@@ -56,4 +56,5 @@ type Repository interface {
 	UpdateTweetLabel(exampleId int, idStr string, label model.LabelType) error
 	SearchReferringTweetsList(examples model.Examples, limit int) (map[int]model.ReferringTweets, error)
 	SearchReferringTweets(limit int) (model.ReferringTweets, error)
-	SearchPositiveReferringTwee
+	SearchPositiveReferringTweets(scoreThreshold float64, tweetsLimitInSameExample int, limit int) (model.ReferringTweets, error)
+	SearchNegativeReferringTweets(scoreThreshold float64, tweetsLimitInSameExample int, l
