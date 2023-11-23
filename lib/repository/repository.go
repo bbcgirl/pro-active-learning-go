@@ -69,4 +69,14 @@ type Repository interface {
 	FindRecommendation(t model.RecommendationListType) (*model.Recommendation, error)
 
 	UpdateRelatedExamples(related model.RelatedExamples) error
-	FindRelatedExamples(e *model.Exampl
+	FindRelatedExamples(e *model.Example) (*model.RelatedExamples, error)
+
+	UpdateTopAccessedExampleIds([]int) error
+	SearchTopAccessedExampleIds() ([]int, error)
+
+	Ping() error
+	Close() error
+}
+
+type repository struct {
+	db
