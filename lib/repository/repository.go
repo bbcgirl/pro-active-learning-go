@@ -79,4 +79,10 @@ type Repository interface {
 }
 
 type repository struct {
-	db
+	db *sqlx.DB
+}
+
+func GetDataSourceName() string {
+	host := util.GetEnv("POSTGRES_HOST", "localhost")
+	dbUser := util.GetEnv("DB_USER", "nobody")
+	dbPassword := util.GetEnv("DB_PASSWOR
