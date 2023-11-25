@@ -94,4 +94,12 @@ func GetDataSourceName() string {
 }
 
 func New() (*repository, error) {
-	db, err
+	db, err := sqlx.Open("postgres", GetDataSourceName())
+	if err != nil {
+		return nil, err
+	}
+	db.SetMaxOpenConns(50)
+	return &repository{db: db}, nil
+}
+
+func (r *repository) Ping()
