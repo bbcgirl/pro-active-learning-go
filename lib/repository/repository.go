@@ -85,4 +85,13 @@ type repository struct {
 func GetDataSourceName() string {
 	host := util.GetEnv("POSTGRES_HOST", "localhost")
 	dbUser := util.GetEnv("DB_USER", "nobody")
-	dbPassword := util.GetEnv("DB_PASSWOR
+	dbPassword := util.GetEnv("DB_PASSWORD", "nobody")
+	dbName := util.GetEnv("DB_NAME", "go-active-learning")
+	return fmt.Sprintf(
+		"host=%s user=%s password=%s dbname=%s sslmode=disable",
+		host, dbUser, dbPassword, dbName,
+	)
+}
+
+func New() (*repository, error) {
+	db, err
