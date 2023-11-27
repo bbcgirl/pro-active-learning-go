@@ -102,4 +102,14 @@ func New() (*repository, error) {
 	return &repository{db: db}, nil
 }
 
-func (r *repository) Ping()
+func (r *repository) Ping() error {
+	return r.db.Ping()
+}
+
+func (r *repository) Close() error {
+	if r.db != nil {
+		return r.db.Close()
+	} else {
+		return nil
+	}
+}
