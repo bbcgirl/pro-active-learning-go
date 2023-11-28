@@ -14,4 +14,8 @@ func (r *repository) UpdateTopAccessedExampleIds(exampleIds []int) error {
 	return nil
 }
 
-func (r *rep
+func (r *repository) SearchTopAccessedExampleIds() ([]int, error) {
+	exampleIds := make([]int, 0)
+	query := `SELECT example_id FROM top_accessed_example;`
+	err := r.db.Select(&exampleIds, query)
+	if e
