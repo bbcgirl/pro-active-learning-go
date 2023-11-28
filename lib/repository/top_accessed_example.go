@@ -18,4 +18,8 @@ func (r *repository) SearchTopAccessedExampleIds() ([]int, error) {
 	exampleIds := make([]int, 0)
 	query := `SELECT example_id FROM top_accessed_example;`
 	err := r.db.Select(&exampleIds, query)
-	if e
+	if err != nil {
+		return nil, err
+	}
+	return exampleIds, nil
+}
