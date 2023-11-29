@@ -11,3 +11,10 @@ import (
 func TestUpdateTopAccessedExampleIds(t *testing.T) {
 	repo, err := repository.New()
 	if err != nil {
+		t.Errorf(err.Error())
+	}
+	defer repo.Close()
+
+	e1 := example.NewExample("http://hoge1.com", model.POSITIVE)
+	e2 := example.NewExample("http://hoge2.com", model.NEGATIVE)
+	e3 := example
