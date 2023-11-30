@@ -25,4 +25,14 @@ func TestUpdateTopAccessedExampleIds(t *testing.T) {
 			t.Error(err)
 		}
 	}
-	exampleIds 
+	exampleIds := make([]int, 0)
+	for _, e := range examples {
+		exampleIds = append(exampleIds, e.Id)
+	}
+	err = repo.UpdateTopAccessedExampleIds(exampleIds)
+	if err != nil {
+		t.Error(err)
+	}
+
+	{
+		top, err := r
