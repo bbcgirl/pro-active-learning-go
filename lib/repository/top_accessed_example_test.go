@@ -35,4 +35,12 @@ func TestUpdateTopAccessedExampleIds(t *testing.T) {
 	}
 
 	{
-		top, err := r
+		top, err := repo.SearchTopAccessedExampleIds()
+		if err != nil {
+			t.Error(err)
+		}
+		if len(top) != 3 {
+			t.Error("len(top) must be 3")
+		}
+	}
+}
