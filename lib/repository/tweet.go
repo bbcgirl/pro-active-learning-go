@@ -8,4 +8,11 @@ import (
 )
 
 func (r *repository) UpdateOrCreateReferringTweets(e *model.Example) error {
-	if e.Referring
+	if e.ReferringTweets == nil || len((*e).ReferringTweets.Tweets) == 0 || (*e).ReferringTweets.Count == 0 {
+		return nil
+	}
+
+	tmp, err := r.FindExampleByUlr(e.Url)
+	if err != nil {
+		return err
+	}
