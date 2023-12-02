@@ -24,4 +24,7 @@ func (r *repository) UpdateOrCreateReferringTweets(e *model.Example) error {
 INSERT INTO tweet
 ( example_id,  created_at,  id_str,  full_text,  favorite_count,  retweet_count,  lang,  screen_name,  name,  profile_image_url,  label,  score)
 VALUES
-(:example_id, :created_at, :id_str, :full_text, :favorite_count, :retweet_count, :lang, 
+(:example_id, :created_at, :id_str, :full_text, :favorite_count, :retweet_count, :lang, :screen_name, :name, :profile_image_url, :label, :score)
+ON CONFLICT (example_id, id_str)
+DO UPDATE SET
+favorite_count = :favorite_count,  retweet_count = :retweet_co
