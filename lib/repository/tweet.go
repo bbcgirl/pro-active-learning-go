@@ -22,4 +22,6 @@ func (r *repository) UpdateOrCreateReferringTweets(e *model.Example) error {
 		t.ExampleId = id
 		if _, err = r.db.NamedExec(`
 INSERT INTO tweet
-( example_id,  created_at,  id_str,  full_text,  favorite
+( example_id,  created_at,  id_str,  full_text,  favorite_count,  retweet_count,  lang,  screen_name,  name,  profile_image_url,  label,  score)
+VALUES
+(:example_id, :created_at, :id_str, :full_text, :favorite_count, :retweet_count, :lang, 
