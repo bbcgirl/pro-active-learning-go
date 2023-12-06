@@ -37,4 +37,5 @@ EXCLUDED.label != 0 AND tweet.label != EXCLUDED.label
 	return nil
 }
 
-func (r *repository) UpdateTweetLa
+func (r *repository) UpdateTweetLabel(exampleId int, idStr string, label model.LabelType) error {
+	if _, err := r.db.Exec(`UPDATE tweet SET label = $1 WHERE example_id = $2 AND id_str = $3;`, 
