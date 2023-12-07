@@ -47,3 +47,7 @@ func (r *repository) UpdateTweetLabel(exampleId int, idStr string, label model.L
 type exampleIdWithTweetsCount struct {
 	ExampleId   int `db:"example_id"`
 	TweetsCount int `db:"tweets_count"`
+}
+
+func (r *repository) SearchReferringTweetsList(examples model.Examples, limitForEachExample int) (map[int]model.ReferringTweets, error) {
+	referringTweetsByExampleId := make(ma
