@@ -58,4 +58,5 @@ func (r *repository) SearchReferringTweetsList(examples model.Examples, limitFor
 	}
 
 	exampleIdsWithTweetsCount := make([]exampleIdWithTweetsCount, 0)
-	
+	tweetsCountByExampleQuery := `SELECT example_id, COUNT(*) AS tweets_count FROM tweet WHERE example_id = ANY($1) GROUP BY example_id ORDER BY tweets_count DESC;`
+	err := r.db.Select(&exampl
