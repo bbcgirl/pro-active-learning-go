@@ -50,4 +50,12 @@ type exampleIdWithTweetsCount struct {
 }
 
 func (r *repository) SearchReferringTweetsList(examples model.Examples, limitForEachExample int) (map[int]model.ReferringTweets, error) {
-	referringTweetsByExampleId := make(ma
+	referringTweetsByExampleId := make(map[int]model.ReferringTweets)
+
+	exampleIds := make([]int, 0)
+	for _, e := range examples {
+		exampleIds = append(exampleIds, e.Id)
+	}
+
+	exampleIdsWithTweetsCount := make([]exampleIdWithTweetsCount, 0)
+	
