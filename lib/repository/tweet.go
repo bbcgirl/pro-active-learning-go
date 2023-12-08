@@ -74,4 +74,10 @@ func (r *repository) SearchReferringTweetsList(examples model.Examples, limitFor
 			if cnt, ok := tweetsCountByExampleId[exampleId]; ok {
 				referringTweets.Count = cnt
 			}
-			referringTweetsByExampleId[e
+			referringTweetsByExampleId[exampleId] = referringTweets
+		}
+		return referringTweetsByExampleId, nil
+	}
+
+	tweets := make([]*model.Tweet, 0)
+	query := `SELECT * FROM tweet WHERE example_id = ANY($1) AND label != -1 AND score > -1.0 AND 
