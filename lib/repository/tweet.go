@@ -89,3 +89,8 @@ func (r *repository) SearchReferringTweetsList(examples model.Examples, limitFor
 	for _, t := range tweets {
 		tweetsByExampleId[t.ExampleId] = append(tweetsByExampleId[t.ExampleId], t)
 	}
+
+	for _, exampleId := range exampleIds {
+		referringTweets := model.ReferringTweets{Count: 0, Tweets: make([]*model.Tweet, 0)}
+		if tweets, ok := tweetsByExampleId[exampleId]; ok {
+			re
