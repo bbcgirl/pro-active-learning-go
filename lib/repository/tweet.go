@@ -83,4 +83,9 @@ func (r *repository) SearchReferringTweetsList(examples model.Examples, limitFor
 	query := `SELECT * FROM tweet WHERE example_id = ANY($1) AND label != -1 AND score > -1.0 AND (lang = 'en' OR lang = 'ja') ORDER BY favorite_count DESC LIMIT $2;`
 	err = r.db.Select(&tweets, query, pq.Array(exampleIds), limitForEachExample)
 	if err != nil {
-		return referringT
+		return referringTweetsByExampleId, err
+	}
+	tweetsByExampleId := make(map[int][]*model.Tweet)
+	for _, t := range tweets {
+		tweetsByExampleId[t.ExampleId] = append(tweetsByExampleId[t.ExampleId], t)
+	}
