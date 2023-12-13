@@ -104,4 +104,8 @@ func (r *repository) SearchReferringTweetsList(examples model.Examples, limitFor
 }
 
 func (r *repository) SearchReferringTweets(limit int) (model.ReferringTweets, error) {
-	referringTweets := model.ReferringTweets{Count: 0, Twe
+	referringTweets := model.ReferringTweets{Count: 0, Tweets: make([]*model.Tweet, 0)}
+	query := `SELECT * FROM tweet WHERE lang = 'en' OR lang = 'ja' ORDER BY created_at DESC LIMIT $1;`
+	err := r.db.Select(&referringTweets.Tweets, query, limit)
+	if err != nil {
+		return referringTw
