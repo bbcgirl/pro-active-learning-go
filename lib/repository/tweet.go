@@ -100,4 +100,8 @@ func (r *repository) SearchReferringTweetsList(examples model.Examples, limitFor
 		}
 		referringTweetsByExampleId[exampleId] = referringTweets
 	}
-	re
+	return referringTweetsByExampleId, nil
+}
+
+func (r *repository) SearchReferringTweets(limit int) (model.ReferringTweets, error) {
+	referringTweets := model.ReferringTweets{Count: 0, Twe
