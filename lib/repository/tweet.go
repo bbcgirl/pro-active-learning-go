@@ -114,4 +114,10 @@ func (r *repository) SearchReferringTweets(limit int) (model.ReferringTweets, er
 	return referringTweets, nil
 }
 
-func (r *repository) SearchRecentReferringTweetsWithHighScore(from
+func (r *repository) SearchRecentReferringTweetsWithHighScore(from time.Time, scoreThreshold float64, limit int) (model.ReferringTweets, error) {
+	referringTweets := model.ReferringTweets{Count: 0, Tweets: make([]*model.Tweet, 0)}
+	query := `
+SELECT 
+	tweet.id,
+	tweet.example_id,
+
