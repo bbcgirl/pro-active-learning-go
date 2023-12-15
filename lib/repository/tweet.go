@@ -108,4 +108,10 @@ func (r *repository) SearchReferringTweets(limit int) (model.ReferringTweets, er
 	query := `SELECT * FROM tweet WHERE lang = 'en' OR lang = 'ja' ORDER BY created_at DESC LIMIT $1;`
 	err := r.db.Select(&referringTweets.Tweets, query, limit)
 	if err != nil {
-		return referringTw
+		return referringTweets, err
+	}
+	referringTweets.Count = len(referringTweets.Tweets)
+	return referringTweets, nil
+}
+
+func (r *repository) SearchRecentReferringTweetsWithHighScore(from
