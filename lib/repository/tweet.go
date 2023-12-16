@@ -141,4 +141,12 @@ WHERE
 	tweet.created_at > $1 AND 
 	tweet.label != -1 AND 
 	example.label != -1 AND 
-	tweet.score > $2 A
+	tweet.score > $2 AND 
+	(favorite_count > 0 OR retweet_count > 0) AND
+	(lang = 'en' OR lang = 'ja')
+ORDER BY tweet.score DESC
+LIMIT $3
+;
+`
+	err := r.db.Select(&referringTweets.Tweets, query, from, scoreThreshold, limit)
+	if
