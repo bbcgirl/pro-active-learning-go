@@ -131,4 +131,14 @@ SELECT
 	tweet.screen_name,
 	tweet.name,
 	tweet.profile_image_url,
-	tweet.labe
+	tweet.label,
+	tweet.score
+FROM 
+	tweet 
+INNER JOIN 
+	example ON example.id = example_id 
+WHERE
+	tweet.created_at > $1 AND 
+	tweet.label != -1 AND 
+	example.label != -1 AND 
+	tweet.score > $2 A
