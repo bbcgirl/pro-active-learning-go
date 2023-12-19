@@ -156,4 +156,9 @@ LIMIT $3
 	return referringTweets, nil
 }
 
-func (r *repository) searchReferringTweetsByLabel(label model.LabelType, sc
+func (r *repository) searchReferringTweetsByLabel(label model.LabelType, scoreThreshold float64, tweetsLimitInSameExample int, limit int) (model.ReferringTweets, error) {
+	referringTweets := model.ReferringTweets{Count: 0, Tweets: make([]*model.Tweet, 0)}
+	query := `
+WITH t AS (
+  SELECT
+    i
