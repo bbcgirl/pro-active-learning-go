@@ -149,4 +149,11 @@ LIMIT $3
 ;
 `
 	err := r.db.Select(&referringTweets.Tweets, query, from, scoreThreshold, limit)
-	if
+	if err != nil {
+		return referringTweets, err
+	}
+	referringTweets.Count = len(referringTweets.Tweets)
+	return referringTweets, nil
+}
+
+func (r *repository) searchReferringTweetsByLabel(label model.LabelType, sc
