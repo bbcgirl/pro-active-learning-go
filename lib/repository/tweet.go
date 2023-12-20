@@ -168,4 +168,14 @@ WITH t AS (
     tweet
   WHERE
     example_id IN (SELECT id FROM example WHERE label != -1 AND updated_at > NOW() - INTERVAL '30 DAYS')
-    AND label = $1 AND (lang
+    AND label = $1 AND (lang = 'en' OR lang = 'ja') AND score > $2
+)
+
+SELECT
+  *
+FROM
+  tweet
+WHERE
+  id IN (SELECT id FROM t WHERE rank_example_id <= $3 AND rank_id_str = 1)
+ORDER BY
+  created_at DESC
