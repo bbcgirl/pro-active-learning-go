@@ -163,4 +163,9 @@ WITH t AS (
   SELECT
     id,
     ROW_NUMBER() OVER(partition BY example_id ORDER BY favorite_count DESC) AS rank_example_id,
-    ROW_NUMBER() OVER(partition BY id_str ORDER BY favorite_coun
+    ROW_NUMBER() OVER(partition BY id_str ORDER BY favorite_count DESC) AS rank_id_str
+  FROM
+    tweet
+  WHERE
+    example_id IN (SELECT id FROM example WHERE label != -1 AND updated_at > NOW() - INTERVAL '30 DAYS')
+    AND label = $1 AND (lang
