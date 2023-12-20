@@ -161,4 +161,6 @@ func (r *repository) searchReferringTweetsByLabel(label model.LabelType, scoreTh
 	query := `
 WITH t AS (
   SELECT
-    i
+    id,
+    ROW_NUMBER() OVER(partition BY example_id ORDER BY favorite_count DESC) AS rank_example_id,
+    ROW_NUMBER() OVER(partition BY id_str ORDER BY favorite_coun
