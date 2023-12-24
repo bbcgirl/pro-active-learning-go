@@ -179,3 +179,10 @@ WHERE
   id IN (SELECT id FROM t WHERE rank_example_id <= $3 AND rank_id_str = 1)
 ORDER BY
   created_at DESC
+LIMIT $4
+;`
+	err := r.db.Select(&referringTweets.Tweets, query, label, scoreThreshold, tweetsLimitInSameExample, limit)
+	if err != nil {
+		return referringTweets, err
+	}
+	referringTweets.Count = len(refer
