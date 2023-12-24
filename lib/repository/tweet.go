@@ -185,4 +185,8 @@ LIMIT $4
 	if err != nil {
 		return referringTweets, err
 	}
-	referringTweets.Count = len(refer
+	referringTweets.Count = len(referringTweets.Tweets)
+	return referringTweets, nil
+}
+
+func (r *repository) SearchPositiveReferringTweets(scoreThreshold float64, tweetsLimitInSameExample int, limit int) (model.Referring
