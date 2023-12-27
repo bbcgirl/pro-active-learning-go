@@ -189,4 +189,8 @@ LIMIT $4
 	return referringTweets, nil
 }
 
-func (r *repository) SearchPositiveReferringTweets(scoreThreshold float64, tweetsLimitInSameExample int, limit int) (model.Referring
+func (r *repository) SearchPositiveReferringTweets(scoreThreshold float64, tweetsLimitInSameExample int, limit int) (model.ReferringTweets, error) {
+	return r.searchReferringTweetsByLabel(model.POSITIVE, scoreThreshold, tweetsLimitInSameExample, limit)
+}
+
+func (r *repository) SearchNegativeReferringTweets(scoreThre
