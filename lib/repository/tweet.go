@@ -219,4 +219,5 @@ func (r *repository) FindReferringTweets(e *model.Example, limit int) (model.Ref
 		return referringTweets, err
 	}
 
-	query
+	query := `SELECT * FROM tweet WHERE example_id = $1 AND label != -1 AND score > 0.0 AND (lang = 'en' OR lang = 'ja') ORDER BY favorite_count DESC LIMIT $2;`
+	err = r.db.Select(&referringTweets.Tweet
