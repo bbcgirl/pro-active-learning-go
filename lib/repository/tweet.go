@@ -205,4 +205,8 @@ type tweetsCount struct {
 	Count int `db:"count"`
 }
 
-func (r *repository) FindReferringTweets(e *model.Example, limit int) (model.ReferringTweets, 
+func (r *repository) FindReferringTweets(e *model.Example, limit int) (model.ReferringTweets, error) {
+	referringTweets := model.ReferringTweets{Count: 0, Tweets: make([]*model.Tweet, 0)}
+
+	countQuery := `SELECT COUNT(*) AS count FROM tweet WHERE example_id = $1;`
+	cnt := tweetsCount{}
