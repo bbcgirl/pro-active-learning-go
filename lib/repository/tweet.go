@@ -210,3 +210,13 @@ func (r *repository) FindReferringTweets(e *model.Example, limit int) (model.Ref
 
 	countQuery := `SELECT COUNT(*) AS count FROM tweet WHERE example_id = $1;`
 	cnt := tweetsCount{}
+	err := r.db.Get(&cnt, countQuery, e.Id)
+	if err != nil {
+		return referringTweets, err
+	}
+	referringTweets.Count = cnt.Count
+	if limit == 0 {
+		return referringTweets, err
+	}
+
+	query
