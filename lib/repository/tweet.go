@@ -198,4 +198,11 @@ func (r *repository) SearchNegativeReferringTweets(scoreThreshold float64, tweet
 }
 
 func (r *repository) SearchUnlabeledReferringTweets(scoreThreshold float64, tweetsLimitInSameExample int, limit int) (model.ReferringTweets, error) {
-	return r.searchReferringTweetsByLabel(model.UNLABELED, scoreThreshold, twe
+	return r.searchReferringTweetsByLabel(model.UNLABELED, scoreThreshold, tweetsLimitInSameExample, limit)
+}
+
+type tweetsCount struct {
+	Count int `db:"count"`
+}
+
+func (r *repository) FindReferringTweets(e *model.Example, limit int) (model.ReferringTweets, 
