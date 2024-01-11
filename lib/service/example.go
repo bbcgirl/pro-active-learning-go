@@ -185,3 +185,177 @@ func (app *goActiveLearningApp) AttachMetadata(examples model.Examples, bookmark
 		return err
 	}
 	hbByid := hatenaBookmarkByExampleId(hatenaBookmarks)
+	for _, e := range examples {
+		if b, ok := hbByid[e.Id]; ok {
+			e.HatenaBookmark = b
+		} else {
+			e.HatenaBookmark = &model.HatenaBookmark{Bookmarks: []*model.Bookmark{}}
+		}
+	}
+
+	referringTweetsById, err := app.repo.SearchReferringTweetsList(examples, tweetLimit)
+	if err != nil {
+		return err
+	}
+	for _, e := range examples {
+		if t, ok := referringTweetsById[e.Id]; ok {
+			e.ReferringTweets = &t
+		} else {
+			e.ReferringTweets = &model.ReferringTweets{}
+		}
+	}
+	return nil
+}
+
+func (app *goActiveLearningApp) UpdateRelatedExamples(related model.RelatedExamples) error {
+	return app.repo.UpdateRelatedExamples(related)
+}
+
+func (app *goActiveLearningApp) SearchRelatedExamples(e *model.Example) (model.Examples, error) {
+	related, err := app.repo.FindRelatedExamples(e)
+	if err != nil {
+		return nil, err
+	}
+	return app.repo.SearchExamplesByIds(related.RelatedExampleIds)
+}
+
+func (app *goActiveLearningApp) UpdateTopAccessedExampleIds(exampleIds []int) error {
+	return app.repo.UpdateTopAccessedExampleIds(exampleIds)
+}
+
+func (app *goActiveLearningApp) SearchTopAccessedExamples() (model.Examples, error) {
+	exampleIds, err := app.repo.SearchTopAccessedExampleIds()
+	if err != nil {
+		return nil, err
+	}
+	return app.repo.SearchExamplesByIds(exampleIds)
+}
+
+func (app *goActiveLearningApp) UpdateRecommendation(listName string, examples model.Examples) error {
+	listType, err := model.GetRecommendationListType(listName)
+	if err != nil {
+		return err
+	}
+
+	exampleIds := make([]int, 0)
+	for _, e := range examples {
+		exampleIds = append(exampleIds, e.Id)
+	}
+
+	rec := model.Recommendation{RecommendationListType: listType, ExampleIds: exampleIds}
+	return app.repo.UpdateRecommendation(rec)
+}
+
+func (app *goActiveLearningApp) GetRecommendation(listName string) (model.Examples, error) {
+	listType, err := model.GetRecommendationListType(listName)
+	if err != nil {
+		return nil, err
+	}
+	rec, err := app.repo.FindRecommendation(listType)
+	return app.repo.SearchExamplesByIds(rec.ExampleIds)
+}
+
+func (app *goActiveLearningApp) splitExamplesByStatusOK(examples model.Examples) (model.Examples, model.Examples, error) {
+	urls := make([]string, 0)
+	exampleByurl := make(map[string]*model.Example)
+	for _, e := range examples {
+		exampleByurl[e.Url] = e
+		urls = append(urls, e.Url)
+	}
+	tmpExamples, err := app.SearchExamplesByUlrs(urls)
+	if err != nil {
+		return nil, nil, err
+	}
+
+	examplesWithMetaData := model.Examples{}
+	examplesWithEmptyMetaData := model.Examples{}
+	for _, e := range tmpExamples {
+		if e.StatusCode == http.StatusOK {
+			examplesWithMetaData = append(examplesWithMetaData, exampleByurl[e.Url])
+			delete(exampleByurl, e.Url)
+		} else {
+			examplesWithEmptyMetaData = append(examplesWithEmptyMetaData, exampleByurl[e.Url])
+			delete(exampleByurl, e.Url)
+		}
+	}
+	for _, e := range exampleByurl {
+		examplesWithEmptyMetaData = append(examplesWithEmptyMetaData, e)
+	}
+	return examplesWithMetaData, examplesWithEmptyMetaData, nil
+}
+
+func fetchMetaData(e *model.Example) error {
+	article, err := fetcher.GetArticle(e.Url)
+	if err != nil {
+		return err
+	}
+
+	e.Title = article.Title
+	e.FinalUrl = article.Url
+	e.Description = article.Description
+	e.OgDescription = article.OgDescription
+	e.OgType = article.OgType
+	e.OgImage = article.OgImage
+	e.Body = article.Body
+	e.StatusCode = article.StatusCode
+	e.Favicon = article.Favicon
+
+	now := time.Now()
+	tooOldDate := time.Date(2000, time.January, 1, 1, 1, 0, 0, time.UTC)
+	if article.PublishDate != nil && (now.After(*article.PublishDate) || tooOldDate.Before(*article.PublishDate)) {
+		e.CreatedAt = *article.PublishDate
+		e.UpdatedAt = *article.PublishDate
+	}
+
+	fv := util.RemoveDuplicate(example.ExtractFeatures(*e))
+	if len(fv) > 100000 {
+		return fmt.Errorf("too large features (N = %d) for %s", len(fv), e.FinalUrl)
+	}
+	e.Fv = fv
+
+	return nil
+}
+
+func (app *goActiveLearningApp) Fetch(examples model.Examples) {
+	batchSize := 100
+	examplesList := make([]model.Examples, 0)
+	n := len(examples)
+
+	for i := 0; i < n; i += batchSize {
+		max := int(math.Min(float64(i+batchSize), float64(n)))
+		examplesList = append(examplesList, examples[i:max])
+	}
+	for _, l := range examplesList {
+		examplesWithMetaData, examplesWithEmptyMetaData, err := app.splitExamplesByStatusOK(l)
+		if err != nil {
+			log.Println(err.Error())
+		}
+		// ToDo: 本当に必要か考える
+		app.AttachMetadataIncludingFeatureVector(examplesWithMetaData, 0, 0)
+
+		wg := &sync.WaitGroup{}
+		cpus := runtime.NumCPU()
+		runtime.GOMAXPROCS(cpus)
+		sem := make(chan struct{}, batchSize)
+		for idx, e := range examplesWithEmptyMetaData {
+			wg.Add(1)
+			sem <- struct{}{}
+			go func(e *model.Example, idx int) {
+				defer wg.Done()
+				cnt, err := app.repo.GetErrorCount(e)
+				if err != nil {
+					log.Println(err.Error())
+				}
+				if cnt < 5 {
+					fmt.Fprintln(os.Stderr, "Fetching("+strconv.Itoa(idx)+"): "+e.Url)
+					if err := fetchMetaData(e); err != nil {
+						app.repo.IncErrorCount(e)
+						log.Println(err.Error())
+					}
+				}
+				<-sem
+			}(e, idx)
+		}
+		wg.Wait()
+	}
+}
