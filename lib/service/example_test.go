@@ -17,4 +17,12 @@ func findExampleByurl(examples model.Examples, url string) *model.Example {
 	return nil
 }
 
-func TestAttach
+func TestAttachMetaData(t *testing.T) {
+	app, err := service.NewDefaultApp()
+	if err != nil {
+		t.Error(err)
+	}
+	defer app.Close()
+	if err := app.DeleteAllExamples(); err != nil {
+		t.Error("Cannot delete examples")
+	
