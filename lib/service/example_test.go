@@ -37,4 +37,10 @@ func TestAttachMetaData(t *testing.T) {
 
 	hatebu := findExampleByurl(examples, hatebuUrl)
 	if hatebu == nil {
-		t.Errorf("Cannot find
+		t.Errorf("Cannot find %s", hatebuUrl)
+	}
+	if hatebu.Title != "" {
+		t.Errorf("Title must be empty for %s", hatebu.Url)
+	}
+	if len(hatebu.Fv) != 0 {
+		t.Errorf("Feature vector must be empty for %s", hatebu.Ur
