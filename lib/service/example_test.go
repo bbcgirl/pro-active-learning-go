@@ -25,4 +25,10 @@ func TestAttachMetaData(t *testing.T) {
 	defer app.Close()
 	if err := app.DeleteAllExamples(); err != nil {
 		t.Error("Cannot delete examples")
-	
+	}
+
+	hatebuUrl := "https://b.hatena.ne.jp"
+	myBlogUrl := "https://www.yasuhisay.info"
+	githubUrl := "https://github.com"
+	e1 := example.NewExample(hatebuUrl, model.POSITIVE)
+	e2 := example.NewExample(myBlogUrl, model.NEG
