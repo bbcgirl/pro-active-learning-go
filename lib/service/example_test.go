@@ -31,4 +31,10 @@ func TestAttachMetaData(t *testing.T) {
 	myBlogUrl := "https://www.yasuhisay.info"
 	githubUrl := "https://github.com"
 	e1 := example.NewExample(hatebuUrl, model.POSITIVE)
-	e2 := example.NewExample(myBlogUrl, model.NEG
+	e2 := example.NewExample(myBlogUrl, model.NEGATIVE)
+	e3 := example.NewExample(githubUrl, model.UNLABELED)
+	examples := model.Examples{e1, e2, e3}
+
+	hatebu := findExampleByurl(examples, hatebuUrl)
+	if hatebu == nil {
+		t.Errorf("Cannot find
