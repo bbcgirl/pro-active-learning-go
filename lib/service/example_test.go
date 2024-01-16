@@ -57,3 +57,13 @@ func TestAttachMetaData(t *testing.T) {
 	myBlog := findExampleByurl(examples, myBlogUrl)
 	if myBlog == nil {
 		t.Errorf("Cannot find %s", myBlogUrl)
+	}
+	if myBlog.OgType != "" {
+		t.Errorf("OgType must be empty for %s", myBlog.Url)
+	}
+
+	app.Fetch(examples)
+	for _, e := range examples {
+		err = app.UpdateOrCreateExample(e)
+		if err != nil {
+			t.
