@@ -84,4 +84,10 @@ func TestAttachMetaData(t *testing.T) {
 		t.Errorf("OgType must be blog for %s", myBlog.Url)
 	}
 
-	examples, err = app.
+	examples, err = app.SearchExamplesByIds([]int{e1.Id, e2.Id, e3.Id})
+	if err != nil {
+		t.Error(err)
+	}
+	err = app.AttachMetadataIncludingFeatureVector(examples, 10, 10)
+	if err != nil {
+		t.Err
