@@ -76,4 +76,12 @@ func TestAttachMetaData(t *testing.T) {
 	if hatebu.Title == "" {
 		t.Errorf("Title must not be empty for %s", hatebu.Url)
 	}
-	if len(hatebu.Fv) =
+	if len(hatebu.Fv) == 0 {
+		t.Errorf("Feature vector must not be empty for %s", hatebu.Url)
+	}
+
+	if myBlog.OgType != "blog" {
+		t.Errorf("OgType must be blog for %s", myBlog.Url)
+	}
+
+	examples, err = app.
