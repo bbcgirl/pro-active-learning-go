@@ -99,3 +99,13 @@ func TestAttachMetaData(t *testing.T) {
 	if len(hatebu.Fv) == 0 {
 		t.Errorf("Feature vector must not be empty for %s", hatebu.Url)
 	}
+
+	if myBlog.OgType != "blog" {
+		t.Errorf("OgType must be blog for %s", myBlog.Url)
+	}
+}
+
+func TestGetRecommendation(t *testing.T) {
+	app, err := service.NewDefaultApp()
+	if err != nil {
+		t.
