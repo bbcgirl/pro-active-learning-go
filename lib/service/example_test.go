@@ -120,4 +120,15 @@ func TestGetRecommendation(t *testing.T) {
 	e3 := example.NewExample("http://hoge3.com", model.UNLABELED)
 	examples := model.Examples{e1, e2, e3}
 	for _, e := range examples {
-		e
+		err = app.UpdateOrCreateExample(e)
+		if err != nil {
+			t.Error(err)
+		}
+	}
+
+	listName := "general"
+	err = app.UpdateRecommendation(listName, examples)
+	if err != nil {
+		t.Error(err)
+	}
+	examples, err = app.GetR
