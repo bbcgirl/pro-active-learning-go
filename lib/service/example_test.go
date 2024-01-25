@@ -108,4 +108,12 @@ func TestAttachMetaData(t *testing.T) {
 func TestGetRecommendation(t *testing.T) {
 	app, err := service.NewDefaultApp()
 	if err != nil {
-		t.
+		t.Error(err)
+	}
+	defer app.Close()
+	if err := app.DeleteAllExamples(); err != nil {
+		t.Error("Cannot delete examples")
+	}
+
+	e1 := example.NewExample("http://hoge1.com", model.POSITIVE)
+	e2
