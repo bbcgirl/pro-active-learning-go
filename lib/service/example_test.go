@@ -116,4 +116,8 @@ func TestGetRecommendation(t *testing.T) {
 	}
 
 	e1 := example.NewExample("http://hoge1.com", model.POSITIVE)
-	e2
+	e2 := example.NewExample("http://hoge2.com", model.NEGATIVE)
+	e3 := example.NewExample("http://hoge3.com", model.UNLABELED)
+	examples := model.Examples{e1, e2, e3}
+	for _, e := range examples {
+		e
