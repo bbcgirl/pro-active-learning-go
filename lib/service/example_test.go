@@ -131,4 +131,11 @@ func TestGetRecommendation(t *testing.T) {
 	if err != nil {
 		t.Error(err)
 	}
-	examples, err = app.GetR
+	examples, err = app.GetRecommendation(listName)
+	if err != nil {
+		t.Error(err)
+	}
+	if len(examples) != 3 {
+		t.Errorf("len(examples) should be 3, but %d", len(examples))
+	}
+}
