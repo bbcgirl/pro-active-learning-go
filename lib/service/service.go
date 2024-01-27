@@ -13,4 +13,8 @@ import (
 type GoActiveLearningApp interface {
 	UpdateOrCreateExample(e *model.Example) error
 	UpdateScore(e *model.Example) error
-	InsertExampleFromScanner(scanner *bufio.Scanner) (*model.Examp
+	InsertExampleFromScanner(scanner *bufio.Scanner) (*model.Example, error)
+	InsertExamplesFromReader(reader io.Reader) error
+	SearchExamples() (model.Examples, error)
+	SearchRecentExamples(from time.Time, limit int) (model.Examples, error)
+	SearchRecentExample
