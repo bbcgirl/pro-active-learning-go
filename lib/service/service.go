@@ -19,4 +19,7 @@ type GoActiveLearningApp interface {
 	SearchRecentExamples(from time.Time, limit int) (model.Examples, error)
 	SearchRecentExamplesByHost(host string, from time.Time, limit int) (model.Examples, error)
 	SearchExamplesByLabel(label model.LabelType, limit int) (model.Examples, error)
-	SearchLabeledExamples(limit int) (model.Exampl
+	SearchLabeledExamples(limit int) (model.Examples, error)
+	SearchPositiveExamples(limit int) (model.Examples, error)
+	SearchNegativeExamples(limit int) (model.Examples, error)
+	SearchUnlabeledExamples(limit int) (model.Examples, error)
