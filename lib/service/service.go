@@ -28,4 +28,10 @@ type GoActiveLearningApp interface {
 	FindExampleById(id int) (*model.Example, error)
 	SearchExamplesByUlrs(urls []string) (model.Examples, error)
 	SearchExamplesByIds(ids []int) (model.Examples, error)
-	SearchExamplesByKeywords(keywords []string, aggregator string, limit int) (model.Examples
+	SearchExamplesByKeywords(keywords []string, aggregator string, limit int) (model.Examples, error)
+	DeleteAllExamples() error
+	CountPositiveExamples() (int, error)
+	CountNegativeExamples() (int, error)
+	CountUnlabeledExamples() (int, error)
+
+	Insert
