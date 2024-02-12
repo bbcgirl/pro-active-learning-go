@@ -34,4 +34,8 @@ type GoActiveLearningApp interface {
 	CountNegativeExamples() (int, error)
 	CountUnlabeledExamples() (int, error)
 
-	Insert
+	InsertMIRAModel(m classifier.MIRAClassifier) error
+	FindLatestMIRAModel(modelType classifier.ModelType) (*classifier.MIRAClassifier, error)
+
+	UpdateFeatureVector(e *model.Example) error
+	Updat
