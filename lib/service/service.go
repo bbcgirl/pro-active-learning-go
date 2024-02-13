@@ -43,4 +43,5 @@ type GoActiveLearningApp interface {
 	UpdateTweetLabel(exampleId int, idStr string, label model.LabelType) error
 	SearchReferringTweets(limit int) (model.ReferringTweets, error)
 	SearchPositiveReferringTweets(scoreThreshold float64, tweetsLimitInSameExample int, limit int) (model.ReferringTweets, error)
-	SearchNegativeReferringTweets(sc
+	SearchNegativeReferringTweets(scoreThreshold float64, tweetsLimitInSameExample int, limit int) (model.ReferringTweets, error)
+	SearchUnlabeledReferringTweets(scoreThreshold float64, tweetsLimitInSa
