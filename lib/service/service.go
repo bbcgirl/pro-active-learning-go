@@ -38,4 +38,7 @@ type GoActiveLearningApp interface {
 	FindLatestMIRAModel(modelType classifier.ModelType) (*classifier.MIRAClassifier, error)
 
 	UpdateFeatureVector(e *model.Example) error
-	Updat
+	UpdateHatenaBookmark(e *model.Example) error
+	UpdateOrCreateReferringTweets(e *model.Example) error
+	UpdateTweetLabel(exampleId int, idStr string, label model.LabelType) error
+	SearchReferringTweets(lim
