@@ -46,4 +46,7 @@ type GoActiveLearningApp interface {
 	SearchNegativeReferringTweets(scoreThreshold float64, tweetsLimitInSameExample int, limit int) (model.ReferringTweets, error)
 	SearchUnlabeledReferringTweets(scoreThreshold float64, tweetsLimitInSameExample int, limit int) (model.ReferringTweets, error)
 	SearchRecentReferringTweetsWithHighScore(from time.Time, scoreThreshold float64, limit int) (model.ReferringTweets, error)
-	Fetch(exam
+	Fetch(examples model.Examples)
+
+	AttachMetadataIncludingFeatureVector(examples model.Examples, bookmarkLimit int, tweetLimit int) error
+	AttachMetadata(examples model.Examples, bookmarkLimit, tweetLim
