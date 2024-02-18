@@ -49,4 +49,9 @@ type GoActiveLearningApp interface {
 	Fetch(examples model.Examples)
 
 	AttachMetadataIncludingFeatureVector(examples model.Examples, bookmarkLimit int, tweetLimit int) error
-	AttachMetadata(examples model.Examples, bookmarkLimit, tweetLim
+	AttachMetadata(examples model.Examples, bookmarkLimit, tweetLimit int) error
+
+	UpdateRecommendation(listName string, examples model.Examples) error
+	GetRecommendation(listName string) (model.Examples, error)
+
+	UpdateRelatedExamples(related model.RelatedExamples) e
