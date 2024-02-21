@@ -60,4 +60,12 @@ type GoActiveLearningApp interface {
 	UpdateTopAccessedExampleIds(exampleIds []int) error
 	SearchTopAccessedExamples() (model.Examples, error)
 
-	P
+	Ping() error
+	Close() error
+}
+
+func NewApp(repo repository.Repository) GoActiveLearningApp {
+	return &goActiveLearningApp{repo: repo}
+}
+
+func NewDefaultApp() (GoActiveLearningApp, err
