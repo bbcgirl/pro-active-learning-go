@@ -68,4 +68,16 @@ func NewApp(repo repository.Repository) GoActiveLearningApp {
 	return &goActiveLearningApp{repo: repo}
 }
 
-func NewDefaultApp() (GoActiveLearningApp, err
+func NewDefaultApp() (GoActiveLearningApp, error) {
+	repo, err := repository.New()
+	if err != nil {
+		return nil, err
+	}
+	return &goActiveLearningApp{repo: repo}, nil
+}
+
+type goActiveLearningApp struct {
+	repo repository.Repository
+}
+
+func (
