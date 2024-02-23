@@ -80,4 +80,8 @@ type goActiveLearningApp struct {
 	repo repository.Repository
 }
 
-func (
+func (app *goActiveLearningApp) InsertMIRAModel(m classifier.MIRAClassifier) error {
+	return app.repo.InsertMIRAModel(m)
+}
+
+func (app *goActiveLearningApp) FindLatestMIRAModel(modelType 
