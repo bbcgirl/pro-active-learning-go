@@ -89,4 +89,14 @@ func (app *goActiveLearningApp) FindLatestMIRAModel(modelType classifier.ModelTy
 }
 
 func (app *goActiveLearningApp) Ping() error {
-	if err :=
+	if err := app.repo.Ping(); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (app *goActiveLearningApp) Close() error {
+	if err := app.repo.Close(); err != nil {
+		return err
+	}
+	return nil
