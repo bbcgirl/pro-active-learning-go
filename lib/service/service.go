@@ -84,4 +84,9 @@ func (app *goActiveLearningApp) InsertMIRAModel(m classifier.MIRAClassifier) err
 	return app.repo.InsertMIRAModel(m)
 }
 
-func (app *goActiveLearningApp) FindLatestMIRAModel(modelType 
+func (app *goActiveLearningApp) FindLatestMIRAModel(modelType classifier.ModelType) (*classifier.MIRAClassifier, error) {
+	return app.repo.FindLatestMIRAModel(modelType)
+}
+
+func (app *goActiveLearningApp) Ping() error {
+	if err :=
