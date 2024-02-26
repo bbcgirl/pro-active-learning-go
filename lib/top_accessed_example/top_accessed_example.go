@@ -18,3 +18,12 @@ func parseLine(line string) (int, error) {
 	}
 	return int(exampleId), nil
 }
+
+func readTopAccessedExampleIds(filename string) ([]int, error) {
+	fp, err := os.Open(filename)
+	defer fp.Close()
+	if err != nil {
+		return nil, err
+	}
+
+	exampleIds := ma
