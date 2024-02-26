@@ -11,4 +11,10 @@ import (
 	"github.com/urfave/cli"
 )
 
-f
+func parseLine(line string) (int, error) {
+	exampleId, err := strconv.ParseInt(line, 10, 0)
+	if err != nil {
+		return 0, fmt.Errorf("Invalid line: %s", line)
+	}
+	return int(exampleId), nil
+}
