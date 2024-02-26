@@ -26,4 +26,12 @@ func readTopAccessedExampleIds(filename string) ([]int, error) {
 		return nil, err
 	}
 
-	exampleIds := ma
+	exampleIds := make([]int, 0)
+	scanner := bufio.NewScanner(fp)
+	for scanner.Scan() {
+		line := scanner.Text()
+		exampleId, err := parseLine(line)
+		if err != nil {
+			return nil, err
+		}
+		exampleIds 
