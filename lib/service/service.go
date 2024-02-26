@@ -100,3 +100,4 @@ func (app *goActiveLearningApp) Close() error {
 		return err
 	}
 	return nil
+}
