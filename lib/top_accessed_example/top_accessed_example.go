@@ -34,4 +34,12 @@ func readTopAccessedExampleIds(filename string) ([]int, error) {
 		if err != nil {
 			return nil, err
 		}
-		exampleIds 
+		exampleIds = append(exampleIds, exampleId)
+	}
+	if err := scanner.Err(); err != nil {
+		return nil, err
+	}
+	return exampleIds, nil
+}
+
+func doAddTopAccessedExamples(c *cli.Con
