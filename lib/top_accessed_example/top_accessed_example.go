@@ -47,4 +47,13 @@ func doAddTopAccessedExamples(c *cli.Context) error {
 
 	if inputFilename == "" {
 		_ = cli.ShowCommandHelp(c, "add-top-accessed-examples")
-		return cli.NewExitError("`input-fi
+		return cli.NewExitError("`input-filename` is a required field.", 1)
+	}
+
+	app, err := service.NewDefaultApp()
+	if err != nil {
+		return err
+	}
+	defer app.Close()
+
+	exampleIds, err := readTopAcces
