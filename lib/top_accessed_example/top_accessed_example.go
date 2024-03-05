@@ -42,4 +42,9 @@ func readTopAccessedExampleIds(filename string) ([]int, error) {
 	return exampleIds, nil
 }
 
-func doAddTopAccessedExamples(c *cli.Con
+func doAddTopAccessedExamples(c *cli.Context) error {
+	inputFilename := c.String("input-filename")
+
+	if inputFilename == "" {
+		_ = cli.ShowCommandHelp(c, "add-top-accessed-examples")
+		return cli.NewExitError("`input-fi
