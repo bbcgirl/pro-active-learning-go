@@ -56,4 +56,15 @@ func doAddTopAccessedExamples(c *cli.Context) error {
 	}
 	defer app.Close()
 
-	exampleIds, err := readTopAcces
+	exampleIds, err := readTopAccessedExampleIds(inputFilename)
+	if err != nil {
+		return err
+	}
+	err = app.UpdateTopAccessedExampleIds(exampleIds)
+	if err != nil {
+		return err
+	}
+	return nil
+}
+
+var CommandAddTopAccessedExample
