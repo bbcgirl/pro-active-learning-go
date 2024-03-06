@@ -75,4 +75,6 @@ Add top accessed examples.
 `,
 	Action: doAddTopAccessedExamples,
 	Flags: []cli.Flag{
-		cli.Strin
+		cli.StringFlag{Name: "input-filename"},
+	},
+}
