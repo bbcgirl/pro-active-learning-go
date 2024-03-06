@@ -67,4 +67,12 @@ func doAddTopAccessedExamples(c *cli.Context) error {
 	return nil
 }
 
-var CommandAddTopAccessedExample
+var CommandAddTopAccessedExamples = cli.Command{
+	Name:  "add-top-accessed-examples",
+	Usage: "add top accessed examples",
+	Description: `
+Add top accessed examples.
+`,
+	Action: doAddTopAccessedExamples,
+	Flags: []cli.Flag{
+		cli.Strin
