@@ -16,4 +16,9 @@ func ParseLine(line string) (*model.Example, error) {
 	tokens := strings.Split(line, "\t")
 	var url string
 	if len(tokens) == 1 {
-		url = tok
+		url = tokens[0]
+		return example.NewExample(url, model.UNLABELED), nil
+	} else if len(tokens) == 2 {
+		url = tokens[0]
+		label, _ := strconv.ParseInt(tokens[1], 10, 0)
+		switch mode
