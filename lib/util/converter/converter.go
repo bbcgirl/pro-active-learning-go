@@ -8,3 +8,5 @@ func ConvertExamplesToLearningInstances(examples model.Examples) classifier.Lear
 	for _, e := range examples {
 		instances = append(instances, e)
 	}
+	return instances
+}
