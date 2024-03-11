@@ -21,4 +21,8 @@ func ParseLine(line string) (*model.Example, error) {
 	} else if len(tokens) == 2 {
 		url = tokens[0]
 		label, _ := strconv.ParseInt(tokens[1], 10, 0)
-		switch mode
+		switch model.LabelType(label) {
+		case model.POSITIVE, model.NEGATIVE, model.UNLABELED:
+			return example.NewExample(url, model.LabelType(label)), nil
+		default:
+			return nil, errors.New(fmt.S
