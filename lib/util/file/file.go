@@ -42,4 +42,15 @@ func ReadExamples(filename string) ([]*model.Example, error) {
 	scanner := bufio.NewScanner(fp)
 	var examples model.Examples
 	for scanner.Scan() {
-		li
+		line := scanner.Text()
+		e, err := ParseLine(line)
+		if err != nil {
+			return nil, err
+		}
+		examples = append(examples, e)
+	}
+	if err := scanner.Err(); err != nil {
+		return nil, err
+	}
+	return examples, nil
+}
