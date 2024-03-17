@@ -25,4 +25,11 @@ func ParseLine(line string) (*model.Example, error) {
 		case model.POSITIVE, model.NEGATIVE, model.UNLABELED:
 			return example.NewExample(url, model.LabelType(label)), nil
 		default:
-			return nil, errors.New(fmt.S
+			return nil, errors.New(fmt.Sprintf("Invalid Label type %d in %s", label, line))
+		}
+	} else {
+		return nil, errors.New(fmt.Sprintf("Invalid line: %s", line))
+	}
+}
+
+func ReadExamples(filename string) ([]*model.Example, er
