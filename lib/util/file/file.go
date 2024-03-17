@@ -54,3 +54,13 @@ func ReadExamples(filename string) ([]*model.Example, error) {
 	}
 	return examples, nil
 }
+
+func WriteExamples(examples model.Examples, filename string) error {
+	fp, err := os.Create(filename)
+	defer fp.Close()
+	if err != nil {
+		return err
+	}
+
+	writer := bufio.NewWriter(fp)
+	for 
