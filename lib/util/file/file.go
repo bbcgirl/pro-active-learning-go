@@ -32,4 +32,14 @@ func ParseLine(line string) (*model.Example, error) {
 	}
 }
 
-func ReadExamples(filename string) ([]*model.Example, er
+func ReadExamples(filename string) ([]*model.Example, error) {
+	fp, err := os.Open(filename)
+	defer fp.Close()
+	if err != nil {
+		return nil, err
+	}
+
+	scanner := bufio.NewScanner(fp)
+	var examples model.Examples
+	for scanner.Scan() {
+		li
