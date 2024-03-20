@@ -14,3 +14,13 @@ func TestParseLine(t *testing.T) {
 
 	if err != nil {
 		t.Error("cannot parse line1")
+	}
+	if e.Label != model.POSITIVE {
+		t.Error("Label must be POSITIVE")
+	}
+
+	line2 := "http://model.com\t-1"
+	e, err = ParseLine(line2)
+
+	if err != nil {
+		t.Error("cannot pa
