@@ -69,4 +69,13 @@ func WriteExamples(examples model.Examples, filename string) error {
 			if url == "" {
 				url = e.Url
 			}
-			_, err := writer.WriteString(url + "\t" + strconv.Itoa(int(e.Label)
+			_, err := writer.WriteString(url + "\t" + strconv.Itoa(int(e.Label)) + "\n")
+			if err != nil {
+				return err
+			}
+		}
+	}
+
+	writer.Flush()
+	return nil
+}
