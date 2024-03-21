@@ -43,4 +43,12 @@ func TestParseLine(t *testing.T) {
 	e, err = ParseLine(line4)
 
 	if e != nil {
-		t.Erro
+		t.Error("wrong line format")
+	}
+}
+
+func TestReadExamples(t *testing.T) {
+	filename := "../../../tech_input_example.txt"
+	examples, err := ReadExamples(filename)
+
+	if e
