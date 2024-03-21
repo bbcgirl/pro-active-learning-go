@@ -33,4 +33,14 @@ func TestParseLine(t *testing.T) {
 	e, err = ParseLine(line3)
 
 	if err != nil {
-		
+		t.Error("cannot parse line3")
+	}
+	if e.Label != model.UNLABELED {
+		t.Error("Label must be UNLABELED")
+	}
+
+	line4 := "http://model.com\t2"
+	e, err = ParseLine(line4)
+
+	if e != nil {
+		t.Erro
