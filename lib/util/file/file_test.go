@@ -51,4 +51,9 @@ func TestReadExamples(t *testing.T) {
 	filename := "../../../tech_input_example.txt"
 	examples, err := ReadExamples(filename)
 
-	if e
+	if err != nil {
+		fmt.Println(err.Error())
+		t.Error(fmt.Printf("Cannot read examples from %s\n", filename))
+	}
+	if len(examples) == 0 {
+		t.Error(fmt.Printf("%s should c
