@@ -63,4 +63,8 @@ func TestReadExamples(t *testing.T) {
 func TestWriteExamples(t *testing.T) {
 	filename := ".write_test.txt"
 	e1 := example.NewExample("https://b.hatena.ne.jp", model.POSITIVE)
-	e2
+	e2 := example.NewExample("https://www.yasuhisay.info", model.NEGATIVE)
+
+	err := WriteExamples(model.Examples{e1, e2}, filename)
+	if err != nil {
+		t.Error(fmt.Printf("Cannot write examples to %s", filen
