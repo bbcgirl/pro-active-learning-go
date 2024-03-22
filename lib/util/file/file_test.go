@@ -56,4 +56,11 @@ func TestReadExamples(t *testing.T) {
 		t.Error(fmt.Printf("Cannot read examples from %s\n", filename))
 	}
 	if len(examples) == 0 {
-		t.Error(fmt.Printf("%s should c
+		t.Error(fmt.Printf("%s should contain more than one examples\n", filename))
+	}
+}
+
+func TestWriteExamples(t *testing.T) {
+	filename := ".write_test.txt"
+	e1 := example.NewExample("https://b.hatena.ne.jp", model.POSITIVE)
+	e2
