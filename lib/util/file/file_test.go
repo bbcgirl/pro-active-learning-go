@@ -67,4 +67,12 @@ func TestWriteExamples(t *testing.T) {
 
 	err := WriteExamples(model.Examples{e1, e2}, filename)
 	if err != nil {
-		t.Error(fmt.Printf("Cannot write examples to %s", filen
+		t.Error(fmt.Printf("Cannot write examples to %s", filename))
+	}
+
+	examples, err := ReadExamples(filename)
+	if err != nil {
+		t.Error(fmt.Printf("Cannot read examples from %s", filename))
+	}
+	if len(examples) == 2 {
+		t.Error(fmt.Printf("%s should contain two
