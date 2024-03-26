@@ -75,4 +75,6 @@ func TestWriteExamples(t *testing.T) {
 		t.Error(fmt.Printf("Cannot read examples from %s", filename))
 	}
 	if len(examples) == 2 {
-		t.Error(fmt.Printf("%s should contain two
+		t.Error(fmt.Printf("%s should contain two examples", filename))
+	}
+}
