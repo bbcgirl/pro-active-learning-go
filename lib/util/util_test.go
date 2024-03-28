@@ -22,4 +22,12 @@ func TestFilterUnlabeledExamples(t *testing.T) {
 	e1 := example.NewExample("https://b.hatena.ne.jp", model.POSITIVE)
 	e2 := example.NewExample("https://www.yasuhisay.info", model.NEGATIVE)
 	e3 := example.NewExample("http://google.com", model.UNLABELED)
-	e3.Title = 
+	e3.Title = "Google"
+
+	examples := FilterUnlabeledExamples(model.Examples{e1, e2, e3})
+	if len(examples) != 1 {
+		t.Error("Number of unlabeled examples should be 1")
+	}
+}
+
+fun
