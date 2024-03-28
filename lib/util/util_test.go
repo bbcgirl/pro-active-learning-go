@@ -30,4 +30,7 @@ func TestFilterUnlabeledExamples(t *testing.T) {
 	}
 }
 
-fun
+func TestFilterStatusCodeOkExamples(t *testing.T) {
+	e1 := example.NewExample("https://b.hatena.ne.jp", model.POSITIVE)
+	e1.StatusCode = 200
+	e2 := example.NewExample("https://www.yasuhisay.info", 
