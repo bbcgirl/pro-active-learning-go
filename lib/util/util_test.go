@@ -33,4 +33,9 @@ func TestFilterUnlabeledExamples(t *testing.T) {
 func TestFilterStatusCodeOkExamples(t *testing.T) {
 	e1 := example.NewExample("https://b.hatena.ne.jp", model.POSITIVE)
 	e1.StatusCode = 200
-	e2 := example.NewExample("https://www.yasuhisay.info", 
+	e2 := example.NewExample("https://www.yasuhisay.info", model.NEGATIVE)
+	e2.StatusCode = 404
+	e3 := example.NewExample("http://google.com", model.UNLABELED)
+	e3.StatusCode = 304
+
+	examples := FilterStatusCodeOkExamples(model.Examples{e1, e2,
