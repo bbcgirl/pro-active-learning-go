@@ -38,4 +38,12 @@ func TestFilterStatusCodeOkExamples(t *testing.T) {
 	e3 := example.NewExample("http://google.com", model.UNLABELED)
 	e3.StatusCode = 304
 
-	examples := FilterStatusCodeOkExamples(model.Examples{e1, e2,
+	examples := FilterStatusCodeOkExamples(model.Examples{e1, e2, e3})
+	if len(examples) != 1 {
+		t.Error("Number of examples (status code = 200) should be 1")
+	}
+}
+
+func TestUniqueByFinalUrl(t *testing.T) {
+	e1 := model.Example{FinalUrl: "aaa"}
+	e2 := mode
