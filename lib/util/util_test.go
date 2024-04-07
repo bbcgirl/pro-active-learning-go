@@ -46,4 +46,9 @@ func TestFilterStatusCodeOkExamples(t *testing.T) {
 
 func TestUniqueByFinalUrl(t *testing.T) {
 	e1 := model.Example{FinalUrl: "aaa"}
-	e2 := mode
+	e2 := model.Example{FinalUrl: "bbb"}
+	e3 := model.Example{FinalUrl: "aaa"}
+	examples := model.Examples{&e1, &e2, &e3}
+	result := UniqueByFinalUrl(examples)
+	if len(result) != 2 {
+		t.Errorf("le
