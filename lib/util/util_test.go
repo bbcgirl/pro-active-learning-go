@@ -51,4 +51,11 @@ func TestUniqueByFinalUrl(t *testing.T) {
 	examples := model.Examples{&e1, &e2, &e3}
 	result := UniqueByFinalUrl(examples)
 	if len(result) != 2 {
-		t.Errorf("le
+		t.Errorf("length(result) should be %d, but %d", 2, len(result))
+	}
+}
+
+func TestRemoveDuplicate(t *testing.T) {
+	args := []string{"hoge", "fuga", "piyo", "hoge"}
+
+	result := RemoveDuplicate(arg
