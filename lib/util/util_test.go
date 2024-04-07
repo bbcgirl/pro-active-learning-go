@@ -58,4 +58,8 @@ func TestUniqueByFinalUrl(t *testing.T) {
 func TestRemoveDuplicate(t *testing.T) {
 	args := []string{"hoge", "fuga", "piyo", "hoge"}
 
-	result := RemoveDuplicate(arg
+	result := RemoveDuplicate(args)
+	if len(result) != 3 {
+		t.Error("Number of unique string in args should be 3")
+	}
+}
