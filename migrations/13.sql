@@ -10,4 +10,9 @@ DROP INDEX "created_at_model";
 CREATE INDEX IF NOT EXISTS "model_type_created_at_model" ON model ("model_type", "created_at");
 
 -- +migrate Down
-DROP
+DROP INDEX "model_type_created_at_model";
+
+ALTER TABLE "model" DROP COLUMN "model_type";
+ALTER TABLE "model" DROP COLUMN "c";
+ALTER TABLE "model" DROP COLUMN "accuracy";
+ALTER TABLE "model" DROP COLUMN "precision";
