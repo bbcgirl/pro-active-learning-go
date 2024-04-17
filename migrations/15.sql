@@ -12,3 +12,4 @@ CREATE INDEX IF NOT EXISTS "example_id_idx_related_example" ON related_example (
 -- +migrate Down
 DROP INDEX "example_id_idx_related_example";
 
+DROP TABLE related_example;
