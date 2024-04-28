@@ -14,4 +14,10 @@ CREATE TABLE IF NOT EXISTS hatena_bookmark (
 CREATE UNIQUE INDEX IF NOT EXISTS "example_id_idx_hatena_bookmark" ON hatena_bookmark ("example_id");
 CREATE UNIQUE INDEX IF NOT EXISTS "url_idx_hatena_bookmark" ON hatena_bookmark ("url");
 
-CREATE TABLE IF NOT E
+CREATE TABLE IF NOT EXISTS bookmark (
+  "hatena_bookmark_id" SERIAL NOT NULL,
+  "user" TEXT NOT NULL,
+  "comment" TEXT NOT NULL,
+  "tags" TEXT NOT NULL,
+  "timestamp" timestamp NOT NULL,
+  CONSTRAINT bookmark_hat
