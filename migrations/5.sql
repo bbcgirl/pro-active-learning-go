@@ -27,4 +27,8 @@ CREATE UNIQUE INDEX IF NOT EXISTS "hatena_bookmark_id_user_idx_bookmark" ON book
 
 -- +migrate Down
 DROP INDEX "hatena_bookmark_id_user_idx_bookmark";
-DROP INDEX "example_id_idx_hatena_bo
+DROP INDEX "example_id_idx_hatena_bookmark";
+DROP INDEX "url_idx_hatena_bookmark";
+
+DROP TABLE bookmark;
+DROP TABLE hatena_bookmark;
