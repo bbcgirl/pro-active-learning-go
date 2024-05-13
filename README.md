@@ -3,4 +3,15 @@
 [![Go Report Card](https://goreportcard.com/badge/github.com/bbcgirl/pro-active-learning-go)](https://goreportcard.com/report/github.com/bbcgirl/pro-active-learning-go)
 [![Coverage Status](https://coveralls.io/repos/github/bbcgirl/pro-active-learning-go/badge.svg?branch=master)](https://coveralls.io/github/bbcgirl/pro-active-learning-go?branch=master)
 
-pro-active-learning-go is a powerful command line annotation tool intended for binary classification tasks, built with Go. It employs a simple yet effective active lea
+pro-active-learning-go is a powerful command line annotation tool intended for binary classification tasks, built with Go. It employs a simple yet effective active learning algorithm to minimize annotation time.
+
+# Install
+
+```console
+% go get github.com/bbcgirl/pro-active-learning-go
+```
+
+## Build from source
+
+```console
+% git clone https://gith
