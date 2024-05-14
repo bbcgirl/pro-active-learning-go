@@ -24,4 +24,9 @@ pro-active-learning-go is a powerful command line annotation tool intended for b
 ```
 
 # Usage
-pro-active-learning-go comes with `annotate` (for suggesting new examples through active learning) and `diagnose` (for checking label conflicts in training 
+pro-active-learning-go comes with `annotate` (for suggesting new examples through active learning) and `diagnose` (for checking label conflicts in training data) modes. For detailed options, type `./pro-active-learning-go --help`.
+
+## Annotation model
+For detailed options, type `./pro-active-learning-go annotate --help`.
+
+## Annotate new examples from c
