@@ -19,4 +19,9 @@ pro-active-learning-go is a powerful command line annotation tool intended for b
 % createdb pro-active-learning-go
 % createdb pro-active-learning-go-test
 % sql-migrate up -env=local
-% sql-migrate up -env=
+% sql-migrate up -env=test
+% make build
+```
+
+# Usage
+pro-active-learning-go comes with `annotate` (for suggesting new examples through active learning) and `diagnose` (for checking label conflicts in training 
