@@ -14,4 +14,9 @@ pro-active-learning-go is a powerful command line annotation tool intended for b
 ## Build from source
 
 ```console
-% git clone https://gith
+% git clone https://github.com/bbcgirl/pro-active-learning-go.git
+% cd pro-active-learning-go
+% createdb pro-active-learning-go
+% createdb pro-active-learning-go-test
+% sql-migrate up -env=local
+% sql-migrate up -env=
