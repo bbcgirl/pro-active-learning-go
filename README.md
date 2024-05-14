@@ -29,4 +29,10 @@ pro-active-learning-go comes with `annotate` (for suggesting new examples throug
 ## Annotation model
 For detailed options, type `./pro-active-learning-go annotate --help`.
 
-## Annotate new examples from c
+## Annotate new examples from command line interface
+For detailed options, type `./pro-active-learning-go annotate cli --help`.
+
+```console
+% ./pro-active-learning-go annotate cli --open-url
+Loading cache...
+Label this example (Score: 0.600):
