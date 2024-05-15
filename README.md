@@ -43,4 +43,9 @@ s: Skip this example.
 h: Show this help.
 e: Exit.
 
-Label this example (Score: 1.0
+Label this example (Score: 1.000): http://srdk.rakuten.jp/ (それどこ)
+Labeled as negative
+```
+
+## Annotate new examples from slack
+For detailed options, type `./pro-active-learning-go annotate cli --help`. To annotate new examples 
