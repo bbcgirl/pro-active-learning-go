@@ -35,4 +35,12 @@ For detailed options, type `./pro-active-learning-go annotate cli --help`.
 ```console
 % ./pro-active-learning-go annotate cli --open-url
 Loading cache...
-Label this example (Score: 0.600):
+Label this example (Score: 0.600): http://srdk.rakuten.jp/ (それどこ)
+
+p: Label this example as positive.
+n: Label this example as negative.
+s: Skip this example.
+h: Show this help.
+e: Exit.
+
+Label this example (Score: 1.0
