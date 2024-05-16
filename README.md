@@ -49,3 +49,11 @@ Labeled as negative
 
 ## Annotate new examples from slack
 For detailed options, type `./pro-active-learning-go annotate cli --help`. To annotate new examples from slack, you need to create a slack bot, and obtain a token from [here](https://my.slack.com/services/new/bot). You can pass the token via environment variable (`SLACK_TOKEN`).
+
+```console
+% export SLACK_TOKEN=xoxb-SLACK-TOKEN
+% ./pro-active-learning-go annotate slack --filter-status-code-ok --channel CHANNEL_ID
+```
+
+## Diagnosis model
+For detailed options, type `./p
