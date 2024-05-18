@@ -59,4 +59,9 @@ For detailed options, type `./pro-active-learning-go annotate cli --help`. To an
 For detailed options, type `./pro-active-learning-go diagnose --help`.
 
 ### Diagnose training data
-This subcommand diagnoses label conflicts in training data. 'conflict' refers to a situation where an annotated label is '-1/1', but a predicted label by the model is '1/-1'. In such cases, for example, `http://www3.nhk.or.jp/news/` is a conflict case ('Label' is -1, but 'Score' is positive). You ma
+This subcommand diagnoses label conflicts in training data. 'conflict' refers to a situation where an annotated label is '-1/1', but a predicted label by the model is '1/-1'. In such cases, for example, `http://www3.nhk.or.jp/news/` is a conflict case ('Label' is -1, but 'Score' is positive). You may need to gather such news articles to train a good classifier.
+
+```console
+% ./pro-active-learning-go diagnose label-conflict
+Loading cache...
+Index   Label   Score   URL     T
