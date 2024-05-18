@@ -64,4 +64,8 @@ This subcommand diagnoses label conflicts in training data. 'conflict' refers to
 ```console
 % ./pro-active-learning-go diagnose label-conflict
 Loading cache...
-Index   Label   Score   URL     T
+Index   Label   Score   URL     Title
+0       -1      0.491   http://www3.nhk.or.jp/news/
+1       1       0.491   http://blog.yuuk.io/
+2       1       0.491   http://www.yasuhisay.info/
+3       -1      -3.057  http://r.gnavi.co.
