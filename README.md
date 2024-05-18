@@ -56,4 +56,7 @@ For detailed options, type `./pro-active-learning-go annotate cli --help`. To an
 ```
 
 ## Diagnosis model
-For detailed options, type `./p
+For detailed options, type `./pro-active-learning-go diagnose --help`.
+
+### Diagnose training data
+This subcommand diagnoses label conflicts in training data. 'conflict' refers to a situation where an 
