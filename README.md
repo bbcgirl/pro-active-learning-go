@@ -75,4 +75,10 @@ Index   Label   Score   URL     Title
 7       1       44.642  http://www.songmu.jp/riji/      おそらくはそれさえも平凡な日々
 8       1       121.170 http://motemen.hatenablog.com/  詩と創作・思索のひろば
 Saving cache...
-``
+```
+
+### Diagnose feature weight
+This subcommand lists pairs of feature weight and its name.
+
+```console
+% ./pro-active-learning-go diagnose feature-weight --filter-status-code-ok | he
