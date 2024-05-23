@@ -81,4 +81,18 @@ Saving cache...
 This subcommand lists pairs of feature weight and its name.
 
 ```console
-% ./pro-active-learning-go diagnose feature-weight --filter-status-code-ok | he
+% ./pro-active-learning-go diagnose feature-weight --filter-status-code-ok | head -n 10
++0.80   BODY:/
++0.80   BODY:ほか
++0.80   BODY:郁
++0.80   BODY:単行本
++0.80   BODY:姿
++0.80   BODY:暗黙
++0.80   BODY:創造
++0.80   BODY:企業
++0.80   BODY:野中
++0.80   BODY:準備
+```
+
+# Creator
+bbcgirl
