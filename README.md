@@ -71,4 +71,8 @@ Index   Label   Score   URL     Title
 3       -1      -3.057  http://r.gnavi.co.jp/g-interview/       ぐるなび みんなのごはん
 4       1       4.264   http://hakobe932.hatenablog.com/        hakobe-blog ♨
 5       -1      -7.151  http://suumo.jp/town/   SUUMOタウン
-6       -1      -26.321 https://www
+6       -1      -26.321 https://www.facebook.com/       ログイン (日本語)
+7       1       44.642  http://www.songmu.jp/riji/      おそらくはそれさえも平凡な日々
+8       1       121.170 http://motemen.hatenablog.com/  詩と創作・思索のひろば
+Saving cache...
+``
