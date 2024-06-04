@@ -13,7 +13,7 @@ require (
 	github.com/jdkato/prose v0.0.0-20181022194337-a179b97cfa6f
 	github.com/jmoiron/sqlx v1.3.1
 	github.com/lib/pq v1.10.0
-	github.com/mackerelio/mackerel-client-go v0.16.0
+	github.com/mackerelio/mackerel-client-go v0.33.1
 	github.com/mattn/go-isatty v0.0.8 // indirect
 	github.com/mattn/go-runewidth v0.0.4 // indirect
 	github.com/mattn/go-tty v0.0.0-20190424173100-523744f04859
@@ -28,6 +28,7 @@ require (
 	github.com/stretchr/testify v1.3.0 // indirect
 	github.com/syou6162/GoOse v0.0.0-20190108170554-09969ebeb09f
 	github.com/urfave/cli v1.22.5
+	golang.org/x/net v0.0.0-20200226121028-0de0cce0169b // indirect
 	golang.org/x/sys v0.0.0-20190804053845-51ab0e2deafa // indirect
 	golang.org/x/text v0.3.2 // indirect
 	gopkg.in/neurosnap/sentences.v1 v1.0.6 // indirect
